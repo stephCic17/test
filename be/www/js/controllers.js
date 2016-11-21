@@ -238,8 +238,12 @@ template: 'Please check your credentials!'
 })
 
 .controller('GhqCtrl', function($scope, $rootScope, $state){
-$scope.test = function(){
 
+$scope.submit = function(){
+	var selectElmt = document.getElementById("ghq_a");
+var valeurselectionnee = selectElmt.options[selectElmt.selectedIndex].value;
+var $rootScope.ghq_a = selectElmt.options[selectElmt.selectedIndex].text;
+	console.log($rootScope.ghq_a);
 }
 })
 .controller('PsychoCtrl', function($scope, $rootScope, $state){
