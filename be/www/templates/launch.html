@@ -2,7 +2,17 @@
 
 
   <ion-content class=padding> 
-<h1>Felication vous en etes à votre <span ng-bind=grossesse></span>eme semaine de grosses</h1>
+  <div ng-if="grossesse">
+  	
+<h1>Felication vous en etes à votre <span ng-bind=WeekGrossesse></span>eme semaine de grossesse</h1>
 <p>Vous devriez accoucher le <span ng-bind=terme></span></p>
+  </div>
+<div ng-if="!grossesse">
+<form name="gro" ng-submit="submit(gros)">
+<label>Rentrez la date de vos derniere regle</label>
+<input type="date" name="date" ng-model="gros" value="2016-12-13">
+<button type="Submit">Ok</button>
+	</form>
+</div>
   </ion-content>
 </ion-view>

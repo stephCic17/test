@@ -3361,7 +3361,9 @@ body.grade-c {
   padding-top: 1px;
   margin-bottom: -1px;
   width: auto;
-  height: auto; }
+  height: auto;
+  background-color: rgba(44,172,215, 0.1);
+   }
 
 .menu .scroll-content.scroll-content-false {
   z-index: 11; }
@@ -3928,7 +3930,10 @@ a.subdued {
     background-image: linear-gradient(0deg, #b2b2b2, #b2b2b2 50%, transparent 50%);
     color: #444; }
     .bar.bar-stable .title {
-      color: #444; }
+      color: #FFF; 
+      font-weight: bold;
+
+    }
     .bar.bar-stable.bar-footer {
       background-image: linear-gradient(180deg, #b2b2b2, #b2b2b2 50%, transparent 50%); }
   .bar.bar-positive {
@@ -4091,7 +4096,10 @@ a.subdued {
 
 .platform-android .bar .title {
   font-size: 19px;
-  line-height: 44px; }
+  line-height: 44px;
+  background-color: #2cace9;
+  text-align: center;
+   }
 
 .bar-light .button {
   border-color: #ddd;
@@ -6643,7 +6651,7 @@ button.item.item-button-right {
   overflow: hidden;
   margin: 20px 10px;
   border-radius: 2px;
-  background-color: #fff; }
+  background-color: #EFDEE0; }
 
 .card {
   padding-top: 1px;
@@ -8703,14 +8711,14 @@ progress {
         color: #fff; }
   .button.button-calm {
     border-color: transparent;
-    background-color: #11c1f3;
+    background-color: #CC919A;
     color: #fff; }
     .button.button-calm:hover {
       color: #fff;
       text-decoration: none; }
     .button.button-calm.active, .button.button-calm.activated {
       border-color: #a2a2a2;
-      background-color: #0a9dc7; }
+      background-color: #dd7b7b; }
     .button.button-calm.button-clear {
       border-color: transparent;
       background: none;
@@ -8891,7 +8899,8 @@ progress {
     border-color: transparent;
     background: none;
     box-shadow: none;
-    opacity: 0.3; }
+    opacity: 1;
+    color: white }
   .button-icon .icon:before, .button-icon.icon:before {
     font-size: 32px; }
 
@@ -9731,7 +9740,7 @@ a.button {
   z-index: 10; }
   [nav-bar-transition="ios"] [nav-bar="active"] .bar,
   [nav-bar-transition="ios"] [nav-bar="entering"] .bar {
-    background: transparent; }
+    background: #2cace9; }
 
 [nav-bar-transition="ios"] [nav-bar="cached"] {
   display: block; }
@@ -9770,7 +9779,7 @@ a.button {
   z-index: 10; }
   [nav-bar-transition="android"] [nav-bar="active"] .bar,
   [nav-bar-transition="android"] [nav-bar="entering"] .bar {
-    background: transparent; }
+    background: #dfa0d3; }
 
 [nav-bar-transition="android"] [nav-bar="cached"] {
   display: block; }

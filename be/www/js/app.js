@@ -199,7 +199,87 @@ controller: 'Step18Ctrl'
       }
     }
 })
-
+.state('app.scoff',{
+    url:'/scoff',
+    views:{
+      'menuContent':{
+        templateUrl: 'templates/scoff.html',
+        controller: 'ScoffCtrl'
+      }
+    }
+})
+.state('app.eat',{
+    url:'/eat',
+    views:{
+      'menuContent':{
+        templateUrl: 'templates/eat.html',
+        controller: 'EatCtrl'
+      }
+    }
+})
+.state('app.epds1',{
+    url:'/epds1',
+    views:{
+      'menuContent':{
+        templateUrl: 'templates/epds1.html',
+        controller: 'Epds1Ctrl'
+      }
+    }
+})
+.state('app.epds2',{
+    url:'/epds2',
+    views:{
+      'menuContent':{
+        templateUrl: 'templates/epds2.html',
+        controller: 'Epds2Ctrl'
+      }
+    }
+})
+.state('app.mib',{
+    url:'/mib',
+    views:{
+      'menuContent':{
+        templateUrl: 'templates/mib.html',
+        controller: 'MibCtrl'
+      }
+    }
+})
+.state('app.bdi',{
+    url:'/bdi',
+    views:{
+      'menuContent':{
+        templateUrl: 'templates/bdi.html',
+        controller: 'BdiCtrl'
+      }
+    }
+})
+.state('app.pai',{
+    url:'/pai',
+    views:{
+      'menuContent':{
+        templateUrl: 'templates/pai.html',
+        controller: 'PaiCtrl'
+      }
+    }
+})
+.state('app.stai',{
+    url:'/stai',
+    views:{
+      'menuContent':{
+        templateUrl: 'templates/stai.html',
+        controller: 'StaiCtrl'
+      }
+    }
+})
+.state('app.toxo',{
+    url:'/toxo',
+    views:{
+      'menuContent':{
+        templateUrl: 'templates/toxo.html',
+        controller: 'ToxoCtrl'
+      }
+    }
+})
   // if none of the above states are matched, use this as the fallback
  $urlRouterProvider.otherwise('/home');
 
