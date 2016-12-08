@@ -628,14 +628,37 @@ $scope.submit = function(ghq_a, ghq_b,ghq_c, ghq_d, ghq_e, ghq_f, ghq_g, ghq_h, 
 	$scope.test = 
 		url = ""
 		$scope.submit = function(gros) {
-			$rootScope.gros = gros;
-			$rootScope.grossesse = $rootScope.gros;
-			$rootScope.WeekGrossesse = Math.round(((new Date().getTime() - $rootScope.grossesse.getTime()) / (1000 * 60 * 60 * 24)) / 7);
-			var ms = new Date().getTime() + (25401600000 - $rootScope.grossesse.getTime());
-			console.log($rootScope.grossesse.getTime());
-			var dateToday = new Date().getTime();
-			var dateTerm = new Date($rootScope.grossesse.getTime() + 25401600000);
-			$scope.terme = dateTerm.toLocaleDateString();
+			// Date des dernieres regles //
+			$rootScope.DerniereRegle = new Date(gros);
+			console.log("DR");
+			console.log($rootScope.DerniereRegle.toLocaleDateString());
+			// Date de début de grossesse theorique //
+			$rootScope.DebutGrossesse = new Date($rootScope.DerniereRegle.getTime() + 1209600000);
+			console.log("Debut grossesse");
+			console.log($rootScope.DebutGrossesse.toLocaleDateString());
+			// Date de fiabilite Test de grossesse //
+			$rootScope.FiabiliteTest = new Date($rootScope.DebutGrossesse.getTime() + 2246400000);
+			console.log("Fiabilité Test");
+			console.log($rootScope.FiabiliteTest.toLocaleDateString());
+			// Date 1er consultation//
+			$rootScope.FirstConsultDebut = new Date($rootScope.DebutGrossesse.getTime() + 2592000000);
+			$rootScope.FirstConsultFin = new Date($rootScope.DebutGrossesse.getTime() + 3801600000);
+			console.log("Premier consult entre le ");
+			console.log($rootScope.FirstConsultDebut.toLocaleDateString());
+			console.log("et le ");
+			console.log($rootScope.FirstConsultFin.toLocaleDateString());
+			// Date 1er detection Toxo //
+
+
+
+//			$rootScope.WeekGrossesse = Math.round(((new Date().getTime() - $rootScope.grossesse.getTime()) / (1000 * 60 * 60 * 24)) / 7);
+//			var ms = new Date().getTime() + (25401600000 - $rootScope.grossesse.getTime());
+//			console.log($rootScope.grossesse.getTime());
+//			var dateToday = new Date().getTime();
+//			var dateTerm = new Date($rootScope.grossesse.getTime() + 25401600000);
+//			$rootcScope.terme = dateTerm.toLocaleDateString();
+	
+
 		}
 
 })
