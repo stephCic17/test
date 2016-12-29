@@ -1,31 +1,104 @@
 <ion-view view-title=Ciconia name=calendar-view>
   <ion-content class=padding> 
-<h4>Félicitation Valérie ! <br/>6 semaines de grossesse aujourd'hui !</h4>
-<h4>Vous devriez accoucher le 8 aout 2017</h4>
+<h4>Félicitation Valérie ! <br/>Vous en êtes à votre <span ng-bind="nbSemaine"></span>
+semaines de grossesse aujourd'hui !</h4>
+<h4>Vous devriez accoucher le <span ng-bind="terme"></span></h4>
 <br/>
-<h6>Votre calendrier de risque</h6>
-<ion-list>
-  <ion-item class="orange">
-Fin de risque de fausse couche<br/>
- le 15 janvier 2017
-  </ion-item>
-    <ion-item class="or">
+<h6>Votre calendrier</h6>
 
-Votre Bébé sera viable <br/>à partir du 15 avril 2017
-  </ion-item>
-    <ion-item class="o">
-Votre bébé peut naître sans complication <br />à partir du 6 juillet 2017
-  </ion-item>
-</ion-list>
-<h6>Calendrier de grossesse</h6>
-<ion-list>
-  <ion-item class="bl">
-Congé maternité du 25 juin au 15 octobre
-  </ion-item>
-    <ion-item class="bl1">
-Vous pouvez prendre l'avion jusqu'au <br />
-1er juin 2017
-  </ion-item>
-</ion-list>
+<div class=avenir ng-if="FiabiliteTestTimestamp > today">
+  <h4>Fiabilité du test de grossesse à partir du:
+  <span ng-bind=FiabiliteTestDate></span></h4>
+  <span ng-bind=FiabiliteTestDetail></span>
+</div>
+<div class="passe" ng-if="FiabiliteTestTimestamp < today">
+  <h4>Votre test de grossesse est fiable depuis le:
+  <span ng-bind=FiabiliteTestDate></span></h4>
+  <span ng-bind=FiabiliteTestDetail></span>
+</div>
+
+<div class="avenir" ng-if="FirstConsultFinTimestamp > today">
+  <h4>Votre première consultation doit être réalisé entre le 
+  <span ng-bind="FirstConsultDebutDate"></span>
+ et le 
+ <span ng-bind="FirstConsultFinDate"></span></h4>
+ <span ng-bind="FirstConsultDetail"></span>
+</div>
+<div class="passe" ng-if="FirstConsultFinTimestamp < today">
+<h4>  Votre première consultation à été réalisé le "inserer la date quand on stock les données"
+ <span ng-bind="FirstConsultFinDate"></span></h4>
+ <span ng-bind="FirstConsultDetail"></span>
+</div>
+
+<div class="avenir" ng-if="FirstEchoFinTimestamp > today">
+  <h4>Votre première consultation doit être réalisé entre le 
+  <span ng-bind="FirstEchoDebutDate"></span>
+ et le 
+ <span ng-bind="FirstEchoFinDate"></span></h4>
+ <span ng-bind="FirstEchoDetail"></span>
+</div>
+<div class="passe" ng-if="FirstEchoFinTimestamp < today">
+<h4>  Votre première consultation à été réalisé le "inserer la date quand on stock les données"
+ <span ng-bind="FirstEchoFinDate"></span></h4>
+ <span ng-bind="FirstEchoDetail"></span>
+</div>
+      $rootScope.SecondEchoDebut 
+      $rootScope.ThirdEntretienPrenatalDebut = 
+      $rootScope.diabeteDebut 
+      $rootScope.QuatriemeEntretienPrenatalDebut 
+      $rootScope.CinquiemeEntretienPrenatalDebutDate = 
+      $rootScope.TroisiemeEchoDebut = new Date($rootScope.DebutGrossesse.getTime() + 1.71072e+10);
+      $rootScope.SixiemeEntretienPrenatalDebutTimestamp 
+      $rootScope.ConsultationAnesthesisteDebutDate = 
+      $rootScope.SeptiemeEntretienPrenatalDebutDate = 
+
+
+<div class="avenir" ng-if="SecondConsultFinTimestamp > today">
+  <h4>Votre seconde consultation doit être réalisé entre le 
+  <span ng-bind="SecondConsultDebutDate"></span>
+ et le 
+ <span ng-bind="SecondConsultFinDate"></span></h4>
+ <span ng-bind="SecondConsultDetail"></span>
+</div>
+<div class="passe" ng-if="SecondConsultFinTimestamp < today">
+  <h4>  Votre seconde consultation à été réalisé le "inserer la date quand on stock les données"
+ <span ng-bind="SecondConsultFinDate"></span></h4>
+ <span ng-bind="SecondConsultDetail"></span>
+
+</div>
+<div class="avenir" ng-if="BilanBuccoTimestamp > today">
+  <h4>Bilan buccodentaire à partir du
+  <span ng-bind=BilanBuccoDate></span>
+  </h4>
+  <span ng-bind="BilanBuccoDetail"></span>
+</div>
+<div class="passe" ng-if="BilanBuccoTimestamp > today">
+  <h4>Bilan buccodentaire à partir du
+  <span ng-bind=BilanBuccoDate></span>
+  </h4>
+  <span ng-bind="BilanBuccoDetail"></span>
+  
+
+</div>
+<div class="avenir" ng-if="">
+  
+
+</div>
+<div class="passe" ng-if>
+  
+
+</div>
+<div class="avenir" ng-if="">
+  
+
+</div>
+<div class="passe" ng-if>
+  
+
+</div>
+
+
+
+
   </ion-content>
   </ion-view>
