@@ -555,7 +555,7 @@ $scope.submit = function(ghq_a, ghq_b,ghq_c, ghq_d, ghq_e, ghq_f, ghq_g, ghq_h, 
 		$state.go('app.psycho');
 	}
 })
-.controller('PsychoCtrl', function($scope, $state, $http, $rootScope){
+.controller('PsychoCtrl', function($scope, $state, $http, $rootScope, $cordovaLocalNotification){
 		$scope.data = {};
 		$scope.test = 
 		url = ""
@@ -586,7 +586,16 @@ $scope.submit = function(ghq_a, ghq_b,ghq_c, ghq_d, ghq_e, ghq_f, ghq_g, ghq_h, 
 		$scope.eat = function(){
 			$state.go('app.eat');
 		}	
-
+		setTimeout(function() { $cordovaLocalNotification.schedule({
+        id: 1,
+        title: 'Hello',
+        text: 'Toto',
+        icon:'',
+        data: {
+          customProperty: '#/app/calendar'
+        }
+      });}, 300);
+          
 })
 
 .controller('Step0Ctrl', function($scope, $state, $http, $rootScope) {
@@ -623,7 +632,7 @@ $scope.submit = function(ghq_a, ghq_b,ghq_c, ghq_d, ghq_e, ghq_f, ghq_g, ghq_h, 
 			}
 })
 
-.controller('LaunchCtrl', function($scope, $state, $http, $rootScope, $ionicSideMenuDelegate){
+.controller('LaunchCtrl', function($scope, $state, $http, $rootScope, $ionicSideMenuDelegate, $cordovaLocalNotification){
 	$scope.data = {};
 	$scope.test = 
 		url = ""
@@ -641,6 +650,7 @@ $scope.submit = function(ghq_a, ghq_b,ghq_c, ghq_d, ghq_e, ghq_f, ghq_g, ghq_h, 
 			$rootScope.DebutGrossesseDate = $rootScope.DebutGrossesse.toLocaleDateString();
 			$rootScope.DebutGrossesseDetail = "Cette date sera déterminée avec précision par votre médecin à partir des résultats de la 1ère échographie et de la date de vos dernières règles.";
 			
+
 			// Date de fiabilite Test de grossesse //
 			$rootScope.FiabiliteTest = new Date($rootScope.DebutGrossesse.getTime() + 2246400000);
 			$rootScope.FiabiliteTestTimestamp = $rootScope.FiabiliteTest.getTime();
@@ -716,7 +726,7 @@ $scope.submit = function(ghq_a, ghq_b,ghq_c, ghq_d, ghq_e, ghq_f, ghq_g, ghq_h, 
 			$rootScope.diabeteDebutTimestamp = $rootScope.diabeteDebut.getTime();
 			$rootScope.diabeteFinDate = $rootScope.diabeteFin.toLocaleDateString();
 			$rootScope.diabeteFinTimestamp = $rootScope.diabeteFin.getTime();
-			$rootScope.diabeteGrossesse = "";
+			$rootScope.diabeteGrossesse = "Le diabète gestationnel également appelé hyperglycémie ou diabète de grossesse, est une élévation du taux de sucre dans le sang qui survient pendant la grossesse. Il s'agit d'une forme bénigne de diabète qui concerne entre 6% et 12% des grossesses et nécessite la mise en place d'un suivi adapté.";
 
 			//Date 4 entretien prenat
 			$rootScope.QuatriemeEntretienPrenatalDebut = new Date($rootScope.DebutGrossesse.getTime() + 1.31328e+10);
@@ -725,7 +735,7 @@ $scope.submit = function(ghq_a, ghq_b,ghq_c, ghq_d, ghq_e, ghq_f, ghq_g, ghq_h, 
 			$rootScope.QuatriemeEntretienPrenatalDebutTimestamp = $rootScope.QuatriemeEntretienPrenatalDebut.getTime();
 			$rootScope.QuatriemeEntretienPrenatalFinDate = $rootScope.QuatriemeEntretienPrenatalFin.toLocaleDateString();
 			$rootScope.QuatriemeEntretienPrenatalFinTimestamp = $rootScope.QuatriemeEntretienPrenatalFin.getTime();
-			$rootScope.QuatriemeEntretienPrenatalDetail = "";
+			$rootScope.QuatriemeEntretienPrenatalDetail = "Consultation médicale de votre 6ème mois de grossesse.";
 		
 			//Date 5 entretien prenat
 			$rootScope.CinquiemeEntretienPrenatalDebut = new Date($rootScope.DebutGrossesse.getTime() + 1.57248e+10);
@@ -734,7 +744,7 @@ $scope.submit = function(ghq_a, ghq_b,ghq_c, ghq_d, ghq_e, ghq_f, ghq_g, ghq_h, 
 			$rootScope.CinquiemeEntretienPrenatalDebutTimestamp = $rootScope.CinquiemeEntretienPrenatalDebut.getTime();
 			$rootScope.CinquiemeEntretienPrenatalFinDate = $rootScope.CinquiemeEntretienPrenatalFin.toLocaleDateString();
 			$rootScope.CinquiemeEntretienPrenatalFinTimestamp = $rootScope.CinquiemeEntretienPrenatalFin.getTime();
-			$rootScope.CinquiemeEntretienPrenatalDetail = "";
+			$rootScope.CinquiemeEntretienPrenatalDetail = "Consultation médicale de votre 7ème mois de grossesse.";
 		
 			// Date 3eme Echo //
 			$rootScope.TroisiemeEchoDebut = new Date($rootScope.DebutGrossesse.getTime() + 1.71072e+10);
@@ -778,7 +788,7 @@ $scope.submit = function(ghq_a, ghq_b,ghq_c, ghq_d, ghq_e, ghq_f, ghq_g, ghq_h, 
 			$rootScope.termeTimestamp = $rootScope.terme.getTime();
 			$rootScope.termeDetail = "Vous devez consulter votre médecin ou sage-femme.";
 
-			$state.go('app.calendar')
+			$state.go('app.calendar');
 
 			// Date 
 //			$rootScope.WeekGrossesse = Math.round(((new Date().getTime() - $rootScope.grossesse.getTime()) / (1000 * 60 * 60 * 24)) / 7);
@@ -788,8 +798,11 @@ $scope.submit = function(ghq_a, ghq_b,ghq_c, ghq_d, ghq_e, ghq_f, ghq_g, ghq_h, 
 //			var dateTerm = new Date($rootScope.grossesse.getTime() + 25401600000);
 //			$rootcScope.terme = dateTerm.toLocaleDateString();
 	
-
 		}
+  /*
+   * if given group is the selected group, deselect it
+   * else, select the given group
+   */
 
 })
 .controller('CalendarCtrl', function($scope, $state, $http, $rootScope, $ionicSideMenuDelegate){
@@ -801,5 +814,84 @@ $scope.submit = function(ghq_a, ghq_b,ghq_c, ghq_d, ghq_e, ghq_f, ghq_g, ghq_h, 
 		$scope.tes = function(){
 			console.log("test");
 		}
+		   $scope.hideA = true;
+		   $scope.hideB = true;
+		   $scope.hideC = true;
+		   $scope.hideD = true;
+		   $scope.hideE = true;
+		   $scope.hideF = true;
+		   $scope.hideG = true;
+		   $scope.hideH = true;
+		   $scope.hideI = true;
+		   $scope.hideJ = true;
+		   $scope.hideK = true;
+
+$scope.changeA = function(){
+if ($scope.hideA == false)
+   $scope.hideA = true;
+else
+   $scope.hideA = false;
+}
+$scope.changeB = function(){
+if ($scope.hideB == false)
+   $scope.hideB = true;
+else
+   $scope.hideB = false;
+}
+$scope.changeC = function(){
+if ($scope.hideC == false)
+   $scope.hideC = true;
+else
+   $scope.hideC = false;
+}
+$scope.changeD = function(){
+if ($scope.hideD == false)
+   $scope.hideD = true;
+else
+   $scope.hideD = false;
+}
+$scope.changeE = function(){
+if ($scope.hideE == false)
+   $scope.hideE = true;
+else
+   $scope.hideE = false;
+}
+$scope.changeF = function(){
+if ($scope.hideF == false)
+   $scope.hideF = true;
+else
+   $scope.hideF = false;
+}
+$scope.changeG = function(){
+if ($scope.hideG == false)
+   $scope.hideG = true;
+else
+   $scope.hideG = false;
+}
+$scope.changeH = function(){
+if ($scope.hideH == false)
+   $scope.hideH = true;
+else
+   $scope.hideH = false;
+}
+$scope.changeI = function(){
+if ($scope.hideI == false)
+   $scope.hideI = true;
+else
+   $scope.hideI = false;
+}
+$scope.changeJ = function(){
+if ($scope.hideJ == false)
+   $scope.hideJ = true;
+else
+   $scope.hideJ = false;
+}
+$scope.changeK = function(){
+if ($scope.hideK == false)
+   $scope.hideK = true;
+else
+   $scope.hideK = false;
+}
+
 })
 

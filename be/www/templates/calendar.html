@@ -1,104 +1,223 @@
+ <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+
+          
 <ion-view view-title=Ciconia name=calendar-view>
   <ion-content class=padding> 
-<h4>Félicitation Valérie ! <br/>Vous en êtes à votre <span ng-bind="nbSemaine"></span>
-semaines de grossesse aujourd'hui !</h4>
-<h4>Vous devriez accoucher le <span ng-bind="terme"></span></h4>
+<h5>Félicitation<br/>Vous en êtes à votre <span ng-bind="nbSemaine"></span>
+semaines de grossesse aujourd'hui !</h5>
+<h5>Vous devriez accoucher le <span ng-bind="termeDate"></span></h5>
 <br/>
 <h6>Votre calendrier</h6>
 
 <div class=avenir ng-if="FiabiliteTestTimestamp > today">
-  <h4>Fiabilité du test de grossesse à partir du:
-  <span ng-bind=FiabiliteTestDate></span></h4>
-  <span ng-bind=FiabiliteTestDetail></span>
+  <button class="accordion" ng-click=changeA()>
+    Fiabilité du test de grossesse à partir du:<span ng-bind=FiabiliteTestDate></span>
+  </button>
+  <div class="panel" ng-hide=hideA>
+    <p><span ng-bind=FiabiliteTestDetail></span></p>
+  </div>
 </div>
+<!--   -->
 <div class="passe" ng-if="FiabiliteTestTimestamp < today">
-  <h4>Votre test de grossesse est fiable depuis le:
-  <span ng-bind=FiabiliteTestDate></span></h4>
-  <span ng-bind=FiabiliteTestDetail></span>
+  <button class="accordion" ng-click=changeA()>
+    Votre test de grossesse est fiable depuis le:
+    <span ng-bind=FiabiliteTestDate></span>
+  </button>
+  <div class="panel" ng-hide=hideA>
+  <p><span ng-bind=FiabiliteTestDetail></span></p>
+  </div>
 </div>
+
 
 <div class="avenir" ng-if="FirstConsultFinTimestamp > today">
-  <h4>Votre première consultation doit être réalisé entre le 
-  <span ng-bind="FirstConsultDebutDate"></span>
- et le 
- <span ng-bind="FirstConsultFinDate"></span></h4>
- <span ng-bind="FirstConsultDetail"></span>
+  <button class="accordion" ng-click=changeB()>
+    Votre première consultation doit être réalisé entre le <span ng-bind="FirstConsultDebutDate"></span> et le <span ng-bind="FirstConsultFinDate"></span>
+  </button>
+ <div class="panel" ng-hide=hideB>
+   <span ng-bind="FirstConsultDetail"></span>
+  </div>
 </div>
+<!--   -->
 <div class="passe" ng-if="FirstConsultFinTimestamp < today">
-<h4>  Votre première consultation à été réalisé le "inserer la date quand on stock les données"
- <span ng-bind="FirstConsultFinDate"></span></h4>
- <span ng-bind="FirstConsultDetail"></span>
+  <button class="accordion" ng-click=changeB()>
+   Votre première consultation à été réalisé le "inserer la date quand on stock les données" <span ng-bind="FirstConsultFinDate"></span>
+  </button>
+ <div class="panel" ng-hide=hideB>
+   <span ng-bind="FirstConsultDetail"></span>
+  </div>
 </div>
+
 
 <div class="avenir" ng-if="FirstEchoFinTimestamp > today">
-  <h4>Votre première consultation doit être réalisé entre le 
-  <span ng-bind="FirstEchoDebutDate"></span>
- et le 
- <span ng-bind="FirstEchoFinDate"></span></h4>
- <span ng-bind="FirstEchoDetail"></span>
+  <button class="accordion" ng-click=changeC()>
+    Votre première echographie doit être réalisé entre le <span ng-bind="FirstEchoDebutDate"></span> et le <span ng-bind="FirstEchoFinDate"></span>
+  </button>
+  <div class="panel" ng-hide=hideC>
+    <span ng-bind="FirstEchoDetail"></span>
+  </div>
 </div>
+<!--   -->
 <div class="passe" ng-if="FirstEchoFinTimestamp < today">
-<h4>  Votre première consultation à été réalisé le "inserer la date quand on stock les données"
- <span ng-bind="FirstEchoFinDate"></span></h4>
- <span ng-bind="FirstEchoDetail"></span>
+  <button class="accordion" ng-click=changeC()>
+    Votre première echographie à été réalisé le "inserer la date quand on stock les données"<span ng-bind="FirstEchoFinDate"></span>
+  </button>
+ <div class="panel" ng-hide=hideC>
+   <span ng-bind="FirstEchoDetail"></span>
+  </div>
 </div>
-      $rootScope.SecondEchoDebut 
-      $rootScope.ThirdEntretienPrenatalDebut = 
-      $rootScope.diabeteDebut 
-      $rootScope.QuatriemeEntretienPrenatalDebut 
-      $rootScope.CinquiemeEntretienPrenatalDebutDate = 
-      $rootScope.TroisiemeEchoDebut = new Date($rootScope.DebutGrossesse.getTime() + 1.71072e+10);
-      $rootScope.SixiemeEntretienPrenatalDebutTimestamp 
-      $rootScope.ConsultationAnesthesisteDebutDate = 
-      $rootScope.SeptiemeEntretienPrenatalDebutDate = 
 
 
-<div class="avenir" ng-if="SecondConsultFinTimestamp > today">
-  <h4>Votre seconde consultation doit être réalisé entre le 
-  <span ng-bind="SecondConsultDebutDate"></span>
- et le 
- <span ng-bind="SecondConsultFinDate"></span></h4>
- <span ng-bind="SecondConsultDetail"></span>
+<div class="avenir" ng-if="FirstEntretienPrenatalFinTimestamp > today">
+  <button class="accordion" ng-click=changeD()>
+    Votre premier entretien prenatal doit être réalisé entre le <span ng-bind="FirstEntretienPrenatalDebutDate"></span> et le <span ng-bind="FirstEntretienPrenatalFinDate"></span>
+  </button>
+ <div class="panel" ng-hide=hideD>
+   <span ng-bind="FirstEntretienPrenatalDetail"></span>
+  </div>
 </div>
-<div class="passe" ng-if="SecondConsultFinTimestamp < today">
-  <h4>  Votre seconde consultation à été réalisé le "inserer la date quand on stock les données"
- <span ng-bind="SecondConsultFinDate"></span></h4>
- <span ng-bind="SecondConsultDetail"></span>
+<!--   -->
+<div class="passe" ng-if="FirstEntretienPrenatalFinTimestamp < today">
+  <button class="accordion" ng-click=changeD()> 
+    Votre premiere entretien prenatal à été réalisé le "inserer la date quand on stock les données" <span ng-bind="FirstEntretienPrenatalFinDate"></span>
+  </button>
+  <div class="panel" ng-hide=hideD>
+   <span ng-bind="FirstEntretienPrenatalDetail"></span>
+  </div>
+</div>
 
+
+<div class="avenir" ng-if="ThirdEntretienPrenatalFinTimestamp > today">
+    <button class="accordion" ng-click=changeE()>
+      Votre second entretien prenatal doit être réalisé entre le <span ng-bind="SecondEntretienPrenatalDebutDate"></span> et le <span ng-bind="SecondEntretienPrenatalFinDate"></span>
+    </button>
+    <div class="panel" ng-hide=hideE>
+      <span ng-bind="SecondEntretienPrenatalDetail"></span>
+    </div>
 </div>
+<!--   -->
+<div class="passe" ng-if="SecondEntretienPrenatalFinTimestamp < today">
+    <button class="accordion" ng-click=changeE()>
+      Votre second entretien prenatal à été réalisé le "inserer la date quand on stock les données" <span ng-bind="SecondEntretienPrenatalFinDate"></span>
+    </button>
+    <div class="panel" ng-hide=hideE>
+      <span ng-bind="SecondEntretienPrenatalDetail"></span>
+    </div>
+</div>
+
+
 <div class="avenir" ng-if="BilanBuccoTimestamp > today">
-  <h4>Bilan buccodentaire à partir du
-  <span ng-bind=BilanBuccoDate></span>
-  </h4>
-  <span ng-bind="BilanBuccoDetail"></span>
+    <button class="accordion" ng-click=changeF()>
+      Bilan buccodentaire à partir du <span ng-bind=BilanBuccoDate></span>
+    </button>
+    <div class="panel" ng-hide=hideF>
+     <span ng-bind="BilanBuccoDetail"></span>
+    </div>
 </div>
-<div class="passe" ng-if="BilanBuccoTimestamp > today">
-  <h4>Bilan buccodentaire à partir du
-  <span ng-bind=BilanBuccoDate></span>
-  </h4>
-  <span ng-bind="BilanBuccoDetail"></span>
-  
-
-</div>
-<div class="avenir" ng-if="">
-  
-
-</div>
-<div class="passe" ng-if>
-  
-
-</div>
-<div class="avenir" ng-if="">
-  
-
-</div>
-<div class="passe" ng-if>
-  
-
+<!--   -->
+<div class="passe" ng-if="BilanBuccoTimestamp < today">
+    <button class="accordion" ng-click=changeF()>
+      Bilan buccodentaire à partir du <span ng-bind=BilanBuccoDate></span>
+    </button>
+    <div class="panel" ng-hide=hideF>
+      <span ng-bind="BilanBuccoDetail"></span>
+    </div>
 </div>
 
 
+<div class="avenir" ng-if="SecondEchoFinTimestamp > today">
+    <button class="accordion" ng-click=changeG()>
+      Votre seconde echographie doit être réalisé entre le <span ng-bind="SecondEchoDebutDate"></span> et le <span ng-bind="SecondEchoFinDate"></span>
+    </button>
+    <div class="panel" ng-hide=hideG>
+      <span ng-bind="SecondEchoDetail"></span>
+    </div>
+</div>
+<!--   -->
+<div class="passe" ng-if="SecondEchoFinTimestamp < today">
+    <button class="accordion" ng-click=changeG()>
+       Votre seconde echographie à été réalisé le "inserer la date quand on stock les données" <span ng-bind="SecondEchoFinDate"></span>
+    </button>
+    <div class="panel" ng-hide=hideG>
+       <span ng-bind="SecondEchoDetail"></span>
+    </div>
+</div>
 
 
+<div class="avenir" ng-if="ThirdEntretienPrenatalFinTimestamp > today">
+    <button class="accordion" ng-click=changeH()>
+      Votre Third entretien prenatal doit être réalisé entre le <span ng-bind="ThirdEntretienPrenatalDebutDate"></span> et le <span ng-bind="ThirdEntretienPrenatalFinDate"></span>
+    </button>
+    <div class="panel" ng-hide=hideH>
+      <span ng-bind="ThirdEntretienPrenatalDetail"></span>
+    </div>
+</div>
+<!--   -->
+<div class="passe" ng-if="ThirdEntretienPrenatalFinTimestamp < today">
+    <button class="accordion" ng-click=changeH()>
+      Votre Third entretien prenatal à été réalisé le "inserer la date quand on stock les données"<span ng-bind="ThirdEntretienPrenatalFinDate"></span>
+    </button>
+    <div class="panel" ng-hide=hideH>
+      <span ng-bind="ThirdEntretienPrenatalDetail"></span>
+    </div>
+</div>
+
+
+<div class="avenir" ng-if="diabeteFinTimestamp > today">
+    <button class="accordion" ng-click=changeI()>
+      Votre Tdepistage diabete doit être réalisé entre le <span ng-bind="diabeteDebutDate"></span> et le  <span ng-bind="diabeteFinDate"></span>
+    </button>
+    <div class="panel" ng-hide=hideI>
+      <span ng-bind="diabeteDetail"></span>
+    </div>
+</div>
+<!--   -->
+<div class="passe" ng-if="diabeteFinTimestamp < today">
+    <button class="accordion" ng-click=changeI()>
+      Votre depistage diabete à été réalisé le "inserer la date quand on stock les données"<span ng-bind="diabeteFinDate"></span>
+    </button>
+    <div class="panel" ng-hide=hideI>
+      <span ng-bind="diabeteDetail"></span>
+    </div>
+</div>
+
+
+<div class="avenir" ng-if="QuatriemeEntretienPrenatalFinTimestamp > today">
+    <button class="accordion" ng-click=changeJ()>
+      Votre Quatrieme entretien prenatal doit être réalisé entre le <span ng-bind="QuatriemeEntretienPrenatalDebutDate"></span> et le <span ng-bind="QuatriemeEntretienPrenatalFinDate"></span>
+    </button>
+    <div class="panel" ng-hide=hideJ>
+      <span ng-bind="QuatriemeEntretienPrenatalDetail"></span>
+    </div>
+</div>
+<!--   -->
+<div class="passe" ng-if="QuatriemeEntretienPrenatalFinTimestamp < today">
+    <button class="accordion" ng-click=changeJ()>
+      Votre Quatrieme entretien prenatal à été réalisé le "inserer la date quand on stock les données" <span ng-bind="QuatriemeEntretienPrenatalFinDate"></span>
+    </button>
+    <div class="panel" ng-hide=hideJ>
+      <span ng-bind="QuatriemeEntretienPrenatalDetail"></span>
+    </div>
+</div>
+
+<div class="avenir" ng-if="CinquiemeEntretienPrenatalFinTimestamp > today">
+    <button class="accordion" ng-click=changeK()>
+      Votre Cinquieme entretien prenatal doit être réalisé entre le <span ng-bind="CinquiemeEntretienPrenatalDebutDate"></span> et le <span ng-bind="CinquiemeEntretienPrenatalFinDate"></span>
+    </button>
+    <div class="panel" ng-hide=hideK>
+      <span ng-bind="CinquiemeEntretienPrenatalDetail"></span>
+    </div>
+</div>
+<!--   -->
+<div class="passe" ng-if="CinquiemeEntretienPrenatalFinTimestamp < today">
+    <button class="accordion" ng-click=changeK()>
+      Votre Cinquieme entretien prenatal à été réalisé le "inserer la date quand on stock les données" <span ng-bind="CinquiemeEntretienPrenatalFinDate"></span>
+    </button>
+    <div class="panel" ng-hide=hideK>
+      <span ng-bind="CinquiemeEntretienPrenatalDetail"></span>
+    </div>
+</div>
   </ion-content>
   </ion-view>

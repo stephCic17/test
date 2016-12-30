@@ -4,10 +4,33 @@
 	vertical-align: inline-block;
 }
 .passe {
-	background-color: grey;
+	background-color: rgba(0,0,0,0.1);
+	color: black
 }
 .avenir{
-	background-color: green;
+	background-color: rgba(0,100,0,0.2);
+	color: black;
+}
+button.accordion{
+    color: #444;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+}
+div.panel {
+    padding: 0 18px;
+}
+div.passe button{
+	background-color: rgba(0,0,0,0.1);
+	color: black
+}
+div.avenir button{
+	background-color: rgba(0,100,0,0.2);
+	color: black;
 }
 .questionaire select {
 	width: 100%;
@@ -19,6 +42,19 @@
 	width: 100%;
 		background-color: rgba(234, 105,126, 0.9);
 
+}
+.list .item.item-accordion {
+  line-height: 38px;
+  padding-top: 0;
+  padding-bottom: 0;
+  transition: 0.09s all linear;
+}
+.list .item.item-accordion.ng-hide {
+  line-height: 0px;
+}
+.list .item.item-accordion.ng-hide-add,
+.list .item.item-accordion.ng-hide-remove {
+  display: block !important;
 }
 .question{
 	background-color: #DEB9BF;
