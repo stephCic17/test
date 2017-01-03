@@ -1,4 +1,21 @@
 /* Empty. Add your own CSS if you like */
+.derniereRegle {
+	text-align: center;
+}
+.derniereRegle label{
+	font-size: 1.3em;
+	font-weight: bold;
+	font-family: cursive;
+}
+.derniereRegle p{
+	font-family: cursive;
+	font-size: 1.1em;
+}
+.derniereRegle input{
+text-align: center;
+width: 100%;
+}
+
 .questionaire{
 	text-align: center;
 	vertical-align: inline-block;

@@ -674,6 +674,17 @@ $scope.submit = function(ghq_a, ghq_b,ghq_c, ghq_d, ghq_e, ghq_f, ghq_g, ghq_h, 
 			$rootScope.FirstEchoDebutTimestamp = $rootScope.FirstEchoDebut.getTime();
 			$rootScope.FirstEchoFinTimestamp = $rootScope.FirstEchoFin.getTime();
 			$rootScope.FirstEchoDetail = "L'échographie de datation doit être réalisée entre la 11ème et la 13ème semaine d'aménorrhée. Elle permet de confirmer le terme de la grossesse, de déterminer le nombre d'embryons, de mesurer la clarté nucale et de rechercher certains signes de malformation. ";
+			$rootScope,FirstEchoNotif = $rootScope.FirstEchoDebutTimestamp - new Date().getTime();
+			console.log($rootScope.FirstEchoNotif);
+			setTimeout(function() { $cordovaLocalNotification.schedule({
+    		    id: 2,
+    		    title: 'Première échographie',
+        		text: 'Avez-vous prit votre rendez-vous pour votre échographie?',
+        		icon:'',
+        		data: {
+    		      customProperty: '#/app/calendar'
+    		    }
+  			    });}, $rootScope.FirstEchoNotif);
 
 
 			//Date 1er entretien prenat
@@ -789,20 +800,7 @@ $scope.submit = function(ghq_a, ghq_b,ghq_c, ghq_d, ghq_e, ghq_f, ghq_g, ghq_h, 
 			$rootScope.termeDetail = "Vous devez consulter votre médecin ou sage-femme.";
 
 			$state.go('app.calendar');
-
-			// Date 
-//			$rootScope.WeekGrossesse = Math.round(((new Date().getTime() - $rootScope.grossesse.getTime()) / (1000 * 60 * 60 * 24)) / 7);
-//			var ms = new Date().getTime() + (25401600000 - $rootScope.grossesse.getTime());
-//			console.log($rootScope.grossesse.getTime());
-//			var dateToday = new Date().getTime();
-//			var dateTerm = new Date($rootScope.grossesse.getTime() + 25401600000);
-//			$rootcScope.terme = dateTerm.toLocaleDateString();
-	
 		}
-  /*
-   * if given group is the selected group, deselect it
-   * else, select the given group
-   */
 
 })
 .controller('CalendarCtrl', function($scope, $state, $http, $rootScope, $ionicSideMenuDelegate){

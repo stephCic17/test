@@ -3362,7 +3362,6 @@ body.grade-c {
   margin-bottom: -1px;
   width: auto;
   height: auto;
-  background-color: rgba(44,172,215, 0.1);
    }
 
 .menu .scroll-content.scroll-content-false {
@@ -6651,7 +6650,7 @@ button.item.item-button-right {
   overflow: hidden;
   margin: 20px 10px;
   border-radius: 2px;
-  background-color: #EFDEE0; }
+ }
 
 .card {
   padding-top: 1px;
@@ -8711,14 +8710,14 @@ progress {
         color: #fff; }
   .button.button-calm {
     border-color: transparent;
-    background-color: #CC919A;
+    background-color: #80a5d4;
     color: #fff; }
     .button.button-calm:hover {
       color: #fff;
       text-decoration: none; }
     .button.button-calm.active, .button.button-calm.activated {
-      border-color: #a2a2a2;
-      background-color: #dd7b7b; }
+      border-color: #245bfa;
+      background-color: #313f68; }
     .button.button-calm.button-clear {
       border-color: transparent;
       background: none;
@@ -9779,7 +9778,7 @@ a.button {
   z-index: 10; }
   [nav-bar-transition="android"] [nav-bar="active"] .bar,
   [nav-bar-transition="android"] [nav-bar="entering"] .bar {
-    background: #dfa0d3; }
+    background: #2cace9; }
 
 [nav-bar-transition="android"] [nav-bar="cached"] {
   display: block; }

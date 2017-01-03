@@ -1,18 +1,20 @@
 <ion-view view-title=Ciconia name=launch-view>
-
-
   <ion-content class=padding> 
-  <div ng-if="grossesse">
-  	
-<h1>Felication vous en etes à votre <span ng-bind=WeekGrossesse></span>eme semaine de grossesse</h1>
-<p>Vous devriez accoucher le <span ng-bind=terme></span></p>
-  </div>
-<div ng-if="!grossesse">
-<form name="gro" ng-submit="submit(gros)">
-<label>Rentrez la date de vos derniere regle</label>
-<input type="date" name="date" ng-model="gros" value="2016-12-13">
-<button type="Submit">Ok</button>
-	</form>
-</div>
+  	<div class="derniereRegle">
+		<div ng-if="DerniereRegle">
+			<h3>Bonjour,
+			Aujourd'hui vous en êtes à votre<span ng-bind=WeekGrossesse></span>ème semaine de grossesse</h3>
+			<p>Vous devriez accoucher le <span ng-bind=termeDate></span></p>
+		</div>
+		<div ng-if="!DerniereRegle">
+			<form name="gro" ng-submit="submit(gros)">
+				<label><p>Vous avez choisi de continuer votre aventure avec nous et nous vous en remercions.
+				</p></label>
+				<p>Commencez par rentrer la date de vos dernieres regles</p>
+				<input type="date" name="date" placeholder="JJ/MM/AAAA" ng-model="gros">
+				<button type="Submit">Ok</button>
+			</form>
+		</div>
+	</div>
   </ion-content>
 </ion-view>
