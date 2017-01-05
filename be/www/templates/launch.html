@@ -1,12 +1,12 @@
 <ion-view view-title=Ciconia name=launch-view>
   <ion-content class=padding> 
   	<div class="derniereRegle">
-		<div ng-if="DerniereRegle">
+		<div ng-if="LastMenstruation">
 			<h3>Bonjour,
-			Aujourd'hui vous en êtes à votre<span ng-bind=WeekGrossesse></span>ème semaine de grossesse</h3>
+			Aujourd'hui vous en êtes à votre<span ng-bind=WeekPregnant></span>ème semaine de grossesse</h3>
 			<p>Vous devriez accoucher le <span ng-bind=termeDate></span></p>
 		</div>
-		<div ng-if="!DerniereRegle">
+		<div ng-if="!LastMenstruation">
 			<form name="gro" ng-submit="submit(gros)">
 				<label><p>Vous avez choisi de continuer votre aventure avec nous et nous vous en remercions.
 				</p></label>

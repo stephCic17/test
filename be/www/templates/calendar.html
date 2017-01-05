@@ -3,6 +3,26 @@
     <h5>Félicitation vous en êtes à votre <span ng-bind="nbSemaine"></span> semaines de grossesse aujourd'hui !</h5>
     <h5>Vous devriez accoucher le <span ng-bind="termeDate"></span></h5>
     <h6>Votre calendrier</h6>
+ 
+     <div class=avenir ng-if="LastMenstruationTimestamp > today">
+  <button class="accordion" ng-click=changeA()>
+    Fiabilité du test de grossesse à partir du:<span ng-bind=LastMenstruationDate></span>
+  </button>
+  <div class="panel" ng-hide=hideA>
+    <p><span ng-bind=LastMenstruationDetail></span></p>
+  </div>
+</div>
+<!--   -->
+<div class="passe" ng-if="LastMenstruationTimestamp < today">
+  <button class="accordion" ng-click=changeA()>
+    Votre test de grossesse est fiable depuis le:
+    <span ng-bind=LastMenstruationDate></span>
+  </button>
+  <div class="panel" ng-hide=hideA>
+  <p><span ng-bind=LastMenstruationDetail></span></p>
+  </div>
+</div>
+
     <div class=avenir ng-if="FiabiliteTestTimestamp > today">
   <button class="accordion" ng-click=changeA()>
     Fiabilité du test de grossesse à partir du:<span ng-bind=FiabiliteTestDate></span>

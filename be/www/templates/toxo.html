@@ -1,6 +1,9 @@
 <ion-view view-title=Ciconia name=calendar-view>
   <ion-content class=padding> 
-<h4>Vous n'êtes pas immunisée contre la Toxoplasmose</h4>
+
+<h4 ng-if="Toxo == 0">Vous n'êtes pas immunisée contre la Toxoplasmose</h4>
+<h4 ng-if="Toxo == 2">Il est imperatif de savoir si vous etes imunisé contre la toxo</h4>
+
 <br/>
 <h6>Certains aliments sont à éviter</h6>
 <div class="bar bar-header item-input-inset">

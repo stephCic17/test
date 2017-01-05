@@ -12,7 +12,7 @@ $scope.test = function(){
 }
 
 })
-.controller('HomeCtrl', function($scope, $state, $http) {
+.controller('HomeCtrl', function($scope, $state, $http, $rootScope) {
 		$scope.data = {};
 	$scope.test = 
 		url = ""
@@ -22,6 +22,23 @@ $scope.test = function(){
 		$scope.create = function() {
 			$state.go('first');
 		}
+		$scope.french = function(){
+			$rootScope.langage = 1;
+			$rootScope.account = "Je possède déjà un compte";
+			$rootScope.begin = "Commençons l'aventure";
+
+			$rootScope.LastMentruationDetail = "L'aménorrhée signifie l'absence de règles. Les professionnels de santé calculent le stade d'évolution de la grossesse en semaines d'aménorrhée à partir du premier jour des dernières règles. ";
+			$state.go('home');
+		}
+		$scope.english = function(){
+			$rootScope.langage = 2;
+			
+			$rootScope.account = "I already have an account";
+			$rootScope.begin = "Start adventure";
+			$rootScope.LastMenstruationDetail = "Amenorrhea means no rules. Health professionals calculate the stage of pregnancy in weeks of amenorrhea from the first day of the last menstrual period."
+			$state.go('home');
+		}
+
 })
 
 .controller('FirstCtrl', function($scope, $state,  $http, $rootScope) {
@@ -620,7 +637,7 @@ $scope.submit = function(ghq_a, ghq_b,ghq_c, ghq_d, ghq_e, ghq_f, ghq_g, ghq_h, 
 			$scope.profil += "Nous vous conseillons une consultation spécialisé avec un bilan complet. Un traitement peut-être necessaire pendant le début voir avant le début de votre grossesse.Nous vous conseillons une consultation spécialisé avec un bilan complet. Un traitement peut-être necessaire pendant le début voir avant le début de votre grossesse."; 
 		}
 		if ( $rootScope.r < 10 ){
-			$scope.profil += "Pendant la grossesse la seule façon de protéger votre foetus est de stopper toute consommation d&#039;alcool";}
+			$scope.profil += "Pendant la grossesse la seule façon de protéger votre foetus est de stopper toute consommation d'&#039;'alcool";}
 		else if ( $rootScope.r >= 10 ){
 			$scope.profil += "Vous avez peut être un probleme  de dépendance avec l&#039;alcoolun consultation spécialisé s&#039;impose";
 		}
@@ -639,10 +656,10 @@ $scope.submit = function(ghq_a, ghq_b,ghq_c, ghq_d, ghq_e, ghq_f, ghq_g, ghq_h, 
 		$scope.submit = function(gros) {
 			
 			// Date des dernieres regles //
-			$rootScope.DerniereRegle = new Date(gros);
-			$rootScope.DerniereRegleTimestamp = $rootScope.DerniereRegle.getTime();
-			$rootScope.DerniereRegleDate = $rootScope.DerniereRegle.toLocaleDateString();
-			$rootScope.DerniereRegleDetail = "L'aménorrhée signifie l'absence de règles. Les professionnels de santé calculent le stade d'évolution de la grossesse en semaines d'aménorrhée à partir du premier jour des dernières règles. ";
+			$rootScope.LastMenstruation = new Date(gros);
+			$rootScope.LastMenstruationTimestamp = $rootScope.DerniereRegle.getTime();
+			$rootScope.LastMenstruationDate = $rootScope.DerniereRegle.toLocaleDateString();
+			$rootScope.LastMentruationDetail = "L'aménorrhée signifie l'absence de règles. Les professionnels de santé calculent le stade d'évolution de la grossesse en semaines d'aménorrhée à partir du premier jour des dernières règles. ";
 			
 			// Date de début de grossesse theorique //
 			$rootScope.DebutGrossesse = new Date($rootScope.DerniereRegle.getTime() + 1209600000);
@@ -675,17 +692,7 @@ $scope.submit = function(ghq_a, ghq_b,ghq_c, ghq_d, ghq_e, ghq_f, ghq_g, ghq_h, 
 			$rootScope.FirstEchoFinTimestamp = $rootScope.FirstEchoFin.getTime();
 			$rootScope.FirstEchoDetail = "L'échographie de datation doit être réalisée entre la 11ème et la 13ème semaine d'aménorrhée. Elle permet de confirmer le terme de la grossesse, de déterminer le nombre d'embryons, de mesurer la clarté nucale et de rechercher certains signes de malformation. ";
 			$rootScope,FirstEchoNotif = $rootScope.FirstEchoDebutTimestamp - new Date().getTime();
-			console.log($rootScope.FirstEchoNotif);
-			setTimeout(function() { $cordovaLocalNotification.schedule({
-    		    id: 2,
-    		    title: 'Première échographie',
-        		text: 'Avez-vous prit votre rendez-vous pour votre échographie?',
-        		icon:'',
-        		data: {
-    		      customProperty: '#/app/calendar'
-    		    }
-  			    });}, $rootScope.FirstEchoNotif);
-
+		
 
 			//Date 1er entretien prenat
 			$rootScope.FirstEntretienPrenatalDebut = new Date($rootScope.DebutGrossesse.getTime() + 7344000000 );
@@ -799,10 +806,152 @@ $scope.submit = function(ghq_a, ghq_b,ghq_c, ghq_d, ghq_e, ghq_f, ghq_g, ghq_h, 
 			$rootScope.termeTimestamp = $rootScope.terme.getTime();
 			$rootScope.termeDetail = "Vous devez consulter votre médecin ou sage-femme.";
 
-			$state.go('app.calendar');
+			//Nombre de semaines de grossesse 
+			$rootScope.WeekPregnant = Math.round(((new Date().getTime() - $rootScope.DerniereRegle.getTime()) / (1000 * 60 * 60 * 24)) / 7);
+			console.log($rootScope.WeekPregnant);
+
+			$state.go('app.toxoAsk');
 		}
 
 })
+
+.controller('ToxoAskCtrl', function($scope, $state, $http, $rootScope, $ionicSideMenuDelegate, $cordovaLocalNotification){
+	$scope.data = {};
+	$scope.test = 
+	url = ""
+
+	$scope.yes = function(){
+		$rootScope.Toxo = 1;
+		$state.go('app.calendar');
+	}
+	$scope.no = function(){
+		$rootScope.Toxo = 0;
+		
+		$scope.planificationNotif();
+	}
+	$scope.IDontKnow = function(){
+		$rootScope.Toxo = 2;
+		$scope.planificationNotif();
+	}
+	$scope.planificationNotif = function(){
+		$rootScope.ToxoDateOne =  ($rootScope.DebutGrossesseTimestamp + 2246400000) - new Date().getTime() ;
+		$rootScope.ToxoDateTwo = ($rootScope.DebutGrossesseTimestamp + 4838400000) - new Date().getTime() ;
+		$rootScope.ToxoDateThree = ($rootScope.DebutGrossesseTimestamp + 7430400000) - new Date().getTime() ;
+		$rootScope.ToxoDateFour = ($rootScope.DebutGrossesseTimestamp + 1.00224e+10) - new Date().getTime() ;
+		$rootScope.ToxoDateFive = ($rootScope.DebutGrossesseTimestamp + 1.26144e+10) - new Date().getTime() ;
+		$rootScope.ToxoDateSix = ($rootScope.DebutGrossesseTimestamp + 1.52064e+10) - new Date().getTime() ;
+		$rootScope.ToxoDateSeven = ($rootScope.DebutGrossesseTimestamp + 1.77984e+10) - new Date().getTime() ;
+		$rootScope.ToxoDateEight = ($rootScope.DebutGrossesseTimestamp + 2.03904e+10) - new Date().getTime() ;
+		if ($rootScope.ToxoDateOne >= 0){
+			setTimeout(function () {
+				$cordovaLocalNotification.schedule({
+        			id: 1,
+        			title: 'Test toxoplasmose',
+        			text: 'Pensez à prendre rendez-vous pour votre prise de sang',
+        			data: {
+        			  customProperty: 'custom value'
+        			}
+        		});}
+        	, $rootScope.ToxoDateOne);
+		}
+
+		if ($rootScope.ToxoDateTwo >= 0){
+			setTimeout(function () {			
+				$cordovaLocalNotification.schedule({
+		       		id: 2,
+		       		title: 'Prennez votre rendez vous pour votre test Toxo',
+			        text: 'Toxo',			
+				    data: {
+        				  customProperty: 'custom value'
+        			}
+        		});},
+        	 $rootScope.ToxoDateTwo);
+		}
+
+		if ($rootScope.ToxoDateThree >= 0){
+			setTimeout(function () {			
+				$cordovaLocalNotification.schedule({
+		       		id: 3,
+		       		title: 'Prennez votre rendez vous pour votre test Toxo',
+			        text: 'Toxo',			
+				    data: {
+        				  customProperty: 'custom value'
+        			}
+        		});},
+        	 $rootScope.ToxoDateThree);
+		}
+
+		if ($rootScope.ToxoDateFour){
+			setTimeout(function () {
+				$cordovaLocalNotification.schedule({
+			        id: 4,
+        			title: 'Test toxoplasmose',
+       				text: 'Pensez à prendre rendez-vous pour votre prise de sang',
+			        data: {
+        				customProperty: 'custom value'
+        			}
+        		});},
+        	$rootScope.ToxoDateFour);
+        }
+
+		if ($rootScope.ToxoDateFive){
+			setTimeout(function () {
+				$cordovaLocalNotification.schedule({
+			        id: 5,
+        			title: 'Test toxoplasmose',
+       				text: 'Pensez à prendre rendez-vous pour votre prise de sang',
+			        data: {
+        				customProperty: 'custom value'
+        			}
+        		});},
+        	$rootScope.ToxoDateFive);
+        }
+
+		if ($rootScope.ToxoDateSix){
+			setTimeout(function () {
+				$cordovaLocalNotification.schedule({
+			        id: 6,
+        			title: 'Test toxoplasmose',
+       				text: 'Pensez à prendre rendez-vous pour votre prise de sang',
+			        data: {
+        				customProperty: 'custom value'
+        			}
+        		});},
+        	$rootScope.ToxoDateSix);
+		}
+
+		if ($rootScope.ToxoDateSeven){
+			setTimeout(function () {
+				$cordovaLocalNotification.schedule({
+			        id: 7,
+        			title: 'Toxo',
+       				text: 'Prennez rendez vous pour votre test ',
+			        data: {
+        				customProperty: 'custom value'
+        			}
+        		});},
+        	$rootScope.ToxoDateSeven
+        	);
+		}
+
+		if ($rootScope.ToxoDateHeight){
+			setTimeout(function () {
+				$cordovaLocalNotification.schedule({
+			        id: 8,
+        			title: 'Test toxoplasmose',
+       				text: 'Pensez à prendre rendez-vous pour votre prise de sang',
+			        data: {
+        				customProperty: 'custom value'
+        			}
+        		});},
+        	$rootScope.ToxoDateEight
+        	);
+		}
+		
+		$state.go('app.toxo');
+	}
+})
+
 .controller('CalendarCtrl', function($scope, $state, $http, $rootScope, $ionicSideMenuDelegate){
 		$scope.data = {};
 		$scope.test = 
@@ -893,3 +1042,26 @@ else
 
 })
 
+.controller('TranslateCtrl', function($scope, $rootScope, $state){
+	$scope.data = {};
+		$scope.test = 
+		url = ""
+		$scope.french = function(){
+			$rootScope.langage = 1;
+			console.log("toto");
+			$rootScope.account = "Je possède déjà un compte";
+			$rootScope,begin = "Commençons l'aventure";
+
+			$rootScope.LastMentruationDetail = "L'aménorrhée signifie l'absence de règles. Les professionnels de santé calculent le stade d'évolution de la grossesse en semaines d'aménorrhée à partir du premier jour des dernières règles. ";
+			$state.go('home');
+		}
+		$scope.english = function(){
+			$rootScope.langage = 2;
+			
+			$rootScope.account = "I already have an account";
+			$rootScope.begin = "Start adventure";
+			$rootScope.LastMenstruationDetail = "Amenorrhea means no rules. Health professionals calculate the stage of pregnancy in weeks of amenorrhea from the first day of the last menstrual period."
+			$state.go('home');
+		}
+
+})

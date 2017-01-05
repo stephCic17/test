@@ -280,6 +280,16 @@ controller: 'Step18Ctrl'
       }
     }
 })
+
+.state('app.toxoAsk',{
+    url:'/toxoAsk',
+    views:{
+      'menuContent':{
+        templateUrl: 'templates/toxoAsk.html',
+        controller: 'ToxoAskCtrl'
+      }
+    }
+})
   // if none of the above states are matched, use this as the fallback
  $urlRouterProvider.otherwise('/home');
 
