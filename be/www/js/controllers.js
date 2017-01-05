@@ -12,34 +12,7 @@ $scope.test = function(){
 }
 
 })
-.controller('HomeCtrl', function($scope, $state, $http, $rootScope) {
-		$scope.data = {};
-	$scope.test = 
-		url = ""
-		$scope.login = function() {
-			$state.go('app.launch');
-		}
-		$scope.create = function() {
-			$state.go('first');
-		}
-		$scope.french = function(){
-			$rootScope.langage = 1;
-			$rootScope.account = "Je possède déjà un compte";
-			$rootScope.begin = "Commençons l'aventure";
 
-			$rootScope.LastMentruationDetail = "L'aménorrhée signifie l'absence de règles. Les professionnels de santé calculent le stade d'évolution de la grossesse en semaines d'aménorrhée à partir du premier jour des dernières règles. ";
-			$state.go('home');
-		}
-		$scope.english = function(){
-			$rootScope.langage = 2;
-			
-			$rootScope.account = "I already have an account";
-			$rootScope.begin = "Start adventure";
-			$rootScope.LastMenstruationDetail = "Amenorrhea means no rules. Health professionals calculate the stage of pregnancy in weeks of amenorrhea from the first day of the last menstrual period."
-			$state.go('home');
-		}
-
-})
 
 .controller('FirstCtrl', function($scope, $state,  $http, $rootScope) {
 		$scope.data = {};
@@ -657,157 +630,137 @@ $scope.submit = function(ghq_a, ghq_b,ghq_c, ghq_d, ghq_e, ghq_f, ghq_g, ghq_h, 
 			
 			// Date des dernieres regles //
 			$rootScope.LastMenstruation = new Date(gros);
-			$rootScope.LastMenstruationTimestamp = $rootScope.DerniereRegle.getTime();
-			$rootScope.LastMenstruationDate = $rootScope.DerniereRegle.toLocaleDateString();
-			$rootScope.LastMentruationDetail = "L'aménorrhée signifie l'absence de règles. Les professionnels de santé calculent le stade d'évolution de la grossesse en semaines d'aménorrhée à partir du premier jour des dernières règles. ";
+			$rootScope.LastMenstruationTimestamp = $rootScope.LastMenstruation.getTime();
+			$rootScope.LastMenstruationDate = $rootScope.LastMenstruation.toLocaleDateString();
 			
 			// Date de début de grossesse theorique //
-			$rootScope.DebutGrossesse = new Date($rootScope.DerniereRegle.getTime() + 1209600000);
-			$rootScope.DebutGrossesseTimestamp = $rootScope.DebutGrossesse.getTime();
-			$rootScope.DebutGrossesseDate = $rootScope.DebutGrossesse.toLocaleDateString();
-			$rootScope.DebutGrossesseDetail = "Cette date sera déterminée avec précision par votre médecin à partir des résultats de la 1ère échographie et de la date de vos dernières règles.";
-			
-
+			$rootScope.BeginOfPregnancy = new Date($rootScope.LastMenstruation.getTime() + 1209600000);
+			$rootScope.BeginOfPregnancyTimestamp = $rootScope.BeginOfPregnancy.getTime();
+			$rootScope.BeginOfPregnancyDate = $rootScope.BeginOfPregnancy.toLocaleDateString();
+		
 			// Date de fiabilite Test de grossesse //
-			$rootScope.FiabiliteTest = new Date($rootScope.DebutGrossesse.getTime() + 2246400000);
-			$rootScope.FiabiliteTestTimestamp = $rootScope.FiabiliteTest.getTime();
-			$rootScope.FiabiliteTestDate = $rootScope.FiabiliteTest.toLocaleDateString();
-			$rootScope.FiabiliteTestDetail = "Il est recommandé de confirmer les résultats du test de grossesse par une prise de sang en laboratoire, afin de mesurer avec plus de précision le taux d'hormone hCG.";
+			$rootScope.ReliabilityTest = new Date($rootScope.BeginOfPregnancy.getTime() + 2246400000);
+			$rootScope.ReliabilityTestTimestamp = $rootScope.ReliabilityTest.getTime();
+			$rootScope.ReliabilityTestDate = $rootScope.ReliabilityTest.toLocaleDateString();
 			
 			// Date 1er consultation//
-			$rootScope.FirstConsultDebut = new Date($rootScope.DebutGrossesse.getTime() + 2246400000);
-			$rootScope.FirstConsultFin = new Date($rootScope.DebutGrossesse.getTime() + 3456000000);
-			$rootScope.FirstConsultDebutTimestamp = $rootScope.FirstConsultDebut.getTime();
-			$rootScope.FirstConsultFinTimestamp = $rootScope.FirstConsultFin.getTime();
-			$rootScope.FirstConsultDebutDate = $rootScope.FirstConsultDebut.toLocaleDateString();
-			$rootScope.FirstConsultFinDate = $rootScope.FirstConsultFin.toLocaleDateString();
-			$rootScope.FirstConsultDetail = "Votre grossesse est suivie par un médecin ou une sage-femme (libérale, en hôpital ou en PMI). A ce titre, vous bénéficiez de 7 consultations médicales prénatales. Lors de la 1ère consultation, vous allez établir les principales étapes de votre suivi de grossesse. Il est nécessaire de retracer avec votre médecin votre passé médical.";
+			$rootScope.FirstConsultStart = new Date($rootScope.BeginOfPregnancy.getTime() + 2246400000);
+			$rootScope.FirstConsultEnd = new Date($rootScope.BeginOfPregnancy.getTime() + 3456000000);
+			$rootScope.FirstConsultStartTimestamp = $rootScope.FirstConsultStart.getTime();
+			$rootScope.FirstConsultEndTimestamp = $rootScope.FirstConsultEnd.getTime();
+			$rootScope.FirstConsultStartDate = $rootScope.FirstConsultStart.toLocaleDateString();
+			$rootScope.FirstConsultEndDate = $rootScope.FirstConsultEnd.toLocaleDateString();
 			
 			// Date 1er Echo //
-			$rootScope.FirstEchoDebut = new Date($rootScope.DebutGrossesse.getTime() + 5702400000);
-			$rootScope.FirstEchoFin = new Date($rootScope.DebutGrossesse.getTime() + 7257600000);
-			$rootScope.FirstEchoDebutDate = $rootScope.FirstEchoDebut.toLocaleDateString();
-			$rootScope.FirstEchoFinDate = $rootScope.FirstEchoFin.toLocaleDateString();
-			$rootScope.FirstEchoDebutTimestamp = $rootScope.FirstEchoDebut.getTime();
-			$rootScope.FirstEchoFinTimestamp = $rootScope.FirstEchoFin.getTime();
-			$rootScope.FirstEchoDetail = "L'échographie de datation doit être réalisée entre la 11ème et la 13ème semaine d'aménorrhée. Elle permet de confirmer le terme de la grossesse, de déterminer le nombre d'embryons, de mesurer la clarté nucale et de rechercher certains signes de malformation. ";
-			$rootScope,FirstEchoNotif = $rootScope.FirstEchoDebutTimestamp - new Date().getTime();
+			$rootScope.FirstEchoStart = new Date($rootScope.BeginOfPregnancy.getTime() + 5702400000);
+			$rootScope.FirstEchoEnd = new Date($rootScope.BeginOfPregnancy.getTime() + 7257600000);
+			$rootScope.FirstEchoStartDate = $rootScope.FirstEchoStart.toLocaleDateString();
+			$rootScope.FirstEchoEndDate = $rootScope.FirstEchoEnd.toLocaleDateString();
+			$rootScope.FirstEchoStartTimestamp = $rootScope.FirstEchoStart.getTime();
+			$rootScope.FirstEchoEndTimestamp = $rootScope.FirstEchoEnd.getTime();
 		
-
 			//Date 1er entretien prenat
-			$rootScope.FirstEntretienPrenatalDebut = new Date($rootScope.DebutGrossesse.getTime() + 7344000000 );
-			$rootScope.FirstEntretienPrenatalFin = new Date($rootScope.DebutGrossesse.getTime() + 8553600000 );
-			$rootScope.FirstEntretienPrenatalDebutDate = $rootScope.FirstEntretienPrenatalDebut.toLocaleDateString();
-			$rootScope.FirstEntretienPrenatalDebutTimestamp = $rootScope.FirstEntretienPrenatalDebut.getTime();
-			$rootScope.FirstEntretienPrenatalFinDate = $rootScope.FirstEntretienPrenatalFin.toLocaleDateString();
-			$rootScope.FirstEntretienPrenatalFinTimestamp = $rootScope.FirstEntretienPrenatalFin.getTime();
-			$rootScope.FirstEntretienPrenatalDetail = "Cet entretien individuel ou en couple est réalisé par une sage-femme ou un médecin et permet d'exprimer vos besoins et vos attentes, de répondre à vos interrogations et d'échanger sur votre projet de naissance.";
+			$rootScope.FirstPrenatalCareStart = new Date($rootScope.BeginOfPregnancy.getTime() + 7344000000 );
+			$rootScope.FirstPrenatalCareEnd = new Date($rootScope.BeginOfPregnancy.getTime() + 8553600000 );
+			$rootScope.FirstPrenatalCareStartDate = $rootScope.FirstPrenatalCareStart.toLocaleDateString();
+			$rootScope.FirstPrenatalCareStartTimestamp = $rootScope.FirstPrenatalCareStart.getTime();
+			$rootScope.FirstPrenatalCareEndDate = $rootScope.FirstPrenatalCareEnd.toLocaleDateString();
+			$rootScope.FirstPrenatalCareEndTimestamp = $rootScope.FirstPrenatalCareEnd.getTime();
 			
 			//Date 2eme entretien prenat
-			$rootScope.SecondEntretienPrenatalDebut = new Date($rootScope.DebutGrossesse.getTime() + 7862400000 );
-			$rootScope.SecondEntretienPrenatalFin = new Date($rootScope.DebutGrossesse.getTime() + 9072000000 );
-			$rootScope.SecondEntretienPrenatalDebutDate = $rootScope.SecondEntretienPrenatalDebut.toLocaleDateString();
-			$rootScope.SecondEntretienPrenatalDebutTimestamp = $rootScope.SecondEntretienPrenatalDebut.getTime();
-			$rootScope.SecondEntretienPrenatalFinDate = $rootScope.SecondEntretienPrenatalFin.toLocaleDateString();
-			$rootScope.SecondEntretienPrenatalFinTimestamp = $rootScope.SecondEntretienPrenatalFin.getTime();
-			$rootScope.SecondEntretienPrenatalDetail = "Votre médecin peut vous proposer d'effectuer le Triple Test, il s'agit d'un examen médical non obligatoire qui permet de dépister la trisomie 21 par le biais d'un dosage de marqueurs effectué sur votre sang. Si vous avez plus de 38 ans, il vous sera systématiquement proposé d'effectuer une amiocentèse. Votre médecin peut également vous recommander deffectuer un examen médical du père - cet examen pris en charge à 100% a pour objectif de compléter votre dossier médical.";
+			$rootScope.SecondPrenatalCareStart = new Date($rootScope.BeginOfPregnancy.getTime() + 7862400000 );
+			$rootScope.SecondPrenatalCareEnd = new Date($rootScope.BeginOfPregnancy.getTime() + 9072000000 );
+			$rootScope.SecondPrenatalCareStartDate = $rootScope.SecondPrenatalCareStart.toLocaleDateString();
+			$rootScope.SecondPrenatalCareStartTimestamp = $rootScope.SecondPrenatalCareStart.getTime();
+			$rootScope.SecondPrenatalCareEndDate = $rootScope.SecondPrenatalCareEnd.toLocaleDateString();
+			$rootScope.SecondPrenatalCareEndTimestamp = $rootScope.SecondPrenatalCareEnd.getTime();
 
 
 			//Bilan
-			$rootScope.BilanBucco = new Date($rootScope.DebutGrossesse.getTime() + 1.0368e+10);
+			$rootScope.BilanBucco = new Date($rootScope.BeginOfPregnancy.getTime() + 1.0368e+10);
 			$rootScope.BilanBuccoDate = $rootScope.BilanBucco.toLocaleDateString();
 			$rootScope.BilanBuccoTimestamp = $rootScope.BilanBucco.getTime();
-			$rootScope.BilanBuccoDetail = "Vous pouvez bénéficier d'un bilan bucco-dentaire pris en charge à 100% et sans avance de frais de votre part. Prenez soin de vos dents car les modifications hormonales notamment peuvent fragiliser vos dents et vos gencives, ce qui peut augmenter le risque d'accouchement prématuré."
 			
 			// Date 2eme Echo //
-			$rootScope.SecondEchoDebut = new Date($rootScope.DebutGrossesse.getTime() + 1.10592e+10);
-			$rootScope.SecondEchoFin = new Date($rootScope.DebutGrossesse.getTime() + 1.21824e+10);
-			$rootScope.SecondEchoDebutDate = $rootScope.SecondEchoDebut.toLocaleDateString();
-			$rootScope.SecondEchoFinDate = $rootScope.SecondEchoFin.toLocaleDateString();
-			$rootScope.SecondEchoDebutTimestamp = $rootScope.SecondEchoDebut.getTime();
-			$rootScope.SecondEchoFinTimestamp = $rootScope.SecondEchoFin.getTime();		
-			$rootScope.SecondEchoDetail = "L'échographie morphologique doit être réalisée entre la 21ème et la 23ème semaine d'aménorrhée. Elle permet d'analyser la morphologie du foetus, de vérifier la croissance foetale, de localiser le placenta et de dépister d'autres anomalies. Vous pouvez, si vous le souhaitez, connaître le sexe de votre bébé !";
+			$rootScope.SecondEchoStart = new Date($rootScope.BeginOfPregnancy.getTime() + 1.10592e+10);
+			$rootScope.SecondEchoEnd = new Date($rootScope.BeginOfPregnancy.getTime() + 1.21824e+10);
+			$rootScope.SecondEchoStartDate = $rootScope.SecondEchoStart.toLocaleDateString();
+			$rootScope.SecondEchoEndDate = $rootScope.SecondEchoEnd.toLocaleDateString();
+			$rootScope.SecondEchoStartTimestamp = $rootScope.SecondEchoStart.getTime();
+			$rootScope.SecondEchoEndTimestamp = $rootScope.SecondEchoEnd.getTime();		
 
 			//Date 3eme entretien prenat
-			$rootScope.ThirdEntretienPrenatalDebut = new Date($rootScope.DebutGrossesse.getTime() + 1.10592e+10);
-			$rootScope.ThirdEntretienPrenatalFin = new Date($rootScope.DebutGrossesse.getTime() + 1.21824e+10);
-			$rootScope.ThirdEntretienPrenatalDebutDate = $rootScope.ThirdEntretienPrenatalDebut.toLocaleDateString();
-			$rootScope.ThirdEntretienPrenatalDebutTimestamp = $rootScope.ThirdEntretienPrenatalDebut.getTime();
-			$rootScope.ThirdEntretienPrenatalFinDate = $rootScope.ThirdEntretienPrenatalFin.toLocaleDateString();
-			$rootScope.ThirdEntretienPrenatalFinTimestamp = $rootScope.ThirdEntretienPrenatalFin.getTime();
-			$rootScope.ThirdEntretienPrenatalDetail = "Votre médecin interprète et vous explique l'échographie morphologique.";
+			$rootScope.ThirdPrenatalCareStart = new Date($rootScope.BeginOfPregnancy.getTime() + 1.10592e+10);
+			$rootScope.ThirdPrenatalCareEnd = new Date($rootScope.BeginOfPregnancy.getTime() + 1.21824e+10);
+			$rootScope.ThirdPrenatalCareStartDate = $rootScope.ThirdPrenatalCareStart.toLocaleDateString();
+			$rootScope.ThirdPrenatalCareStartTimestamp = $rootScope.ThirdPrenatalCareStart.getTime();
+			$rootScope.ThirdPrenatalCareEndDate = $rootScope.ThirdPrenatalCareEnd.toLocaleDateString();
+			$rootScope.ThirdPrenatalCareEndTimestamp = $rootScope.ThirdPrenatalCareEnd.getTime();
 			
 			//Diabete de grossesse
-			$rootScope.diabeteDebut = new Date($rootScope.DebutGrossesse.getTime() + 1.1664e+10);
-			$rootScope.diabeteFin = new Date($rootScope.DebutGrossesse.getTime() + 1.52928e+10);
-			$rootScope.diabeteDebutDate = $rootScope.diabeteDebut.toLocaleDateString();
-			$rootScope.diabeteDebutTimestamp = $rootScope.diabeteDebut.getTime();
-			$rootScope.diabeteFinDate = $rootScope.diabeteFin.toLocaleDateString();
-			$rootScope.diabeteFinTimestamp = $rootScope.diabeteFin.getTime();
-			$rootScope.diabeteGrossesse = "Le diabète gestationnel également appelé hyperglycémie ou diabète de grossesse, est une élévation du taux de sucre dans le sang qui survient pendant la grossesse. Il s'agit d'une forme bénigne de diabète qui concerne entre 6% et 12% des grossesses et nécessite la mise en place d'un suivi adapté.";
+			$rootScope.diabeteStart = new Date($rootScope.BeginOfPregnancy.getTime() + 1.1664e+10);
+			$rootScope.diabeteEnd = new Date($rootScope.BeginOfPregnancy.getTime() + 1.52928e+10);
+			$rootScope.diabeteStartDate = $rootScope.diabeteStart.toLocaleDateString();
+			$rootScope.diabeteStartTimestamp = $rootScope.diabeteStart.getTime();
+			$rootScope.diabeteEndDate = $rootScope.diabeteEnd.toLocaleDateString();
+			$rootScope.diabeteEndTimestamp = $rootScope.diabeteEnd.getTime();
 
 			//Date 4 entretien prenat
-			$rootScope.QuatriemeEntretienPrenatalDebut = new Date($rootScope.DebutGrossesse.getTime() + 1.31328e+10);
-			$rootScope.QuatriemeEntretienPrenatalFin = new Date($rootScope.DebutGrossesse.getTime() + 1.43424e+10);
-			$rootScope.QuatriemeEntretienPrenatalDebutDate = $rootScope.QuatriemeEntretienPrenatalDebut.toLocaleDateString();
-			$rootScope.QuatriemeEntretienPrenatalDebutTimestamp = $rootScope.QuatriemeEntretienPrenatalDebut.getTime();
-			$rootScope.QuatriemeEntretienPrenatalFinDate = $rootScope.QuatriemeEntretienPrenatalFin.toLocaleDateString();
-			$rootScope.QuatriemeEntretienPrenatalFinTimestamp = $rootScope.QuatriemeEntretienPrenatalFin.getTime();
-			$rootScope.QuatriemeEntretienPrenatalDetail = "Consultation médicale de votre 6ème mois de grossesse.";
+			$rootScope.FourPrenatalCareStart = new Date($rootScope.BeginOfPregnancy.getTime() + 1.31328e+10);
+			$rootScope.FourPrenatalCareEnd = new Date($rootScope.BeginOfPregnancy.getTime() + 1.43424e+10);
+			$rootScope.FourPrenatalCareStartDate = $rootScope.FourPrenatalCareStart.toLocaleDateString();
+			$rootScope.FourPrenatalCareStartTimestamp = $rootScope.FourPrenatalCareStart.getTime();
+			$rootScope.FourPrenatalCareEndDate = $rootScope.FourPrenatalCareEnd.toLocaleDateString();
+			$rootScope.FourPrenatalCareEndTimestamp = $rootScope.FourPrenatalCareEnd.getTime();
 		
 			//Date 5 entretien prenat
-			$rootScope.CinquiemeEntretienPrenatalDebut = new Date($rootScope.DebutGrossesse.getTime() + 1.57248e+10);
-			$rootScope.CinquiemeEntretienPrenatalFin = new Date($rootScope.DebutGrossesse.getTime() + 1.69344e+10);
-			$rootScope.CinquiemeEntretienPrenatalDebutDate = $rootScope.CinquiemeEntretienPrenatalDebut.toLocaleDateString();
-			$rootScope.CinquiemeEntretienPrenatalDebutTimestamp = $rootScope.CinquiemeEntretienPrenatalDebut.getTime();
-			$rootScope.CinquiemeEntretienPrenatalFinDate = $rootScope.CinquiemeEntretienPrenatalFin.toLocaleDateString();
-			$rootScope.CinquiemeEntretienPrenatalFinTimestamp = $rootScope.CinquiemeEntretienPrenatalFin.getTime();
-			$rootScope.CinquiemeEntretienPrenatalDetail = "Consultation médicale de votre 7ème mois de grossesse.";
+			$rootScope.FivePrenatalCareStart = new Date($rootScope.BeginOfPregnancy.getTime() + 1.57248e+10);
+			$rootScope.FivePrenatalCareEnd = new Date($rootScope.BeginOfPregnancy.getTime() + 1.69344e+10);
+			$rootScope.FivePrenatalCareStartDate = $rootScope.FivePrenatalCareStart.toLocaleDateString();
+			$rootScope.FivePrenatalCareStartTimestamp = $rootScope.FivePrenatalCareStart.getTime();
+			$rootScope.FivePrenatalCareEndDate = $rootScope.FivePrenatalCareEnd.toLocaleDateString();
+			$rootScope.FivePrenatalCareEndTimestamp = $rootScope.FivePrenatalCareEnd.getTime();
 		
 			// Date 3eme Echo //
-			$rootScope.TroisiemeEchoDebut = new Date($rootScope.DebutGrossesse.getTime() + 1.71072e+10);
-			$rootScope.TroisiemeEchoFin = new Date($rootScope.DebutGrossesse.getTime() + 1.82304e+10);
-			$rootScope.TroisiemeEchoDebutDate = $rootScope.TroisiemeEchoDebut.toLocaleDateString();
-			$rootScope.TroisiemeEchoDebutTimestamp = $rootScope.TroisiemeEchoDebut.getTime();
-			$rootScope.TroisiemeEchoFinDate = $rootScope.TroisiemeEchoFin.toLocaleDateString();
-			$rootScope.TroisiemeEchoFinTimestamp = $rootScope.TroisiemeEchoFin.getTime();
-			$rootScope.TroisiemeEchoDetail = "L'échographie de croissance foetale doit être réalisée entre la 31ème et la 33ème semaine d'aménorrhée. Elle permet de vérifier la croissance foetale, la présentation et la localisation placentaire.";
+			$rootScope.ThirdEchoStart = new Date($rootScope.BeginOfPregnancy.getTime() + 1.71072e+10);
+			$rootScope.ThirdEchoEnd = new Date($rootScope.BeginOfPregnancy.getTime() + 1.82304e+10);
+			$rootScope.ThirdEchoStartDate = $rootScope.ThirdEchoStart.toLocaleDateString();
+			$rootScope.ThirdEchoStartTimestamp = $rootScope.ThirdEchoStart.getTime();
+			$rootScope.ThirdEchoEndDate = $rootScope.ThirdEchoEnd.toLocaleDateString();
+			$rootScope.ThirdEchoEndTimestamp = $rootScope.ThirdEchoEnd.getTime();
 
 			//Date 6 entretien prenat
-			$rootScope.SixiemeEntretienPrenatalDebut = new Date($rootScope.DebutGrossesse.getTime() + 1.84032e+10);
-			$rootScope.SixiemeEntretienPrenatalFin = new Date($rootScope.DebutGrossesse.getTime() + 1.96128e+10);
-			$rootScope.SixiemeEntretienPrenatalDebutDate = $rootScope.SixiemeEntretienPrenatalDebut.toLocaleDateString();
-			$rootScope.SixiemeEntretienPrenatalDebutTimestamp = $rootScope.SixiemeEntretienPrenatalDebut.getTime();
-			$rootScope.SixiemeEntretienPrenatalFinDate = $rootScope.SixiemeEntretienPrenatalFin.toLocaleDateString();
-			$rootScope.SixiemeEntretienPrenatalFinTimestamp = $rootScope.SixiemeEntretienPrenatalFin.getTime();
-			$rootScope.SixiemeEntretienPrenatalDetail = "Votre médecin interprète et vous explique l'échographie de croissance. C'est également l'occasion pour lui de vous informer sur votre mode d'accouchement.";
+			$rootScope.SixthPrenatalCareStart = new Date($rootScope.BeginOfPregnancy.getTime() + 1.84032e+10);
+			$rootScope.SixthPrenatalCareEnd = new Date($rootScope.BeginOfPregnancy.getTime() + 1.96128e+10);
+			$rootScope.SixthPrenatalCareStartDate = $rootScope.SixthPrenatalCareStart.toLocaleDateString();
+			$rootScope.SixthPrenatalCareStartTimestamp = $rootScope.SixthPrenatalCareStart.getTime();
+			$rootScope.SixthPrenatalCareEndDate = $rootScope.SixthPrenatalCareEnd.toLocaleDateString();
+			$rootScope.SixthPrenatalCareEndTimestamp = $rootScope.SixthPrenatalCareEnd.getTime();
 		
 			//Consultation anesthesiste
-			$rootScope.ConsultationAnesthesisteDebut = new Date($rootScope.DebutGrossesse.getTime() + 1.95264e+10);
-			$rootScope.ConsultationAnesthesisteFin = new Date($rootScope.DebutGrossesse.getTime() + 2.00448e+10);
-			$rootScope.ConsultationAnesthesisteDebutDate = $rootScope.ConsultationAnesthesisteDebut.toLocaleDateString();
-			$rootScope.ConsultationAnesthesisteDebutTimestamp = $rootScope.ConsultationAnesthesisteDebut.getTime();
-			$rootScope.ConsultationAnesthesisteFinDate = $rootScope.ConsultationAnesthesisteFin.toLocaleDateString();
-			$rootScope.ConsultationAnesthesisteFinTimestamp = $rootScope.ConsultationAnesthesisteFin.getTime();
-			$rootScope.ConsultationAnesthesisteDetail = "Cette consultation permet d'assurer la sécurité d'une éventuelle anesthésie et est obligatoire.";
+			$rootScope.AnesthetistConsultStart = new Date($rootScope.BeginOfPregnancy.getTime() + 1.95264e+10);
+			$rootScope.AnesthetistConsultEnd = new Date($rootScope.BeginOfPregnancy.getTime() + 2.00448e+10);
+			$rootScope.AnesthetistConsultStartDate = $rootScope.AnesthetistConsultStart.toLocaleDateString();
+			$rootScope.AnesthetistConsultStartTimestamp = $rootScope.AnesthetistConsultStart.getTime();
+			$rootScope.AnesthetistConsultEndDate = $rootScope.AnesthetistConsultEnd.toLocaleDateString();
+			$rootScope.AnesthetistConsultEndTimestamp = $rootScope.AnesthetistConsultEnd.getTime();
 			
 			//Date 7 entretien prenat
-			$rootScope.SeptiemeEntretienPrenatalDebut = new Date($rootScope.DebutGrossesse.getTime() + 2.10816e+10);
-			$rootScope.SeptiemeEntretienPrenatalFin = new Date($rootScope.DebutGrossesse.getTime() + 2.22912e+10);
-			$rootScope.SeptiemeEntretienPrenatalDebutDate = $rootScope.SeptiemeEntretienPrenatalDebut.toLocaleDateString();
-			$rootScope.SeptiemeEntretienPrenatalDebutTimestamp = $rootScope.SeptiemeEntretienPrenatalDebut.getTime();
-			$rootScope.SeptiemeEntretienPrenatalFinDate = $rootScope.SeptiemeEntretienPrenatalFin.toLocaleDateString();
-			$rootScope.SeptiemeEntretienPrenatalFinTimestamp = $rootScope.SeptiemeEntretienPrenatalFin.getTime();
-			$rootScope.SeptiemeEntretienPrenatalDetail = "Votre médecin vous confirmera le lieu et les modalités de votre accouchement. Il vous informera également des différents signes qui doivent attirer votre attention et vous faire venir à la maternité en urgence (contractions, perte de liquide, perte de sang, etc.)";
+			$rootScope.SeventhPrenatalCareStart = new Date($rootScope.BeginOfPregnancy.getTime() + 2.10816e+10);
+			$rootScope.SeventhPrenatalCareEnd = new Date($rootScope.BeginOfPregnancy.getTime() + 2.22912e+10);
+			$rootScope.SeventhPrenatalCareStartDate = $rootScope.SeventhPrenatalCareStart.toLocaleDateString();
+			$rootScope.SeventhPrenatalCareStartTimestamp = $rootScope.SeventhPrenatalCareStart.getTime();
+			$rootScope.SeventhPrenatalCareEndDate = $rootScope.SeventhPrenatalCareEnd.toLocaleDateString();
+			$rootScope.SeventhPrenatalCareEndTimestamp = $rootScope.SeventhPrenatalCareEnd.getTime();
 
 			// Date terme theorique
-			$rootScope.terme = new Date($rootScope.DebutGrossesse.getTime() + 2.36736e+10);		
-			$rootScope.termeDate = $rootScope.terme.toLocaleDateString();
-			$rootScope.termeTimestamp = $rootScope.terme.getTime();
-			$rootScope.termeDetail = "Vous devez consulter votre médecin ou sage-femme.";
+			$rootScope.DateOfTerm = new Date($rootScope.BeginOfPregnancy.getTime() + 2.36736e+10);		
+			$rootScope.DateOfTermDate = $rootScope.DateOfTerm.toLocaleDateString();
+			$rootScope.DateOfTermTimestamp = $rootScope.DateOfTerm.getTime();
 
 			//Nombre de semaines de grossesse 
-			$rootScope.WeekPregnant = Math.round(((new Date().getTime() - $rootScope.DerniereRegle.getTime()) / (1000 * 60 * 60 * 24)) / 7);
+			
+			$rootScope.WeekPregnant = Math.round(((new Date().getTime() - $rootScope.LastMenstruation.getTime()) / (1000 * 60 * 60 * 24)) / 7);
 			console.log($rootScope.WeekPregnant);
 
 			$state.go('app.toxoAsk');
@@ -834,14 +787,14 @@ $scope.submit = function(ghq_a, ghq_b,ghq_c, ghq_d, ghq_e, ghq_f, ghq_g, ghq_h, 
 		$scope.planificationNotif();
 	}
 	$scope.planificationNotif = function(){
-		$rootScope.ToxoDateOne =  ($rootScope.DebutGrossesseTimestamp + 2246400000) - new Date().getTime() ;
-		$rootScope.ToxoDateTwo = ($rootScope.DebutGrossesseTimestamp + 4838400000) - new Date().getTime() ;
-		$rootScope.ToxoDateThree = ($rootScope.DebutGrossesseTimestamp + 7430400000) - new Date().getTime() ;
-		$rootScope.ToxoDateFour = ($rootScope.DebutGrossesseTimestamp + 1.00224e+10) - new Date().getTime() ;
-		$rootScope.ToxoDateFive = ($rootScope.DebutGrossesseTimestamp + 1.26144e+10) - new Date().getTime() ;
-		$rootScope.ToxoDateSix = ($rootScope.DebutGrossesseTimestamp + 1.52064e+10) - new Date().getTime() ;
-		$rootScope.ToxoDateSeven = ($rootScope.DebutGrossesseTimestamp + 1.77984e+10) - new Date().getTime() ;
-		$rootScope.ToxoDateEight = ($rootScope.DebutGrossesseTimestamp + 2.03904e+10) - new Date().getTime() ;
+		$rootScope.ToxoDateOne =  ($rootScope.BeginOfPregnancyTimestamp + 2246400000) - new Date().getTime() ;
+		$rootScope.ToxoDateTwo = ($rootScope.BeginOfPregnancyTimestamp + 4838400000) - new Date().getTime() ;
+		$rootScope.ToxoDateThree = ($rootScope.BeginOfPregnancyTimestamp + 7430400000) - new Date().getTime() ;
+		$rootScope.ToxoDateFour = ($rootScope.BeginOfPregnancyTimestamp + 1.00224e+10) - new Date().getTime() ;
+		$rootScope.ToxoDateFive = ($rootScope.BeginOfPregnancyTimestamp + 1.26144e+10) - new Date().getTime() ;
+		$rootScope.ToxoDateSix = ($rootScope.BeginOfPregnancyTimestamp + 1.52064e+10) - new Date().getTime() ;
+		$rootScope.ToxoDateSeven = ($rootScope.BeginOfPregnancyTimestamp + 1.77984e+10) - new Date().getTime() ;
+		$rootScope.ToxoDateEight = ($rootScope.BeginOfPregnancyTimestamp + 2.03904e+10) - new Date().getTime() ;
 		if ($rootScope.ToxoDateOne >= 0){
 			setTimeout(function () {
 				$cordovaLocalNotification.schedule({
@@ -957,11 +910,13 @@ $scope.submit = function(ghq_a, ghq_b,ghq_c, ghq_d, ghq_e, ghq_f, ghq_g, ghq_h, 
 		$scope.test = 
 		url = ""
 		$rootScope.today = new Date().getTime();
-		$rootScope.nbSemaine = Math.round(((new Date().getTime() - $rootScope.DebutGrossesse.getTime()) / (1000 * 60 * 60 * 24)) / 7);
+		$rootScope.nbSemaine = Math.round(((new Date().getTime() - $rootScope.BeginOfPregnancy.getTime()) / (1000 * 60 * 60 * 24)) / 7);
 		$scope.tes = function(){
 			console.log("test");
 		}
 		   $scope.hideA = true;
+		   $scope.hideAA = true;
+		   $scope.hideAAA = true;
 		   $scope.hideB = true;
 		   $scope.hideC = true;
 		   $scope.hideD = true;
@@ -972,12 +927,30 @@ $scope.submit = function(ghq_a, ghq_b,ghq_c, ghq_d, ghq_e, ghq_f, ghq_g, ghq_h, 
 		   $scope.hideI = true;
 		   $scope.hideJ = true;
 		   $scope.hideK = true;
+		   $scope.hideL = true;
+		   $scope.hideM = true;
+		   $scope.hideN = true;
+		   $scope.hideO = true;
+		   $scope.hideP = true;
+
 
 $scope.changeA = function(){
 if ($scope.hideA == false)
    $scope.hideA = true;
 else
    $scope.hideA = false;
+}
+$scope.changeAA = function(){
+if ($scope.hideAA == false)
+   $scope.hideAA = true;
+else
+   $scope.hideAA = false;
+}
+$scope.changeAAA = function(){
+if ($scope.hideAAA == false)
+   $scope.hideAAA = true;
+else
+   $scope.hideAAA = false;
 }
 $scope.changeB = function(){
 if ($scope.hideB == false)
@@ -1039,28 +1012,231 @@ if ($scope.hideK == false)
 else
    $scope.hideK = false;
 }
-
+$scope.changeL = function(){
+if ($scope.hideL == false)
+   $scope.hideL = true;
+else
+   $scope.hideL = false;
+}
+$scope.changeM = function(){
+if ($scope.hideM == false)
+   $scope.hideM = true;
+else
+   $scope.hideM = false;
+}
+$scope.changeN = function(){
+if ($scope.hideN == false)
+   $scope.hideN = true;
+else
+   $scope.hideN = false;
+}
+$scope.changeO = function(){
+if ($scope.hideO == false)
+   $scope.hideO = true;
+else
+   $scope.hideO = false;
+}
+$scope.changeP = function(){
+if ($scope.hideP == false)
+   $scope.hideP = true;
+else
+   $scope.hideP = false;
+}
 })
 
-.controller('TranslateCtrl', function($scope, $rootScope, $state){
-	$scope.data = {};
-		$scope.test = 
+.controller('HomeCtrl', function($scope, $state, $http, $rootScope) {
+		$scope.data = {};
+	$scope.test = 
 		url = ""
+		$scope.login = function() {
+			$state.go('app.launch');
+		}
+		$scope.create = function() {
+			$state.go('first');
+		}
 		$scope.french = function(){
 			$rootScope.langage = 1;
-			console.log("toto");
+			//home
 			$rootScope.account = "Je possède déjà un compte";
-			$rootScope,begin = "Commençons l'aventure";
+			$rootScope.begin = "Commençons l'aventure";
 
-			$rootScope.LastMentruationDetail = "L'aménorrhée signifie l'absence de règles. Les professionnels de santé calculent le stade d'évolution de la grossesse en semaines d'aménorrhée à partir du premier jour des dernières règles. ";
+			// launch
+			$rootScope.hello = "Bonjour, aujourd\'hui vous en êtes à votre ";
+			$rootScope.numberOfWeek = "ème semaine de grossesse"
+
+			$rootScope.helloFirst = "Vous avez choisi de continuer votre aventure avec nous et nous vous en remercions."
+//Calendar
+			$rootScope.NumberCalendar = "Félicitation vous en êtes à votre ";
+			$rootScope.Weeks = "eme semaines de grossesse aujourd'hui !";
+			$rootScope.delivery = "Vous devriez accoucher le ";
+			$rootScope.calendar = "Votre calendrier";
+
+			$rootScope.DateOfMenstruation = "Commencez par rentrer la date de vos dernieres regles";
+
+			$rootScope.LastM = "La date de vos dernieres règles est le:";
+			$rootScope.LastMenstruationDetail = "L'aménorrhée signifie l'absence de règles. Les professionnels de santé calculent le stade d'évolution de la grossesse en semaines d'aménorrhée à partir du premier jour des dernières règles. ";
+
+			$rootScope.BeginOfP = "Votre Grossesse a débuté le:";
+			$rootScope.BeginOfPregnancyDetail = "Cette date sera déterminée avec précision par votre médecin à partir des résultats de la 1ère échographie et de la date de vos dernières règles.";
+
+			$rootScope.ReliabilityT = "Fiabilité du test de grossesse à partir du:";
+			$rootScope.ReliabilityTPast = "Fiabilité du test de grossesse depuis le:";
+			$rootScope.ReliabilityTestDetail = "Il est recommandé de confirmer les résultats du test de grossesse par une prise de sang en laboratoire, afin de mesurer avec plus de précision le taux d'hormone hCG.";
+			
+			$rootScope.FirstC = "Votre première consultation doit être réalisé entre le ";
+			$rootScope.FirstCPast = "Votre première consultation à été réalisé le inserer la date quand on stock les données";
+			$rootScope.FirstConsultDetail = "Votre grossesse est suivie par un médecin ou une sage-femme (libérale, en hôpital ou en PMI). A ce titre, vous bénéficiez de 7 consultations médicales prénatales. Lors de la 1ère consultation, vous allez établir les principales étapes de votre suivi de grossesse. Il est nécessaire de retracer avec votre médecin votre passé médical.";
+
+			$rootScope.FirstE = "Votre première echographie doit être réalisé entre le ";
+			$rootScope.FirstEPast = "Votre première echographie à été réalisé le ";
+			$rootScope.FirstEchoDetail = "L'échographie de datation doit être réalisée entre la 11ème et la 13ème semaine d'aménorrhée. Elle permet de confirmer le terme de la grossesse, de déterminer le nombre d'embryons, de mesurer la clarté nucale et de rechercher certains signes de malformation. ";
+			
+			$rootScope.FirstPC = "Votre premier entretien prenatal doit être réalisé entre le ";
+			$rootScope.FirstPCPast = "Votre premiere entretien prenatal à été réalisé le ";
+			$rootScope.FirstPrenatalCareDetail = "Cet entretien individuel ou en couple est réalisé par une sage-femme ou un médecin et permet d'exprimer vos besoins et vos attentes, de répondre à vos interrogations et d'échanger sur votre projet de naissance.";
+
+			$rootScope.SecondPC = "Votre second entretien prenatal doit être réalisé entre le ";
+			$rootScope.SecondPCPast = "Votre second entretien prenatal à été réalisé le";
+			$rootScope.SecondPrenatalCareDetail = "Votre médecin peut vous proposer d'effectuer le Triple Test, il s'agit d'un examen médical non obligatoire qui permet de dépister la trisomie 21 par le biais d'un dosage de marqueurs effectué sur votre sang. Si vous avez plus de 38 ans, il vous sera systématiquement proposé d'effectuer une amiocentèse. Votre médecin peut également vous recommander deffectuer un examen médical du père - cet examen pris en charge à 100% a pour objectif de compléter votre dossier médical.";
+
+			$rootScope.BilanB = "Bilan buccodentaire";
+			$rootScope.BilanBuccoDetail = "Vous pouvez bénéficier d'un bilan bucco-dentaire pris en charge à 100% et sans avance de frais de votre part. Prenez soin de vos dents car les modifications hormonales notamment peuvent fragiliser vos dents et vos gencives, ce qui peut augmenter le risque d'accouchement prématuré.";
+			
+			$rootScope.SecondE = "Votre seconde echographie doit être réalisé entre le ";
+			$rootScope.SecondEPAst = "Votre seconde echographie à été réalisé le ";
+			$rootScope.SecondEchoDetail = "L'échographie morphologique doit être réalisée entre la 21ème et la 23ème semaine d'aménorrhée. Elle permet d'analyser la morphologie du foetus, de vérifier la croissance foetale, de localiser le placenta et de dépister d'autres anomalies. Vous pouvez, si vous le souhaitez, connaître le sexe de votre bébé !";
+
+			$rootScope.ThirdPC = "Votre troisième entretien prenatal doit être réalisé entre le ";
+			$rootScope.ThirdPCPast = "Votre troisième entretien prenatal à été réalisé le ";
+			$rootScope.ThirdPrenatalCareDetail = "Votre médecin interprète et vous explique l'échographie morphologique.";
+
+			$rootScope.diabete = "Votre depistage diabete doit être réalisé entre le ";
+			$rootScope.diabetePast = "Votre depistage diabete à été réalisé le ";
+			$rootScope.diabetePregnant = "Le diabète gestationnel également appelé hyperglycémie ou diabète de grossesse, est une élévation du taux de sucre dans le sang qui survient pendant la grossesse. Il s'agit d'une forme bénigne de diabète qui concerne entre 6% et 12% des grossesses et nécessite la mise en place d'un suivi adapté.";
+
+			$rootScope.FourPC = "Votre quatrieme entretien prenatal doit être réalisé entre le ";
+			$rootScope.FourPCPast = "Votre quatrieme entretien prenatal à été réalisé le ";
+			$rootScope.FourPrenatalCareDetail = "Consultation médicale de votre 6ème mois de grossesse.";
+		
+			$rootScope.FivePC = "Votre cinquieme entretien prenatal doit être réalisé entre le ";
+			$rootScope.FivePCPast = " Votre cinquieme entretien prenatal à été réalisé le ";
+			$rootScope.FivePrenatalCareDetail = "Consultation médicale de votre 7ème mois de grossesse.";
+
+			$rootScope.ThirdE = "Votre troisieme echographie doit être réalisé entre le ";
+			$rootScope.ThirdEPast = "Votre troisieme echographie à été réalisé le";
+			$rootScope.ThirdEchoDetail = "L'échographie de croissance foetale doit être réalisée entre la 31ème et la 33ème semaine d'aménorrhée. Elle permet de vérifier la croissance foetale, la présentation et la localisation placentaire.";
+
+			$rootScope.SixthPC = "Votre sixieme entretien prenatal doit être réalisé entre le ";
+			$rootScope.SixthPCPast = " Votre sixieme entretien prenatal à été réalisé le ";
+			$rootScope.SixthPrenatalCareDetail = "Votre médecin interprète et vous explique l'échographie de croissance. C'est également l'occasion pour lui de vous informer sur votre mode d'accouchement.";
+
+			$rootScope.AnesthetistC = "Votre consultation avec l'anesthesiste doit être réalisé entre le ";
+			$rootScope.AnesthetistCPast = " Votre consultation avec l'anesthesiste à été réalisé le ";
+			$rootScope.AnesthetistConsultDetail = "Cette consultation permet d'assurer la sécurité d'une éventuelle anesthésie et est obligatoire.";
+
+			$rootScope.SeventhPC = "Votre septieme entretien prenatal doit être réalisé entre le ";
+			$rootScope.SeventhPCPast = " Votre septieme entretien prenatal à été réalisé le ";
+			$rootScope.SeventhPrenatalCareDetail = "Votre médecin vous confirmera le lieu et les modalités de votre accouchement. Il vous informera également des différents signes qui doivent attirer votre attention et vous faire venir à la maternité en urgence (contractions, perte de liquide, perte de sang, etc.)";
+
+			$rootScope.DateOfT = "Votre date de terme théorique est le: " 
+			$rootScope.DateOfTermDetail = "Vous devez consulter votre médecin ou sage-femme.";
+
+			$rootScope.And = " et le ";
+
 			$state.go('home');
 		}
 		$scope.english = function(){
 			$rootScope.langage = 2;
-			
+			//home
 			$rootScope.account = "I already have an account";
 			$rootScope.begin = "Start adventure";
-			$rootScope.LastMenstruationDetail = "Amenorrhea means no rules. Health professionals calculate the stage of pregnancy in weeks of amenorrhea from the first day of the last menstrual period."
+			
+			//Launch
+			$rootScope.hello = "Hello, today you are at your ";
+			$rootScope.numberOfWeek = "Th week of pregnancy"
+			$rootScope.helloFirst = "You have chosen to continue your adventure with us and we thank you for it. ";
+
+//Calendar
+			$rootScope.NumberCalendar = "Congratulations to your";
+			$rootScope.Weeks = "th weeks of pregnancy today!";
+			$rootScope.delivery = "You should give birth to ";
+			$rootScope.calendar = "Your calendar";
+
+			$rootScope.LastM = "The date of your last menstruation is: ";
+			$rootScope.DateOfMenstruation = "Start by entering the date of your last rules ";
+			$rootScope.LastMenstruationDetail = "Amenorrhea means no rules. Health professionals calculate the stage of pregnancy in weeks of amenorrhea from the first day of the last menstrual period. ";
+
+			$rootScope.BeginOfP = "Your Pregnancy started on: ";
+			$rootScope.BeginOfPregnancyDetail = "This date will be determined precisely by your doctor from the results of the first ultrasound and the date of your last menstruation.";
+
+			$rootScope.ReliabilityT = "Reliability of the pregnancy test from: ";
+			$rootScope.ReliabilityTPast = "Reliability of the pregnancy test since: ";
+			$rootScope.ReliabilityTestDetail = "It is recommended to confirm the results of the pregnancy test with a laboratory blood test in order to more accurately measure hCG hormone levels.";
+
+			$rootScope.FirstC = "Your first consultation must be made between the ";
+			$rootScope.FirstCPast = "Your first consultation was carried out the insert the date when we store the data";
+			$rootScope.FirstConsultDetail = "Your pregnancy is followed by a doctor or a midwife (liberal, hospital or PMI). As such, you benefit from 7 prenatal medical consultations. During the first consultation, you will establish the main steps of your pregnancy follow-up. It is necessary to trace with your doctor your medical history.";
+
+			$rootScope.FirstE = "Your first ultrasound should be performed between ";
+			$rootScope.FirstEPast = "Your first ultrasound was carried out on ";
+			$rootScope.FirstEchoDetail = "The dating ultrasound should be performed between the 11th and 13th week of amenorrhea. It allows to confirm the term of pregnancy, to determine the number of embryos, to measure nuchal translucency and to look for certain signs of malformation.";
+
+
+			$rootScope.FirstPC = "Your first prenatal care must be made between the ";
+			$rootScope.FirstPCPast = "Your first prenatal care was conducted in the ";
+			$rootScope.FirstPrenatalCareDetail = "This individual or couple interview is carried out by a midwife or a doctor and allows to express your needs and your expectations, to answer your questions and to exchange on your project of birth.";
+			
+
+			$rootScope.SecondPC = "Your second prenatal interview should be ";
+			$rootScope.SecondPCPast = "Your second prenatal interview was carried out on ";
+			$rootScope.SecondPrenatalCareDetail = "Your physician may suggest that you perform the Triple-Test, which is a non-mandatory medical examination that allows you to screen Down Trisomy 21 through a marker assay performed on your blood. If you are over 38 years old, you will be systematically offered to perform an asbestosis test. Your doctor may also recommend that you perform a medical examination of the father - this 100% supported examination is intended to supplement your medical record. ";
+
+			$rootScope.BilanB = "Oral assessment from ";
+			$rootScope.BilanBuccoDetail = "You can benefit from a 100% oral health check-up and no advance fees from you. Take care of your teeth as hormonal changes in particular can weaken your teeth and gums, which can increase the risk of premature delivery.";
+
+			$rootScope.SecondE = "Your second ultrasound should be ";
+			$rootScope.SecondEPAst = "Your second ultrasound was performed on ";
+			$rootScope.SecondEchoDetail = "The morphological ultrasound should be performed between the 21st and 23rd week of amenorrhea. It allows to analyze the morphology of the fetus, to check the fetal growth, to locate the placenta and to detect other anomalies. You can, if you wish, know the sex of your baby!";
+
+			$rootScope.ThirdPC = "Your third prenatal interview should be ";
+			$rootScope.ThirdPCPast = "Your third prenatal interview was carried out on ";
+			$rootScope.ThirdPrenatalCareDetail = "Your doctor interprets and explains the morphological ultrasound.";
+
+			$rootScope.diabete = "Your diabete screening should be done between the ";
+			$rootScope.diabetePast = "Your diabete screening was completed on";
+			$rootScope.diabeteDetail = "Gestational diabetes also called hyperglycemia or pregnancy diabetes, is an elevation of blood sugar that occurs during pregnancy. It is a benign form of diabetes which affects between 6% and 12% of pregnancies and requires the setting up of an adapted follow-up.";
+
+
+			$rootScope.FourPC = "Your fourth prenatal interview should be done between ";
+			$rootScope.FourPCPast = "Your fourth prenatal interview was";
+			$rootScope.FourPrenatalCareDetail = "Medical consultation of your 6th month of pregnancy.";
+
+
+			$rootScope.FivePC = "Your fifth prenatal interview should be ";
+			$rootScope.FivePCPast = "Your fifth prenatal interview was carried out on ";
+			$rootScope.FivePrenatalCareDetail = "Medical consultation of your 7th month of pregnancy.";
+			
+			$rootScope.ThirdE = "Your third ultrasound should be";
+			$rootScope.ThirdEPAst = "Your third ultrasound was performed on";
+			$rootScope.ThirdEchoDetail = "Fetal growth ultrasound should be performed between the 31st and 33rd week of amenorrhea. It allows to check fetal growth, presentation and placental location.";
+
+			$rootScope.SixthPC = "Your sixth prenatal interview should be";
+			$rootScope.SixthPCPast = "Your sixth prenatal interview was completed on ";
+			$rootScope.SixthPrenatalCareDetail = "Your doctor interprets and explains to you the ultrasound of growth. It is also the occasion for him to inform you about your mode of delivery.";
+
+			$rootScope.AnesthetistC = "Your consultation with the anesthetist must be done between ";
+			$rootScope.AnesthetistCPast = "Your consultation with the anesthetist was carried out on ";
+			$rootScope.AnesthetistConsultDetail = "This consultation ensures the safety of any anesthesia and is mandatory.";
+
+			$rootScope.SeventhPC = "Your seventh prenatal maintenance should be performed between ";
+			$rootScope.SeventhPCPast = " Your seventh prenatal maintenance was performed on ";
+			$rootScope.SeventhPrenatalCareDetail = "Your doctor will confirm the place and the modalities of your delivery. It will also inform you of the different signs that should attract your attention and bring you to emergency maternity (contractions, loss of fluid, loss of blood, etc.)";
+
+			$rootScope.DateOfT = "Your theoretical term date is: " 
+			$rootScope.DateOfTermDetail = "You should consult your doctor or midwife.";
+
+
+			$rootScope.And = " and the ";
 			$state.go('home');
 		}
 

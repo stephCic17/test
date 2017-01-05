@@ -2,15 +2,14 @@
   <ion-content class=padding> 
   	<div class="derniereRegle">
 		<div ng-if="LastMenstruation">
-			<h3>Bonjour,
-			Aujourd'hui vous en êtes à votre<span ng-bind=WeekPregnant></span>ème semaine de grossesse</h3>
-			<p>Vous devriez accoucher le <span ng-bind=termeDate></span></p>
+			<h3>{{hello}}<span ng-bind=WeekPregnant></span>{{numberOfWeek}}</h3>TOTO
+			<p><span ng-bind=termeDate></span></p>
 		</div>
 		<div ng-if="!LastMenstruation">
 			<form name="gro" ng-submit="submit(gros)">
-				<label><p>Vous avez choisi de continuer votre aventure avec nous et nous vous en remercions.
+				<label><p>{{helloFirst}}
 				</p></label>
-				<p>Commencez par rentrer la date de vos dernieres regles</p>
+				<p>{{DateOfMenstruation}}</p>
 				<input type="date" name="date" placeholder="JJ/MM/AAAA" ng-model="gros">
 				<button type="Submit">Ok</button>
 			</form>
