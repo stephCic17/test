@@ -1065,7 +1065,9 @@ else
 			$rootScope.numberOfWeek = "ème semaine de grossesse"
 
 			$rootScope.helloFirst = "Vous avez choisi de continuer votre aventure avec nous et nous vous en remercions."
-//Calendar
+			
+
+			//Calendar
 			$rootScope.NumberCalendar = "Félicitation vous en êtes à votre ";
 			$rootScope.Weeks = "eme semaines de grossesse aujourd'hui !";
 			$rootScope.delivery = "Vous devriez accoucher le ";
@@ -1141,8 +1143,18 @@ else
 			$rootScope.DateOfT = "Votre date de terme théorique est le: " 
 			$rootScope.DateOfTermDetail = "Vous devez consulter votre médecin ou sage-femme.";
 
-			$rootScope.And = " et le ";
+			
 
+
+			// Toxo
+			$rootScope.QToxo = "Etes-vous immunisé contre la toxoplasmose?";
+
+
+			// Divers
+			$rootScope.And = " et le ";
+			$rootScope.ToxoYes = "Oui";
+			$rootScope.ToxoNo = "Non";
+			$rootScope.ToxoIDontKnow = "Je ne sais pas";
 			$state.go('home');
 		}
 		$scope.english = function(){
@@ -1235,8 +1247,15 @@ else
 			$rootScope.DateOfT = "Your theoretical term date is: " 
 			$rootScope.DateOfTermDetail = "You should consult your doctor or midwife.";
 
+			// Toxo
+			$rootScope.QToxo = "Are you immunized against toxoplasmosis?";
 
+			//Divers
 			$rootScope.And = " and the ";
+			$rootScope.ToxoYes = "Yes";
+			$rootScope.ToxoNo = "No";
+			$rootScope.ToxoIDontKnow = "I don't know";
+
 			$state.go('home');
 		}
 
