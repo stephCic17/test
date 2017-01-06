@@ -2,63 +2,24 @@
   <ion-content class=padding> 
     <h5>{{NumberCalendar}} <span ng-bind="nbSemaine"></span> {{Weeks}}</h5>
     <h5>{{delivery}}<span ng-bind="termeDate"></span></h5>
-    <h6>{{Calendar}}</h6>
+    <h6>{{ACalendar}}</h6>
  
-     <div class=avenir ng-if="LastMenstruationTimestamp > today">
-  <button class="accordion" ng-click=changeAA()>
-    {{LastM}}<span ng-bind=LastMenstruationDate></span>
-  </button>
-  <div class="panel" ng-hide=AhideAA>
-    <p><span ng-bind=LastMenstruationDetail></span></p>
-  </div>
-</div>
-<!--   -->
-<div class="passe" ng-if="LastMenstruationTimestamp < today">
-  <button class="accordion" ng-click=changeAA()>
-    {{LastM}}
-    <span ng-bind=LastMenstruationDate></span>
-  </button>
-  <div class="panel" ng-hide=AhideAA>
-  <p><span ng-bind=LastMenstruationDetail></span></p>
-  </div>
-</div>
-
-     <div class=avenir ng-if="BeginOfPRegnancyTimestamp > today">
-  <button class="accordion" ng-click=changeAAA()>
-    {{BeginOfP}}<span ng-bind=BeginOfPRegnancyDate></span>
-  </button>
-  <div class="panel" ng-hide=AhideAAA>
-    <p><span ng-bind=BeginOfPRegnancyDetail></span></p>
-  </div>
-</div>
-<!--   -->
-<div class="passe" ng-if="BeginOfPRegnancyTimestamp < today">
-  <button class="accordion" ng-click=changeAAA()>
-    {{BeginOfP}}
-    <span ng-bind=BeginOfPRegnancyDate></span>
-  </button>
-  <div class="panel" ng-hide=AhideAAA>
-  <p><span ng-bind=BeginOfPRegnancyDetail></span></p>
-  </div>
-</div>
-
-
-    <div class=avenir ng-if="ReliabilityTestTimestamp > today">
+    <div class=avenir ng-if="PregnantDeclarationTimestamp > today">
   <button class="accordion" ng-click=changeA()>
-    {{ReliabilityT}}<span ng-bind=ReliabilityTestDate></span>
+    {{PregnantD}}<span ng-bind=PregnantDeclarationDate></span>
   </button>
   <div class="panel" ng-hide=AhideA>
-    <p><span ng-bind=ReliabilityTestDetail></span></p>
+    <p><span ng-bind=PregnantDeclarationDetail></span></p>
   </div>
 </div>
 <!--   -->
-<div class="passe" ng-if="ReliabilityTestTimestamp < today">
+<div class="passe" ng-if="PregnantDeclarationTimestamp < today">
   <button class="accordion" ng-click=changeA()>
-    {{ReliabilityTPast}}
-    <span ng-bind=ReliabilityTestDate></span>
+    {{PregnantDPast}}
+    <span ng-bind=PregnantDeclarationDate></span>
   </button>
   <div class="panel" ng-hide=AhideA>
-  <p><span ng-bind=ReliabilityTestDetail></span></p>
+  <p><span ng-bind=PregnantDeclarationDetail></span></p>
   </div>
 </div>
 

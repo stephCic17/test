@@ -47,15 +47,15 @@ template: 'Please check your credentials!'
 })
 
 .controller('Step1Ctrl', function($scope, $state,  $http, $rootScope) {
-			$scope.data = {};
+	$scope.data = {};
 	$scope.test = 
-		url = ""
-		$scope.nb = function() {
-			$rootScope.a = $scope.data.nb;
-			if ($rootScope.a > 0){
-				$state.go('step2');
-			}
+	url = ""
+	$scope.nb = function() {
+		$rootScope.Age = $scope.age;
+		if ($rootScope.Age > 0){
+			$state.go('step2');
 		}
+	}
 })
 
 .controller('Step2Ctrl', function($scope, $state, $http, $rootScope) {
@@ -63,56 +63,56 @@ template: 'Please check your credentials!'
 	$scope.test = 
 		url = ""
 		$scope.yes = function(){
-			$rootScope.c = 1;
+			$rootScope.Pregnant = 1;
 			$state.go('step3');
 		}
 		$scope.no = function() {
-			$rootScope.c = 0;
+			$rootScope.Pregnant = 0;
 			$state.go('step3');
 		}
 })
 
 
 .controller('Step3Ctrl', function($scope, $state, $http, $rootScope) {
-			$scope.data = {};
+	$scope.data = {};
 	$scope.test = 
-		url = ""
-		$scope.yes = function(){
-			$rootScope.d = 1;
-			$state.go('step4');
-		}
-		$scope.no = function() {
-			$rootScope.d = 0;
-			$state.go('step4');
-		}
+	url = ""
+	$scope.yes = function(){
+		$rootScope.Smoke = 1;
+		$state.go('step4');
+	}
+	$scope.no = function() {
+		$rootScope.Smoke = 0;
+		$state.go('step4');
+	}
 })
 
 
 .controller('Step4Ctrl', function($scope, $state, $http, $rootScope) {
 	$scope.data = {};
 	$scope.test = 
-		url = ""
-		$scope.yes = function(){
-			$rootScope.a = 1;
-			$state.go('step5');
-		}
-		$scope.no = function() {
-			$rootScope.a = 0;
-			$state.go('step15');
-		}
+	url = ""
+	$scope.yes = function(){
+		$rootScope.Child = 1;
+		$state.go('step5');
+	}
+	$scope.no = function() {
+		$rootScope.Child = 0;
+		$state.go('step15');
+	}
 })
 
 
 .controller('Step5Ctrl', function($scope, $state,  $http, $rootScope) {
-		$scope.data = {};
+	$scope.data = {};
 	$scope.test = 
-		url = ""
-		$scope.nb = function() {
-			$rootScope.e = $scope.data.nb;
-			if ($rootScope.e > 0){
-				$state.go('step6');
-			}
+	url = ""
+	$scope.nb = function() {
+		$rootScope.HChild = $scope.HChild;
+		if ($rootScope.e > 0){
+			$state.go('step6');
 		}
+	}
 })
 
 .controller('Step6Ctrl', function($scope, $state, $http, $rootScope) {
@@ -120,11 +120,11 @@ template: 'Please check your credentials!'
 	$scope.test = 
 		url = ""
 		$scope.yes = function(){
-			$rootScope.b = 1;
+			$rootScope.BigChild = 1;
 			$state.go('step7');
 		}
 		$scope.no = function() {
-			$rootScope.b = 0;
+			$rootScope.BigChild = 0;
 			$state.go('step8');
 		}
 })
@@ -134,8 +134,8 @@ template: 'Please check your credentials!'
 	$scope.test = 
 		url = ""
 		$scope.nb = function() {
-			$rootScope.c = $scope.data.nb;
-			if ($rootScope.c > 0){
+			$rootScope.HBigChild = $scope.HbigChild;
+			if ($rootScope.HBigChild > 0){
 				$state.go('step8');
 			}
 		}
@@ -144,15 +144,15 @@ template: 'Please check your credentials!'
 .controller('Step8Ctrl', function($scope, $state, $http, $rootScope) {
 	$scope.data = {};
 	$scope.test = 
-		url = ""
-		$scope.yes = function(){
-			$rootScope.h = 1;
-			$state.go('step9');
-		}
-		$scope.no = function() {
-			$rootScope.h = 0;
-			$state.go('step10');
-		}
+	url = ""
+	$scope.yes = function(){
+		$rootScope.LessChild = 1;
+		$state.go('step9');
+	}
+	$scope.no = function() {
+		$rootScope.LessChild = 0;
+		$state.go('step10');
+	}
 })
 
 .controller('Step9Ctrl', function($scope, $state,  $http, $rootScope) {
@@ -593,22 +593,31 @@ $scope.submit = function(ghq_a, ghq_b,ghq_c, ghq_d, ghq_e, ghq_f, ghq_g, ghq_h, 
 	$scope.test = 
 		url = ""
 		$scope.profil = "Bonjour"
-
-		if ( $rootScope.a < 35 ){
-			$scope.profil += "Faible risque d'anomalie chromosomique foetale";
+////////////////////////////////////////////////////////////////////////
+		if ( $rootScope.Age < 35 ){
+			$scope.profil += $rootScope.RAgeA;
 		}
-		else if ( $rootScope.a < 38 ){
-			$scope.profil += "Risque modéré d'anomalie chromosomique foetale";
+		else if ( $rootScope.Age < 38 ){
+			$scope.profil += $rootScope.RAgeB;
 		}
-		else if ( $rootScope.a < 42 ){
-			$scope.profil += "Risque élevé d'anomalie chromosomique foetale ";
+		else if ( $rootScope.Age < 42 ){
+			$scope.profil += $rootScope.RAgeC;
 		}
-		else if ( $rootScope.a >= 42 ){
-			$scope.profil += " Risque très élevé d&#039;anomalie chromosomique foetale"; 
+		else if ( $rootScope.Age >= 42 ){
+			$scope.profil += RAgeD; 
 		}
 		if ( $rootScope.o >= 3 ){
 			$scope.profil += "Nous vous conseillons une consultation spécialisé avec un bilan complet. Un traitement peut-être necessaire pendant le début voir avant le début de votre grossesse.Nous vous conseillons une consultation spécialisé avec un bilan complet. Un traitement peut-être necessaire pendant le début voir avant le début de votre grossesse."; 
 		}
+/////////////////////////////////////////////////////////////////////////
+		if ($rootScope.Pregnant == 1 && $rootScope.Smoke == 1){
+			$scope.profil = $rootScope.RSmokeA;
+		}
+		else if ($rootScope.Smoke == 1){
+			$scope.profil = $rootScope.RSmokeB;
+		}
+
+
 		if ( $rootScope.r < 10 ){
 			$scope.profil += "Pendant la grossesse la seule façon de protéger votre foetus est de stopper toute consommation d'&#039;'alcool";}
 		else if ( $rootScope.r >= 10 ){
@@ -761,7 +770,15 @@ $scope.submit = function(ghq_a, ghq_b,ghq_c, ghq_d, ghq_e, ghq_f, ghq_g, ghq_h, 
 			//Nombre de semaines de grossesse 
 			
 			$rootScope.WeekPregnant = Math.round(((new Date().getTime() - $rootScope.LastMenstruation.getTime()) / (1000 * 60 * 60 * 24)) / 7);
-			console.log($rootScope.WeekPregnant);
+
+			// Calendrier Administratif
+			$rootScope.PregnantDeclaration = new Date($rootScope.BeginOfPregnancy.getTime() + 9158400000);
+			$rootScope.PregnantDeclarationDate = $rootScope.PregnantDeclaration.toLocaleDateString();
+			$rootScope.PregnantDeclarationTimestamp = $rootScope.PregnantDeclaration.getTime();
+
+
+
+
 
 			$state.go('app.toxoAsk');
 		}
@@ -1079,18 +1096,6 @@ if ($scope.AhideA == false)
 else
    $scope.AhideA = false;
 }
-$scope.changeAA = function(){
-if ($scope.AhideAA == false)
-   $scope.AhideAA = true;
-else
-   $scope.AhideAA = false;
-}
-$scope.changeAAA = function(){
-if ($scope.AhideAAA == false)
-   $scope.AhideAAA = true;
-else
-   $scope.AhideAAA = false;
-}
 $scope.changeB = function(){
 if ($scope.AhideB == false)
    $scope.AhideB = true;
@@ -1343,8 +1348,33 @@ else
 
 			$rootScope.helloFirst = "Vous avez choisi de continuer votre aventure avec nous et nous vous en remercions."
 			
+			//Bilan Gratuit
+			$rootScope.QAge = "Quel âge avez vous?";
+			$rootScope.RAgeA = "Votre age suggère un gaible risque d'anomalie chromosomique foetale.";
+			$rootScope.RAgeB = "Vous présentez un risque modéré d'anomalie chromosomique foetale.";
+			$rootScope.RAgeC = "Vous présentez un risque élevé d'anomalie chromosomique foetale.";
+			$rootScope.RAgeD = "Vous présentrez un risque très élevé d'anomalie chromosomique foetale.";
 
-			//Calendar
+			$rootScope.QPregnant = "Etes vous enceinte?";
+			$rootScope.Pregnant = "Félication !";
+
+			$rootScope.QSmoke = "Fumez-vous?";
+			$rootScope.RSmokeA = "Fumer pendant sa grossesse est susceptible d'entrainer des complications pour le foetus";
+			$rootScope.RSmokeB = "La cigarette augmente le risque d'infertilité, de fausse couche, de grossesse extra-utérine, d'accouchement prématuré, de retard de croissance intra-utérin et de mort subite du nourrisson";
+
+			$rootScope.QChild = "Avez-vous des enfants?";
+
+			$rootScope.QHChild = "Combien?";
+
+			$rootScope.QBigChild = "Avez-vous accouché d'un enfant de plus de 4 kilos ? ";
+
+			$rootScope.QHBigChild = "Combien d'enfants de plus de 4 kg avez-vous eu ?";
+
+			$rootScope.QLessChild = "Avez-vous accouché d'un enfant de moins de 2kg200 ?";
+
+
+
+			//Calendar Medical
 			$rootScope.NumberCalendar = "Félicitation vous en êtes à votre ";
 			$rootScope.Weeks = "eme semaines de grossesse aujourd'hui !";
 			$rootScope.delivery = "Vous devriez accoucher le ";
@@ -1420,7 +1450,8 @@ else
 			$rootScope.DateOfT = "Votre date de terme théorique est le: " 
 			$rootScope.DateOfTermDetail = "Vous devez consulter votre médecin ou sage-femme.";
 
-			
+			// Calendar Administratif
+			$rootScope.PregnantD = "";
 
 
 			// Toxo
@@ -1442,7 +1473,7 @@ else
 			$rootScope.ToxoNo = "Non";
 			$rootScope.ToxoIDontKnow = "Je ne sais pas";
 			$rootScope.CreateAccount = "Créer un compte";	
-
+			$rootScope.OK = "OK";
 
 
 
@@ -1460,7 +1491,8 @@ else
 			$rootScope.numberOfWeek = "Th week of pregnancy"
 			$rootScope.helloFirst = "You have chosen to continue your adventure with us and we thank you for it. ";
 
-//Calendar
+			
+			//Calendar
 			$rootScope.NumberCalendar = "Congratulations to your";
 			$rootScope.Weeks = "th weeks of pregnancy today!";
 			$rootScope.delivery = "You should give birth to ";
@@ -1539,6 +1571,11 @@ else
 			$rootScope.DateOfT = "Your theoretical term date is: " 
 			$rootScope.DateOfTermDetail = "You should consult your doctor or midwife.";
 
+			//Calendar Administratif
+
+			$rootScope.PregnantD = "";
+
+
 			// Toxo
 			$rootScope.QToxo = "Are you immunized against toxoplasmosis?";
 
@@ -1558,6 +1595,7 @@ else
 			$rootScope.ToxoNo = "No";
 			$rootScope.ToxoIDontKnow = "I don't know";
 			$rootScope.CreateAccount = "Create an Account";	
+			$rootScope.OK = "OK";
 
 
 
