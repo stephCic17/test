@@ -172,12 +172,30 @@ controller: 'Step18Ctrl'
 }
     } 
     })
-.state('app.calendar', {
-      url: '/calendar',
+.state('app.Mcalendar', {
+      url: '/Mcalendar',
       views: {
           'menuContent':{
-          templateUrl: 'templates/calendar.html',
-          controller: 'CalendarCtrl'
+          templateUrl: 'templates/Mcalendar.html',
+          controller: 'MCalendarCtrl'
+}
+}
+})
+.state('app.ACalendar', {
+      url: '/ACalendar',
+      views: {
+          'menuContent':{
+          templateUrl: 'templates/ACalendar.html',
+          controller: 'ACalendarCtrl'
+}
+    } 
+    })
+.state('app.ECalendar', {
+      url: '/ECalendar',
+      views: {
+          'menuContent':{
+          templateUrl: 'templates/ECalendar.html',
+          controller: 'ECalendarCtrl'
 }
     } 
     })

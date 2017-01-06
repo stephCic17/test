@@ -775,7 +775,7 @@ $scope.submit = function(ghq_a, ghq_b,ghq_c, ghq_d, ghq_e, ghq_f, ghq_g, ghq_h, 
 
 	$scope.yes = function(){
 		$rootScope.Toxo = 1;
-		$state.go('app.calendar');
+		$state.go('app.Mcalendar');
 	}
 	$scope.no = function(){
 		$rootScope.Toxo = 0;
@@ -905,7 +905,7 @@ $scope.submit = function(ghq_a, ghq_b,ghq_c, ghq_d, ghq_e, ghq_f, ghq_g, ghq_h, 
 	}
 })
 
-.controller('CalendarCtrl', function($scope, $state, $http, $rootScope, $ionicSideMenuDelegate){
+.controller('MCalendarCtrl', function($scope, $state, $http, $rootScope, $ionicSideMenuDelegate){
 		$scope.data = {};
 		$scope.test = 
 		url = ""
@@ -1044,6 +1044,283 @@ else
 }
 })
 
+.controller('ACalendarCtrl', function($scope, $state, $http, $rootScope, $ionicSideMenuDelegate){
+		$scope.data = {};
+		$scope.test = 
+		url = ""
+		$rootScope.today = new Date().getTime();
+		$rootScope.nbSemaine = Math.round(((new Date().getTime() - $rootScope.BeginOfPregnancy.getTime()) / (1000 * 60 * 60 * 24)) / 7);
+		$scope.tes = function(){
+			console.log("test");
+		}
+		   $scope.AhideA = true;
+		   $scope.AhideAA = true;
+		   $scope.AhideAAA = true;
+		   $scope.AhideB = true;
+		   $scope.AhideC = true;
+		   $scope.AhideD = true;
+		   $scope.AhideE = true;
+		   $scope.AhideF = true;
+		   $scope.AhideG = true;
+		   $scope.AhideH = true;
+		   $scope.AhideI = true;
+		   $scope.AhideJ = true;
+		   $scope.AhideK = true;
+		   $scope.AhideL = true;
+		   $scope.AhideM = true;
+		   $scope.AhideN = true;
+		   $scope.AhideO = true;
+		   $scope.AhideP = true;
+
+
+$scope.changeA = function(){
+if ($scope.AhideA == false)
+   $scope.AhideA = true;
+else
+   $scope.AhideA = false;
+}
+$scope.changeAA = function(){
+if ($scope.AhideAA == false)
+   $scope.AhideAA = true;
+else
+   $scope.AhideAA = false;
+}
+$scope.changeAAA = function(){
+if ($scope.AhideAAA == false)
+   $scope.AhideAAA = true;
+else
+   $scope.AhideAAA = false;
+}
+$scope.changeB = function(){
+if ($scope.AhideB == false)
+   $scope.AhideB = true;
+else
+   $scope.AhideB = false;
+}
+$scope.changeC = function(){
+if ($scope.AhideC == false)
+   $scope.AhideC = true;
+else
+   $scope.AhideC = false;
+}
+$scope.changeD = function(){
+if ($scope.AhideD == false)
+   $scope.AhideD = true;
+else
+   $scope.AhideD = false;
+}
+$scope.changeE = function(){
+if ($scope.AhideE == false)
+   $scope.AhideE = true;
+else
+   $scope.AhideE = false;
+}
+$scope.changeF = function(){
+if ($scope.AhideF == false)
+   $scope.AhideF = true;
+else
+   $scope.AhideF = false;
+}
+$scope.changeG = function(){
+if ($scope.AhideG == false)
+   $scope.AhideG = true;
+else
+   $scope.AhideG = false;
+}
+$scope.changeH = function(){
+if ($scope.AhideH == false)
+   $scope.AhideH = true;
+else
+   $scope.AhideH = false;
+}
+$scope.changeI = function(){
+if ($scope.AhideI == false)
+   $scope.AhideI = true;
+else
+   $scope.AhideI = false;
+}
+$scope.changeJ = function(){
+if ($scope.AhideJ == false)
+   $scope.AhideJ = true;
+else
+   $scope.AhideJ = false;
+}
+$scope.changeK = function(){
+if ($scope.AhideK == false)
+   $scope.AhideK = true;
+else
+   $scope.AhideK = false;
+}
+$scope.changeL = function(){
+if ($scope.AhideL == false)
+   $scope.AhideL = true;
+else
+   $scope.AhideL = false;
+}
+$scope.changeM = function(){
+if ($scope.AhideM == false)
+   $scope.AhideM = true;
+else
+   $scope.AhideM = false;
+}
+$scope.changeN = function(){
+if ($scope.AhideN == false)
+   $scope.AhideN = true;
+else
+   $scope.AhideN = false;
+}
+$scope.changeO = function(){
+if ($scope.AhideO == false)
+   $scope.AhideO = true;
+else
+   $scope.AhideO = false;
+}
+$scope.changeP = function(){
+if ($scope.AhideP == false)
+   $scope.AhideP = true;
+else
+   $scope.AhideP = false;
+}
+})
+
+.controller('ECalendarCtrl', function($scope, $state, $http, $rootScope, $ionicSideMenuDelegate){
+		$scope.data = {};
+		$scope.test = 
+		url = ""
+		$rootScope.today = new Date().getTime();
+		$rootScope.nbSemaine = Math.round(((new Date().getTime() - $rootScope.BeginOfPregnancy.getTime()) / (1000 * 60 * 60 * 24)) / 7);
+		$scope.tes = function(){
+			console.log("test");
+		}
+		   $scope.EhideA = true;
+		   $scope.EhideAA = true;
+		   $scope.EhideAAA = true;
+		   $scope.EhideB = true;
+		   $scope.EhideC = true;
+		   $scope.EhideD = true;
+		   $scope.EhideE = true;
+		   $scope.EhideF = true;
+		   $scope.EhideG = true;
+		   $scope.EhideH = true;
+		   $scope.EhideI = true;
+		   $scope.EhideJ = true;
+		   $scope.EhideK = true;
+		   $scope.EhideL = true;
+		   $scope.EhideM = true;
+		   $scope.EhideN = true;
+		   $scope.EhideO = true;
+		   $scope.EhideP = true;
+
+
+$scope.changeA = function(){
+if ($scope.EhideA == false)
+   $scope.EhideA = true;
+else
+   $scope.EhideA = false;
+}
+$scope.changeAA = function(){
+if ($scope.EhideAA == false)
+   $scope.EhideAA = true;
+else
+   $scope.EhideAA = false;
+}
+$scope.changeAAA = function(){
+if ($scope.EhideAAA == false)
+   $scope.EhideAAA = true;
+else
+   $scope.EhideAAA = false;
+}
+$scope.changeB = function(){
+if ($scope.EhideB == false)
+   $scope.EhideB = true;
+else
+   $scope.EhideB = false;
+}
+$scope.changeC = function(){
+if ($scope.EhideC == false)
+   $scope.EhideC = true;
+else
+   $scope.EhideC = false;
+}
+$scope.changeD = function(){
+if ($scope.EhideD == false)
+   $scope.EhideD = true;
+else
+   $scope.EhideD = false;
+}
+$scope.changeE = function(){
+if ($scope.EhideE == false)
+   $scope.EhideE = true;
+else
+   $scope.EhideE = false;
+}
+$scope.changeF = function(){
+if ($scope.EhideF == false)
+   $scope.EhideF = true;
+else
+   $scope.EhideF = false;
+}
+$scope.changeG = function(){
+if ($scope.EhideG == false)
+   $scope.EhideG = true;
+else
+   $scope.EhideG = false;
+}
+$scope.changeH = function(){
+if ($scope.EhideH == false)
+   $scope.EhideH = true;
+else
+   $scope.EhideH = false;
+}
+$scope.changeI = function(){
+if ($scope.EhideI == false)
+   $scope.EhideI = true;
+else
+   $scope.EhideI = false;
+}
+$scope.changeJ = function(){
+if ($scope.EhideJ == false)
+   $scope.EhideJ = true;
+else
+   $scope.EhideJ = false;
+}
+$scope.changeK = function(){
+if ($scope.EhideK == false)
+   $scope.EhideK = true;
+else
+   $scope.EhideK = false;
+}
+$scope.changeL = function(){
+if ($scope.EhideL == false)
+   $scope.EhideL = true;
+else
+   $scope.EhideL = false;
+}
+$scope.changeM = function(){
+if ($scope.EhideM == false)
+   $scope.EhideM = true;
+else
+   $scope.EhideM = false;
+}
+$scope.changeN = function(){
+if ($scope.EhideN == false)
+   $scope.EhideN = true;
+else
+   $scope.EhideN = false;
+}
+$scope.changeO = function(){
+if ($scope.EhideO == false)
+   $scope.EhideO = true;
+else
+   $scope.EhideO = false;
+}
+$scope.changeP = function(){
+if ($scope.EhideP == false)
+   $scope.EhideP = true;
+else
+   $scope.EhideP = false;
+}
+})
 .controller('HomeCtrl', function($scope, $state, $http, $rootScope) {
 		$scope.data = {};
 	$scope.test = 
@@ -1149,12 +1426,27 @@ else
 			// Toxo
 			$rootScope.QToxo = "Etes-vous immunisé contre la toxoplasmose?";
 
+			//Menu
+			$rootScope.Menu = "Menu";
+			$rootScope.MCalendar = "Calendrier médical";
+			$rootScope.ACalendar = "Calendrier Administratif";
+			$rootScope.ECalendar = "Examen Biologique";
+			$rootScope.MPsycho = "Psycho";
+			$rootScope.MToday = "Aujourd'hui";
+			$rootScope.MToxo = "Toxoplasmose";
+
 
 			// Divers
 			$rootScope.And = " et le ";
 			$rootScope.ToxoYes = "Oui";
 			$rootScope.ToxoNo = "Non";
 			$rootScope.ToxoIDontKnow = "Je ne sais pas";
+			$rootScope.CreateAccount = "Créer un compte";	
+
+
+
+
+
 			$state.go('home');
 		}
 		$scope.english = function(){
@@ -1250,11 +1542,39 @@ else
 			// Toxo
 			$rootScope.QToxo = "Are you immunized against toxoplasmosis?";
 
+			//Menu
+			$rootScope.Menu = "Menu";
+			$rootScope.MCalendar = "Medical calendar";
+			$rootScope.ACalendar = "Administrative calendar";
+			$rootScope.ECalendar = "Organic Review";
+			$rootScope.MPsycho = "Psycho";
+			$rootScope.MToday = "Today";
+			$rootScope.MToxo = "Toxoplasmosis";
+
+
 			//Divers
 			$rootScope.And = " and the ";
 			$rootScope.ToxoYes = "Yes";
 			$rootScope.ToxoNo = "No";
 			$rootScope.ToxoIDontKnow = "I don't know";
+			$rootScope.CreateAccount = "Create an Account";	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 			$state.go('home');
 		}

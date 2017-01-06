@@ -15,21 +15,27 @@
 
   <ion-side-menu side="right">
     <ion-header-bar class="bar-stable">
-      <h1 class="title">Menu</h1>
+      <h1 class="title">{{Menu}}</h1>
     </ion-header-bar>
     <ion-content>
       <ion-list>
-        <ion-item menu-close href="#/app/calendar">
-          Calendrier
+        <ion-item menu-close href="#/app/Mcalendar">
+          {{MCalendar}}
+        </ion-item>
+        <ion-item menu-close href="#/app/Ecalendar">
+          {{ECalendar}}
+        </ion-item>
+        <ion-item menu-close href="#/app/ACalendar">
+          {{ACalendar}}
         </ion-item>
         <ion-item menu-close href="#/app/psycho">
-          Psycho
+          {{MPsycho}}
         </ion-item>
         <ion-item menu-close href="#/app/browse">
-          Today
+          {{MToday}}
         </ion-item>
         <ion-item ng-if="Toxo != 1" menu-close href="#/app/toxo">
-          Toxo
+          {{MToxo}}
         </ion-item>
       </ion-list>
     </ion-content>
