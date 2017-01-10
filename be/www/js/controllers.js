@@ -636,7 +636,11 @@ $scope.submit = function(ghq_a, ghq_b,ghq_c, ghq_d, ghq_e, ghq_f, ghq_g, ghq_h, 
 	$scope.test = 
 		url = ""
 		$scope.submit = function(gros) {
-			
+	
+
+
+			//////////////////    Calendrier Medical ////////////////////
+	
 			// Date des dernieres regles //
 			$rootScope.LastMenstruation = new Date(gros);
 			$rootScope.LastMenstruationTimestamp = $rootScope.LastMenstruation.getTime();
@@ -772,9 +776,45 @@ $scope.submit = function(ghq_a, ghq_b,ghq_c, ghq_d, ghq_e, ghq_f, ghq_g, ghq_h, 
 			$rootScope.WeekPregnant = Math.round(((new Date().getTime() - $rootScope.LastMenstruation.getTime()) / (1000 * 60 * 60 * 24)) / 7);
 
 			// Calendrier Administratif
+
+			// Pregnant Declaration
 			$rootScope.PregnantDeclaration = new Date($rootScope.BeginOfPregnancy.getTime() + 9158400000);
 			$rootScope.PregnantDeclarationDate = $rootScope.PregnantDeclaration.toLocaleDateString();
 			$rootScope.PregnantDeclarationTimestamp = $rootScope.PregnantDeclaration.getTime();
+
+			//Employer Information
+			$rootScope.EmployerInformation = 
+			$rootScope.EmployerInformationDate = 
+			$rootScope.EmployerInformationTimestamp = 
+
+			//Choosing Your Maternity
+			$rootScope.YourMaternity
+
+			//Information on childcare arrangements
+			
+			
+			//Information on aid
+
+			//Updating Your Vital Card
+
+			//Paternity Recognition
+
+			//Maternity Leave
+
+			//Inscription on the list of a nursery
+
+			//My Maternity Insurance Plan
+
+
+			//Deadline for air travel
+
+			//Declaration of birth
+
+			//Birth registration with organizations
+
+			//End of maternity leave
+
+			//Paternity leave
 
 
 
