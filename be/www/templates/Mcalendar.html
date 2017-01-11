@@ -1,7 +1,7 @@
 <ion-view view-title=Ciconia name=calendar-view>
   <ion-content class=padding> 
-    <h5>{{NumberCalendar}} <span ng-bind="nbSemaine"></span> {{Weeks}}</h5>
-    <h5>{{delivery}}<span ng-bind="termeDate"></span></h5>
+    <h5>{{NumberCalendar}} {{WeekPregnant}} {{numberOfWeek}}</h5>
+    <h5>{{delivery}}<span ng-bind="DateOfTermDate"></span></h5>
     <h6>{{Calendar}}</h6>
  
      <div class=avenir ng-if="LastMenstruationTimestamp > today">
@@ -290,7 +290,7 @@
 
 
 <div class="avenir" ng-if="AnesthetistConsultEndTimestamp > today">
-    <button class="accordion" ng-click=changeN())>
+    <button class="accordion" ng-click=changeN()>
       {{AnesthetistC}}<span ng-bind="AnesthetistConsultStartDate"></span>{{And}}<span ng-bind="AnesthetistConsultEndDate"></span>
     </button>
     <div class="panel" ng-hide=hideN>
@@ -299,7 +299,7 @@
 </div>
 <!--   -->
 <div class="passe" ng-if="AnesthetistConsultEndTimestamp < today">
-    <button class="accordion" ng-click=changeN())>
+    <button class="accordion" ng-click=changeN()>
      {{AnesthetistCPast}}<span ng-bind="AnesthetistConsultEndDate"></span>
     </button>
     <div class="panel" ng-hide=hideN>
@@ -308,7 +308,7 @@
 </div>
 
 <div class="avenir" ng-if="SeventhPrenatalCareEndTimestamp > today">
-    <button class="accordion" ng-click=changeO())>
+    <button class="accordion" ng-click=changeO()>
       {{SeventhPC}}<span ng-bind="SeventhPrenatalCareStartDate"></span>{{And}}<span ng-bind="SeventhPrenatalCareEndDate"></span>
     </button>
     <div class="panel" ng-hide=hideO>
@@ -317,7 +317,7 @@
 </div>
 <!--   -->
 <div class="passe" ng-if="SeventhPrenatalCareEndTimestamp < today">
-    <button class="accordion" ng-click=changeO())>
+    <button class="accordion" ng-click=changeO()>
      {{SeventhPCPast}}<span ng-bind="SeventhPrenatalCareEndDate"></span>
     </button>
     <div class="panel" ng-hide=hideO>

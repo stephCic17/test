@@ -772,9 +772,9 @@ $scope.submit = function(ghq_a, ghq_b,ghq_c, ghq_d, ghq_e, ghq_f, ghq_g, ghq_h, 
 			$rootScope.DateOfTermTimestamp = $rootScope.DateOfTerm.getTime();
 
 			//Nombre de semaines de grossesse 
-			
 			$rootScope.WeekPregnant = Math.round(((new Date().getTime() - $rootScope.LastMenstruation.getTime()) / (1000 * 60 * 60 * 24)) / 7);
-
+			console.log("Nb week pregnant");
+			console.log($rootScope.WeekPregnant);
 			// Calendrier Administratif
 
 			// Pregnant Declaration
