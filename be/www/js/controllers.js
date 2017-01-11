@@ -159,12 +159,14 @@ template: 'Please check your credentials!'
 			$scope.data = {};
 	$scope.test = 
 		url = ""
-		$scope.nb = function() {
-			$rootScope.i = $scope.data.nb;
-			if ($rootScope.i > 0){
-				$state.go('step10');
-			}
-		}
+	$scope.yes = function(){
+		$rootScope.Prema = 1;
+		$state.go('step10');
+	}
+	$scope.no = function() {
+		$rootScope.Prema = 0;
+		$state.go('step10');
+	}
 })
 
 .controller('Step10Ctrl', function($scope, $state, $http, $rootScope) {
@@ -172,11 +174,11 @@ template: 'Please check your credentials!'
 	$scope.test = 
 		url = ""
 		$scope.yes = function(){
-			$rootScope.j = 1;
+			$rootScope.PreEclamp = 1;
 			$state.go('step11');
 		}
 		$scope.no = function() {
-			$rootScope.j = 0;
+			$rootScope.PreEclamp = 0;
 			$state.go('step11');
 		}
 })
@@ -187,12 +189,12 @@ template: 'Please check your credentials!'
 	$scope.test = 
 		url = ""
 		$scope.yes = function(){
-			$rootScope.k = 1;
-			$state.go('step12');
+			$rootScope.PregnantDiabete = 1;
+			$state.go('step13');
 		}
 		$scope.no = function() {
-			$rootScope.k = 0;
-			$state.go('step12');
+			$rootScope.PregnantDiabete = 0;
+			$state.go('step13');
 		}
 })
 
@@ -201,68 +203,63 @@ template: 'Please check your credentials!'
 			$scope.data = {};
 	$scope.test = 
 		url = ""
-		$scope.yes = function(){
-			$rootScope.sr = 1;
+	$scope.nb = function() {
+		$rootScope.NbCesa = $scope.NbCesa;
+		if ($rootScope.NbCesa >= 0){
 			$state.go('step13');
 		}
-		$scope.no = function() {
-			$rootScope.sr = 0;
-			$state.go('step13');
-		}
+	}
 })
 
-
-.controller('Step13Ctrl', function($scope, $state,  $http, $rootScope) {
+.controller('Step13Ctrl', function($scope, $state, $http, $rootScope) {
+			$scope.data = {};
+	$scope.test = 
+		url = ""
+		$scope.yes = function(){
+			$rootScope.Miscarriage = 1;
+			$state.go('step14');
+		}
+		$scope.no = function() {
+			$rootScope.Miscarriage = 0;
+			$state.go('step15');
+		}
+})
+.controller('Step14Ctrl', function($scope, $state,  $http, $rootScope) {
 			$scope.data = {};
 	$scope.test = 
 		url = ""
 		$scope.nb = function() {
-			$rootScope.m = $scope.data.nb;
-			if ($rootScope.m > 0){
-				$state.go('step14');
+			$rootScope.miscarriage = $scope.NbMiacarriage;
+			if ($rootScope.miscarriage > 0){
+				$state.go('step15');
 			}
 		}
 })
-
-.controller('Step14Ctrl', function($scope, $state, $http, $rootScope) {
-			$scope.data = {};
-	$scope.test = 
-		url = ""
-		$scope.yes = function(){
-			$rootScope.n = 1;
-			$state.go('step15');
-		}
-		$scope.no = function() {
-			$rootScope.n = 0;
-			$state.go('step16');
-		}
-})
-
 
 .controller('Step15Ctrl', function($scope, $state,  $http, $rootScope) {
 			$scope.data = {};
 	$scope.test = 
 		url = ""
-		$scope.nb = function() {
-			$rootScope.o = $scope.data.nb;
-			if ($rootScope.o > 0){
-				$state.go('step16');
-			}
+		$scope.yes = function(){
+			$rootScope.IMG = 1;
+			$state.go('step16');
+		}
+		$scope.no = function() {
+			$rootScope.IMG = 0;
+			$state.go('step16');
 		}
 })
 
 .controller('Step16Ctrl', function($scope, $state, $http, $rootScope) {
-			$scope.data = {};
+	$scope.data = {};
 	$scope.test = 
-		url = ""
-		$scope.yes = function(){
-			$rootScope.p = 1;
-			$state.go('step17');
+	url = ""
+	$scope.nb = function() {
+		$rootScope.Alcool = $scope.data.nb;
+		if ($rootScope.Alcool >= 0){
+			$state.go('step0');
 		}
-		$scope.no = function() {
-			$rootScope.p = 0;
-			$state.go('step17');
-		}
+	}
 })
 
 
@@ -271,11 +268,11 @@ template: 'Please check your credentials!'
 	$scope.test = 
 		url = ""
 		$scope.yes = function(){
-			$rootScope.q = 1;
+			$rootScope.Epilepsy = 1;
 			$state.go('step18');
 		}
 		$scope.no = function() {
-			$rootScope.q = 0;
+			$rootScope.Epilepsy = 0;
 			$state.go('step18');
 		}
 })
@@ -285,21 +282,48 @@ template: 'Please check your credentials!'
 			$scope.data = {};
 	$scope.test = 
 		url = ""
-		$scope.nb = function() {
-			$rootScope.r = $scope.data.nb;
-			if ($rootScope.r > 0){
-				$state.go('step0');
-			}
+		$scope.yes = function(){
+			$rootScope.Phlebitis = 1;
+			$state.go('step19');
+		}
+		$scope.no = function() {
+			$rootScope.Phlebitis = 0;
+			$state.go('step19');
 		}
 })
 
+.controller('Step19Ctrl', function($scope, $state,  $http, $rootScope) {
+			$scope.data = {};
+	$scope.test = 
+		url = ""
+		$scope.yes = function(){
+			$rootScope.HighBloodPresure = 1;
+			$state.go('step19');
+		}
+		$scope.no = function() {
+			$rootScope.HighBloodPresure = 0;
+			$state.go('step19');
+		}
+})
+
+.controller('Step20Ctrl', function($scope, $state,  $http, $rootScope) {
+			$scope.data = {};
+	$scope.test = 
+		url = ""
+		$scope.yes = function(){
+			$rootScope.diabetesH  = 1;
+			$state.go('step19');
+		}
+		$scope.no = function() {
+			$rootScope.diabetesH = 0;
+			$state.go('step19');
+		}
+})
 .controller('GhqCtrl', function($scope,  $state , $http, $rootScope){
 	$scope.data = {};
 	$scope.test = 
 		url = ""
-//C' est trop chelou, la variable chande dynamiquement des 
-//que tu la change mais le submit le prend pas en compte
-$scope.submit = function(ghq_a, ghq_b,ghq_c, ghq_d, ghq_e, ghq_f, ghq_g, ghq_h, ghq_i, ghq_j, ghq_k,ghq_l, ghq_m, ghq_n, ghq_o, ghq_p, ghq_q, ghq_r, ghq_s, ghq_t, ghq_u,ghq_v, ghq_w, ghq_x, ghq_y, ghq_z, ghq_za, ghq_zb){
+	$scope.submit = function(ghq_a, ghq_b,ghq_c, ghq_d, ghq_e, ghq_f, ghq_g, ghq_h, ghq_i, ghq_j, ghq_k,ghq_l, ghq_m, ghq_n, ghq_o, ghq_p, ghq_q, ghq_r, ghq_s, ghq_t, ghq_u,ghq_v, ghq_w, ghq_x, ghq_y, ghq_z, ghq_za, ghq_zb){
 	$rootScope.resGhq = 
 		parseInt(ghq_a) 
 		+ parseInt(ghq_b)
@@ -773,8 +797,7 @@ $scope.submit = function(ghq_a, ghq_b,ghq_c, ghq_d, ghq_e, ghq_f, ghq_g, ghq_h, 
 
 			//Nombre de semaines de grossesse 
 			$rootScope.WeekPregnant = Math.round(((new Date().getTime() - $rootScope.LastMenstruation.getTime()) / (1000 * 60 * 60 * 24)) / 7);
-			console.log("Nb week pregnant");
-			console.log($rootScope.WeekPregnant);
+
 			// Calendrier Administratif
 
 			// Pregnant Declaration
@@ -1422,6 +1445,36 @@ else
 			$rootScope.QHBigChild = "Combien d'enfants de plus de 4 kg avez-vous eu ?";
 
 			$rootScope.QLessChild = "Avez-vous accouché d'un enfant de moins de 2kg200 ?";
+
+			$rootScope.QPrema = "Votre enfant était il prématuré ?";
+
+			$rootScope.QPreEclamp = "Avez-vous eu une pré-éclampsie ? ";
+
+			$rootScope.QPregnantDiabete = "Avez-vous un diabète de grossesse (diabète gestationnel) ?";
+
+			$rootScope.QNbCesa = "Combien de césarienne avez-vous eu ?";
+
+			$rootScope.QMiscarriage = "Avez-vous fais des fausse couche ?";
+
+			$rootScope.QNbMiscarriage = "Combien de fausse couche avez-vous fait ?";
+
+			$rootScope.QIMG = "Avez-vous fait une ou des IMG ?";
+
+			$rootScope.QAlcool = "Combien de verres d'alcool buvez-vous par semaine ?";
+
+			$rootScope.QEpilepsy = "Avez-vous une épilepsie ? ";
+
+			$rootScope.QPhlebitis = "Avez-vous déjà eu une phlébite ?";
+
+			$rootScope.QHighBloodPresure = "Avez-vous de l'hypertension artérielle ?";
+
+			$rootScope.QdiabetesH = "Avez-vous du diabète ?";
+
+
+
+
+
+
 
 
 

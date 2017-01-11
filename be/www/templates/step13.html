@@ -1,13 +1,10 @@
-<ion-view view-title=Step13 name=step13-view>
-  <ion-content class=padding>
-      <div class=list list-inset>
-                <progress max="16" value="10"></progress>
-      </div>
-      <p>Combien de césarienne avez-vous eu?</p>
-      <label class=item item-input>
-      <input type=text ng-model=data.nb placeholder=>
-      </label>
-      <button class=button button-block button-calm ng-click=nb()>OK</button>
-
+<ion-view view-title=Step14 name=step14-view>
+  <ion-content class=padding> 
+     <div class=list list-inset>  
+      <progress max=16 value=11></progress>     
+    </div>  
+    <p>{{QMiscarriage}}</p>    
+  <button class=button button-block button-calm ng-click=yes()>{{Yes}}</button>  
+    <button class=button button-block button-calm ng-click=no()>{{No}}</button>
   </ion-content>
 </ion-view>

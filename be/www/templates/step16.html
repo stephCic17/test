@@ -1,10 +1,12 @@
 <ion-view view-title=Step16 name=step16-view>
-  <ion-content class=padding> 
-     <div class=list list-inset>  
-      <progress max=16 value=13></progress>     
-    </div>  
-    <p>Avez-vous fait une ou des IVG?</p>    
-  <button class=button button-block button-calm ng-click=yes()>OUI</button>  
-    <button class=button button-block button-calm ng-click=no()>NON</button>
+  <ion-content class=padding>
+      <div class=list list-inset>
+        <progress max="16" value="15"></progress>
+      </div>
+      <p>{{Combien de verres d'alcool buvez-vous par semaine?}}</p>
+     <div class=item range>       
+<input type=range name=volume min=0 max=30 ng-model=data.nb ng-change=drag(data.nb)></div>
+<div>{{data.nb}}</div>
+<button class=button button-block button-calm ng-click=nb()>OK</button>
   </ion-content>
 </ion-view>
