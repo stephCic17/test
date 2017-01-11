@@ -783,30 +783,43 @@ $scope.submit = function(ghq_a, ghq_b,ghq_c, ghq_d, ghq_e, ghq_f, ghq_g, ghq_h, 
 			$rootScope.PregnantDeclarationTimestamp = $rootScope.PregnantDeclaration.getTime();
 
 			//Employer Information
-			$rootScope.EmployerInformation = 
-			$rootScope.EmployerInformationDate = 
-			$rootScope.EmployerInformationTimestamp = 
+			$rootScope.EmployerInformation = "N/A";
 
 			//Choosing Your Maternity
-			$rootScope.YourMaternity
+			$rootScope.YourMaternity = new Date($rootScope.BeginOfPregnancy.getTime() + 9158400000);
+			$rootScope.YourMaternityDate = $rootScope.YourMaternity.toLocaleDateString();
+			$rootScope.YourMaternityTimestamp = $rootScope.YourMaternity.getTime();
 
 			//Information on childcare arrangements
-			
-			
+
 			//Information on aid
 
 			//Updating Your Vital Card
+			$rootScope.VitalCard = new Date($rootScope.BeginOfPregnancy.getTime() + 1.45152e+10);
+			$rootScope.VitalCardDate = $rootScope.VitalCard.toLocaleDateString();
+			$rootScope.VitalCardimestamp = $rootScope.VitalCard.getTime();
 
 			//Paternity Recognition
+			$rootScope.PaternityRecognition = new Date($rootScope.BeginOfPregnancy.getTime() + 1.2096e+10);
+			$rootScope.PaternityRecognitionDate = $rootScope.PaternityRecognition.toLocaleDateString();
+			$rootScope.PaternityRecognitionTimestamp = $rootScope.PaternityRecognition.getTime();
 
 			//Maternity Leave
+			$rootScope.MaternityLeave = new Date($rootScope.BeginOfPregnancy);
+			$rootScope.MaternityLeaveDate = $rootScope.MaternityLeave.toLocaleDateString();
+			$rootScope.MaternityLeaveTimestamp = $rootScope.MaternityLeave.getTime();
 
 			//Inscription on the list of a nursery
+			$rootScope.InscriptionNursery = new Date($rootScope.BeginOfPregnancyTimestamp + 1.45152e+10);
+			$rootScope.InscriptionNurseryDate = $rootScope.InscriptionNursery.toLocaleDateString();
+			$rootScope.InscriptionNurseryTimestamp = $rootScope.InscriptionNursery.getTime();
 
 			//My Maternity Insurance Plan
 
-
 			//Deadline for air travel
+			$rootScope.DeadlineAirTravel = new Date($rootScope.BeginOfPregnancyTimestamp + 1.8144e+10);
+			$rootScope.DeadlineAirTravelDate = $rootScope.DeadlineAirTravel.toLocaleDateString();
+			$rootScope.DeadlineAirTravelTimestamp = $rootScope.DeadlineAirTravel.getTime();
 
 			//Declaration of birth
 
@@ -815,8 +828,6 @@ $scope.submit = function(ghq_a, ghq_b,ghq_c, ghq_d, ghq_e, ghq_f, ghq_g, ghq_h, 
 			//End of maternity leave
 
 			//Paternity leave
-
-
 
 
 
@@ -1489,10 +1500,58 @@ else
 
 			$rootScope.DateOfT = "Votre date de terme théorique est le: " 
 			$rootScope.DateOfTermDetail = "Vous devez consulter votre médecin ou sage-femme.";
+			
+			$rootScope.PregnantPC = "Vous devez effectuer votre déclaration de grassesse avant le ";
+			$rootScope.PregnantPCPast = "Vous avez effectuer votre déclaration de grossesse le ";
+			$rootScope.PregnantDeclarationDetail = "Demandez à votre gynécologue ou votre sage femme de remplir votre déclaration de grossesse. Remplissez ensuite votre partie.  Adressez le volet rose à la Caisse d'Allocations Familiales et le volet bleu à votre organisme d'assurance-maladie avant le [.... calcul de date à J+106 au plus tard.] Cela permet le remboursement des soins à 100% et le déclenchement de votre congé de maternité. En cas de litige, cela permet également de faire valoir vos droits et votre protection au travail. Enfin, pensez à mettre à jour votre carte vitale ! ";
+			
+			$rootScope.EmployerInformationPC = "Information Employeur N/A";
+			$rootScope.EmployerInformationDetail = "Aucune obligation légale, mais cela est utile notamment si un aménagement de votre temps de travail s'avère nécessaire";
 
-			// Calendar Administratif
-			$rootScope.PregnantD = "";
+			$rootScope.YourMaternityPC = "Vous devez choisir votre maternité avant le ";
+			$rootScope.YourMaternityPCPast = "Vous avez effectué votre choix de maternité le ";
+			$rootScope.YourMaternityDetail = "Il est recommandé de s'inscrire dans une maternité le plus tôt possible. Vous avez le choix entre les hôpitaux publics ou les cliniques privées (conventionnées ou non). Pensez à vous renseigner auprès de votre complémentaire santé sur la prise en charge de votre séjour en maternité. Il existe trois types de maternité : Type I (adapté à la plupart des accouchements) qui accueillent tous les enfants de poids normal et non prématurés.  Type II (comporte une unité de néonatalogie) et prend en charge les enfants à partir de 32 SA et 1,5kg, Type III (comporte une unité de néonatalogie et un service de réanimation néonatale) et prend en charge les enfants à partir de 25 SA et de 500g. ";
 
+			$rootScope.childcarInformationPC = "Renseignement sur les mode de de gardes";
+			$rootScope.childcarInformationDetail = "En collectivité publique ou privé, auxiliaire parentale ou profesionnelle, avec un ou 2 autres enfants, en garde partagée, seul à la maison ou chez une nourrice aggrée. De nombreux choix s'offrent à vous.";
+
+			$rootScope.InformationAidPC = "Renseignement sur les aides: Prestation d'acceuil du jeune enfant (PAJE) / Allocation parent isolé";
+			$rootScope.InformationAidDetail = "Nous vous invitons à consulter le site : www.caf.fr";
+
+			$rootScope.VitaleCardPC = "Vous pouvez mettre à jour votre carte vital à partir du ";
+			$rootScope.VitaleCardPCPast = "Vous avez mis à jour votre carte vital le ";
+			$rootScope.VitalCardDetail = "Pensez à mettre à jour votre carte vitale afin que vos dépenses de santé soient prises en charge à 100% à partir du 1er jour du 6e mois et jusqu'à 12 jours après votre accouchement.";
+
+			$rootScope.PaternityRecognitionPC = " Vous pouvez effectuer la Reconnaissance de paternité à parir du ";
+			$rootScope.PaternityRecognitionPCPast = "Vous pouvez effectuer la reconnaissance de paternité depuis le ";
+			$rootScope.PaternityRecognitionDetail = "Cette démarche concerne exclusivement les couples non mariés. Cela permet au père de l'enfant d'être reconnu comme tel par l'adminstration. ";
+			
+			$rootScope.MaternityLeavePC = "Votre congé maternité ";
+			$rootScope.MaternityLeaveDetail = "Pour une femme salariée : début du congé prénatal qui commence à la 35e SA (soit 6 semaines avant l'accouchement) s'il s'agit du premier ou deuxième enfant, le congé postnatal dure 10 semaines : soit un congé maternité de 16 semaines en tout. Le congé prénatal débute à la 33e SA (8 semaines avant) s'il s'agit du 3ème enfant, le congé postnatal dure 18 semaines : soit un congé maternité de 26 semaines en tout. Le congé prénatal débute à la 29e SA (12 semaines avant) s'il s'agit de jumeaux, le congé postnatal dure 22 semaines : soit un congé maternité de 34 semaines en tout. Le congé prénatal débute à la 17e SA (24 semaines avant) s'il s'agit de triplés ou plus, le congé postnatal dure 22 semaines : soit un congé maternité de 46 semaines en tout. Pour une femme en profession libérale : le congé maternité dure 16 semaines en tout.";
+
+			$rootScope.InscriptionNurseryPC = "Vous pouvez effectuer l'inscription sur la liste d'une crèche à partir du ";
+			$rootScope.InscriptionNurseryPCPast = "Vous pouvez effectuer l'inscription sur la liste d'une crèche depuis le ";
+			$rootScope.InscriptionNurseryDetail = "N'hésitez pas à demander une attestation de grossesse à votre gynécologue ou votre sage femme et n'oubliez pas de reconfirmer votre inscription à la naissance de votre enfant.";
+
+			$rootScope.MaternityInsurancePC = "Mon régime d'assurance maladie ";
+			$rootScope.MaternityInsuranceDetail = "L'assurance maternité prend en charge à 100% (sur la base du tarif de la SS) : les 7 consultations prénatales et la consultation postnatale obligatoires,  l'entretien prénatal et les 7 séances de préparation à la naissance, les honoraires de l'accouchement, les frais de séjour à l'hôpital ou en clinique conventionnée (dans la limite de 12 jours), tous les soins en lien avec la grossesse à partir du 1er jour du 6ème mois de grossesse, l'hospitalisation éventuelle du nouveau-né au cours de ses 30 premiers jours de vie et l'échographie de 32 SA. Les échographies de 12 et 22 SA  sont remboursées à 70%.";
+			
+			$rootScope.DeadlineAirTravelPC = "Vous pouvez voyager en avion jusqu'au ";
+			$rootScope.DeadlineAirTravelPCPast = "Vous ne pouvez plus voyager en avion depuis le ";
+			$rootScope.DeadlineAirTravelDetail = "";
+			
+			$rootScope.DeclarationBirthPC = "Declaration de naissance";
+			$rootScope.DeclarationBirthDetail = "A faire en mairie dans les 3 jours ouvrables de votre accouchement. Ce délai devrait passer à 5 jours ouvrables courant 2017.";
+
+			$rootScope.BirthRegistrationPC = "Déclaration de naissance auprès des organismes (caisse d'assurance maladie, mutuelle, etc.)";
+			$rootScope.BirthRegistrationDetail = "Pensez à mettre à jour votre carte Vitale et à renvoyer votre imprimé de rattachement rempli à votre caisse d'assurance maladie.";
+			
+			$rootScope.EndMaternityLeavePC = "Fin de votre congé maternité";
+			$rootScope.EndMaternityLeaveDetail = " Si vous allaitez, sachez qu'il n'existe pas de congé allaitement mais vous avez le droit de vous libérer une heure par jour pour allaiter votre enfant. Cette heure n'est généralement pas rémunérée. Vous pouvez vous renseigner auprès de votre employeur.";
+			
+			$rootScope.PaternityLeavePC = "Congé Paternité";
+			$rootScope.PaternityLeaveDetail = "Le père peut prendre un congé paternité. Afin d'en bénéficier, il doit en faire la demande à son employeur au moins un mois avant la date souhaitée du début de congé. Sa durée est de 11 jours consécutifs (y compris samedis, dimanches et jours fériés) pour un enfant ou de 18 jours pour une naissance multiple. Le congé doit débuter dans les 4 mois suivant la naissance de l'enfant mais peut être reporté en cas d'hospitalisation de l'enfant. Ce congé s'ajoute aux 3 jours accordés par l'employeur lors de la naissance de l'enfant. ";
+			
 
 			// Toxo
 			$rootScope.QToxo = "Etes-vous immunisé contre la toxoplasmose?";
