@@ -692,16 +692,6 @@ template: 'Please check your credentials!'
 		$scope.eat = function(){
 			$state.go('app.eat');
 		}	
-		setTimeout(function() { $cordovaLocalNotification.schedule({
-        id: 1,
-        title: 'Hello',
-        text: 'Toto',
-        icon:'',
-        data: {
-          customProperty: '#/app/calendar'
-        }
-      });}, 300);
-          
 })
 
 .controller('Step0Ctrl', function($scope, $state, $http, $rootScope) {
@@ -1583,9 +1573,19 @@ else
 	$scope.url = ""
 
 	$scope.view = function(){
-		
+
 	}
 
+})
+
+.controller('TodayCtrl', function($scope, $state, $http, $rootScope){
+	$scope.data = {};
+	$scope.test = 
+	$scope.url = ""
+
+	$scope.submit = function(){
+
+	}
 })
 .controller('HomeCtrl', function($scope, $state, $http, $rootScope) {
 		$scope.data = {};
@@ -1601,7 +1601,7 @@ else
 			$rootScope.langage = 1;
 			//home
 			$rootScope.account = "Je possède déjà un compte";
-			$rootScope.begin = "Commençons l'aventure";
+			$rootScope.begin = "Commençons l'aventure!";
 
 			// launch
 			$rootScope.hello = "Bonjour, aujourd\'hui vous en êtes à votre ";
@@ -2055,23 +2055,6 @@ else
 			$rootScope.ToxoIDontKnow = "I don't know";
 			$rootScope.CreateAccount = "Create an Account";	
 			$rootScope.OK = "OK";
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 			$state.go('home');
 		}

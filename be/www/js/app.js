@@ -277,6 +277,15 @@ controller: 'Step28Ctrl'
 }
 }
 })
+.state('app.Today', {
+      url: '/Today',
+      views: {
+          'menuContent':{
+          templateUrl: 'templates/Today.html',
+          controller: 'TodayCtrl'
+}
+}
+})
 .state('app.ChildCalendar', {
       url: '/ChildCalendar',
       views: {
