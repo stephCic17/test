@@ -50,8 +50,8 @@ template: 'Please check your credentials!'
 	$scope.data = {};
 	$scope.test = 
 	url = ""
-	$scope.nb = function() {
-		$rootScope.Age = $scope.age;
+	$scope.nb = function(HAge) {
+		$rootScope.Age = HAge;
 		if ($rootScope.Age > 0){
 			$state.go('step2');
 		}
@@ -98,7 +98,7 @@ template: 'Please check your credentials!'
 	}
 	$scope.no = function() {
 		$rootScope.Child = 0;
-		$state.go('step15');
+		$state.go('step13');
 	}
 })
 
@@ -107,9 +107,9 @@ template: 'Please check your credentials!'
 	$scope.data = {};
 	$scope.test = 
 	url = ""
-	$scope.nb = function() {
-		$rootScope.HChild = $scope.HChild;
-		if ($rootScope.e > 0){
+	$scope.nb = function(HChild) {
+		$rootScope.HChild = HChild;
+		if ($rootScope.HChild > 0){
 			$state.go('step6');
 		}
 	}
@@ -121,23 +121,11 @@ template: 'Please check your credentials!'
 		url = ""
 		$scope.yes = function(){
 			$rootScope.BigChild = 1;
-			$state.go('step7');
+			$state.go('step8');
 		}
 		$scope.no = function() {
 			$rootScope.BigChild = 0;
 			$state.go('step8');
-		}
-})
-
-.controller('Step7Ctrl', function($scope, $state,  $http, $rootScope) {
-			$scope.data = {};
-	$scope.test = 
-		url = ""
-		$scope.nb = function() {
-			$rootScope.HBigChild = $scope.HbigChild;
-			if ($rootScope.HBigChild > 0){
-				$state.go('step8');
-			}
 		}
 })
 
@@ -203,8 +191,8 @@ template: 'Please check your credentials!'
 			$scope.data = {};
 	$scope.test = 
 		url = ""
-	$scope.nb = function() {
-		$rootScope.NbCesa = $scope.NbCesa;
+	$scope.nb = function(NbCesa) {
+		$rootScope.NbCesa = NbCesa;
 		if ($rootScope.NbCesa >= 0){
 			$state.go('step13');
 		}
@@ -228,8 +216,8 @@ template: 'Please check your credentials!'
 			$scope.data = {};
 	$scope.test = 
 		url = ""
-		$scope.nb = function() {
-			$rootScope.miscarriage = $scope.NbMiacarriage;
+		$scope.nb = function(NbMiacariage) {
+			$rootScope.miscarriage = NbMiacariage;
 			if ($rootScope.miscarriage > 0){
 				$state.go('step15');
 			}
@@ -257,7 +245,7 @@ template: 'Please check your credentials!'
 	$scope.nb = function() {
 		$rootScope.Alcool = $scope.data.nb;
 		if ($rootScope.Alcool >= 0){
-			$state.go('step0');
+			$state.go('step17');
 		}
 	}
 })
@@ -298,13 +286,15 @@ template: 'Please check your credentials!'
 		url = ""
 		$scope.yes = function(){
 			$rootScope.HighBloodPresure = 1;
-			$state.go('step19');
+			$state.go('step20');
 		}
 		$scope.no = function() {
 			$rootScope.HighBloodPresure = 0;
-			$state.go('step19');
+			$state.go('step20');
 		}
 })
+
+
 
 .controller('Step20Ctrl', function($scope, $state,  $http, $rootScope) {
 			$scope.data = {};
@@ -312,13 +302,114 @@ template: 'Please check your credentials!'
 		url = ""
 		$scope.yes = function(){
 			$rootScope.diabetesH  = 1;
-			$state.go('step19');
+			$state.go('step21');
 		}
 		$scope.no = function() {
 			$rootScope.diabetesH = 0;
-			$state.go('step19');
+			$state.go('step21');
 		}
 })
+
+.controller('Step21Ctrl', function($scope, $state,  $http, $rootScope) {
+			$scope.data = {};
+	$scope.test = 
+		url = ""
+		$scope.yes = function(){
+			$rootScope.Medicament = 1;
+			$state.go('step22');
+		}
+		$scope.no = function() {
+			$rootScope.Medicament = 0;
+			$state.go('step23');
+		}
+})
+
+
+.controller('Step22Ctrl', function($scope, $state,  $http, $rootScope) {
+	$scope.data = {};
+	$scope.test = 
+	url = ""
+	$scope.Submit = function(AntiepilepsyAnswer, AntiCoagulentAnswer, AntiHighBloodAnswer, AntidepressantAnswer, InsulineAnswer){
+		$rootScope.AntiepilepsyAnswer = AntiepilepsyAnswer;
+		$rootScope.AntiCoagulentAnswer = AntiCoagulentAnswer;
+		$rootScope.AntiHighBloodAnswer = AntiHighBloodAnswer;
+		$rootScope.AntidepressantAnswer = AntiCoagulentAnswer;
+		$rootScope.InsulineAnswer = InsulineAnswer;
+		$state.go('step23');
+	}
+})
+
+.controller('Step23Ctrl', function($scope, $state, $http, $rootScope){
+	$scope.data = {};
+	$scope.test = 
+	$scope.url = ""
+	$scope.nb = function(Size){
+		$rootScope.Size = Size;
+		$state.go('step24');
+	}
+})
+
+
+.controller('Step24Ctrl', function($scope, $state, $http, $rootScope){
+	$scope.data = {};
+	$scope.test = 
+	$scope.url = ""
+	$scope.nb = function(Weight){
+		$rootScope.Weight = Weight;
+		$rootScope.IMC = $rootScope.Weight / Math.pow($rootScope.Size);
+		$state.go('step25');
+	}
+})
+
+.controller('Step25Ctrl', function($scope, $state,  $http, $rootScope) {
+			$scope.data = {};
+	$scope.test = 
+		url = ""
+		$scope.yes = function(){
+			$rootScope.Work = 1;
+			$state.go('step26');
+		}
+		$scope.no = function() {
+			$rootScope.Work = 0;
+			$state.go('step0');
+		}
+})
+
+.controller('Step26Ctrl', function($scope, $state, $http, $rootScope){
+	$scope.data = {};
+	$scope.test = 
+	$scope.url = ""
+	$scope.nb = function(NbWork){
+		$rootScope.NbWork = NbWork;
+		$state.go('step27');
+	}
+})
+
+.controller('Step27Ctrl', function($scope, $state, $http, $rootScope){
+	$scope.data = {};
+	$scope.test = 
+	$scope.url = ""
+	$scope.nb = function(TimeTravel){
+		$rootScope.TimeTravel = TimeTravel;
+		$state.go('step28');
+	}
+})
+
+.controller('Step28Ctrl', function($scope, $state, $http, $rootScope){
+	$scope.data = {};
+	$scope.test = 
+	$scope.url = ""
+	$scope.yes = function(){
+			$rootScope.StandingWork = 1;
+			$state.go('step0');
+		}
+		$scope.no = function() {
+			$rootScope.StandingWork = 0;
+			$state.go('step0');
+		}
+})
+
+
 .controller('GhqCtrl', function($scope,  $state , $http, $rootScope){
 	$scope.data = {};
 	$scope.test = 
@@ -616,8 +707,8 @@ template: 'Please check your credentials!'
 			$scope.data = {};
 	$scope.test = 
 		url = ""
-		$scope.profil = "Bonjour"
-////////////////////////////////////////////////////////////////////////
+		$scope.profil = $rootScope.HelloFree;
+		$scope.profil += $rootScope.name;
 		if ( $rootScope.Age < 35 ){
 			$scope.profil += $rootScope.RAgeA;
 		}
@@ -628,12 +719,9 @@ template: 'Please check your credentials!'
 			$scope.profil += $rootScope.RAgeC;
 		}
 		else if ( $rootScope.Age >= 42 ){
-			$scope.profil += RAgeD; 
+			$scope.profil += $rootScope.RAgeD; 
 		}
-		if ( $rootScope.o >= 3 ){
-			$scope.profil += "Nous vous conseillons une consultation spécialisé avec un bilan complet. Un traitement peut-être necessaire pendant le début voir avant le début de votre grossesse.Nous vous conseillons une consultation spécialisé avec un bilan complet. Un traitement peut-être necessaire pendant le début voir avant le début de votre grossesse."; 
-		}
-/////////////////////////////////////////////////////////////////////////
+		
 		if ($rootScope.Pregnant == 1 && $rootScope.Smoke == 1){
 			$scope.profil = $rootScope.RSmokeA;
 		}
@@ -641,15 +729,67 @@ template: 'Please check your credentials!'
 			$scope.profil = $rootScope.RSmokeB;
 		}
 
+		if ($rootScope.BigChild == 1)
+			$rootScope.profil += $rootScope.BigChildAnswer;
 
-		if ( $rootScope.r < 10 ){
-			$scope.profil += "Pendant la grossesse la seule façon de protéger votre foetus est de stopper toute consommation d'&#039;'alcool";}
-		else if ( $rootScope.r >= 10 ){
-			$scope.profil += "Vous avez peut être un probleme  de dépendance avec l&#039;alcoolun consultation spécialisé s&#039;impose";
+		if ($rootScope.Prema == 0)
+			$rootScope.profil += $rootScope.PremaNo
+		
+
+		if ($rootScope.NbCesa >= 2)
+			$rootScope.profil += $rootScope.NbCesaAnswer;
+
+		if ($rootScope.NbMiacarriage >= 3)
+			$rootScope.profil += $rootScope.NbMiacarriageAnswer;
+
+		if ($rootScope.IMG == 1)
+			$rootScope.profil += $rootScope.IMGYesAnswer;
+
+		if ($rootScope.Alcool < 10 && $rootScope.Alcool > 0){
+			$scope.profil += $rootScope.AlcoolAnswerHighoZero;
 		}
-		else if ( $rootScope.r >= 10 ){
-			$scope.profil += "Vous devez vous faire aider"; 
+		else if ($rootScope.Alcool >= 10){
+			$scope.profil += $rootScope.AlcoolAnswerHighoTen;
 		}
+
+		if ($rootScope.Epilepsy == 1)
+			$scope.profil += $rootScope.EpilepsyAnswer;
+
+		if ($rootScope.Phlebitis == 1)
+			$scope.profil += $rootScope.PhlebitisAnswer;
+
+		if ($rootScope.HighBloodPresure == 1)
+			$scope.profil += $rootScope.diabetesHAnswer;
+
+		if ($rootScope.IMC < 17){
+			$scope.profil += $rootScope.IMCLessAnswer;
+		}
+		else if ($rootScope.IMC > 22 && $rootScope.IMC <= 28){
+			$scope.profil += $rootScope.IMCHighAnswer;
+		}
+		else if ($rootScope.IMC > 28){
+			$scope.profil += $rootScope.IMCMoreHighAnswer;
+		}
+
+		if ($rootScope.Work == 1){
+			if ($rootScope.NbWork > 10 && $rootScope.NbWork <= 12){
+				$scope.profil += $rootScope.NbWorkTenAnswer;
+			}
+			else if ($rootScope.NbWork > 12){
+				$scope.profil += $rootScope.NbWorkTwelveAnswer;
+			}
+			if ($rootScope.TimeTravel > 90){
+				$scope.profil += $rootScope.TimeTravelAnswer;
+			}
+			if ($rootScope.StandingWork == 1){
+				$scope.profil += $rootScope.StandingWorkAnswer;
+			}
+		}
+		else{
+			$scope.profil = $rootScope.WorkNoAnswer;
+		}
+
+		
 		$scope.continue = function() {
 				$state.go('app.launch');
 			}
@@ -1423,6 +1563,7 @@ else
 			$rootScope.helloFirst = "Vous avez choisi de continuer votre aventure avec nous et nous vous en remercions."
 			
 			//Bilan Gratuit
+			$rootScope.HelloFree = " Bonjour ";	
 			$rootScope.QAge = "Quel âge avez vous?";
 			$rootScope.RAgeA = "Votre age suggère un gaible risque d'anomalie chromosomique foetale.";
 			$rootScope.RAgeB = "Vous présentez un risque modéré d'anomalie chromosomique foetale.";
@@ -1441,42 +1582,74 @@ else
 			$rootScope.QHChild = "Combien?";
 
 			$rootScope.QBigChild = "Avez-vous accouché d'un enfant de plus de 4 kilos ? ";
-
-			$rootScope.QHBigChild = "Combien d'enfants de plus de 4 kg avez-vous eu ?";
+			$rootScope.BigChildAnswer = "Vous devrez effectuer un dépistage du diabète de grossesse dès le premier trimestre";
 
 			$rootScope.QLessChild = "Avez-vous accouché d'un enfant de moins de 2kg200 ?";
 
 			$rootScope.QPrema = "Votre enfant était il prématuré ?";
+			$rootScope.PremaNo =  "Il s'agit donc d'un antécédent de retard de croissance intra-utérin qui vous expose à un risque de récidive d'environ 10 % pour la prochaine grossesse (si la femme a répondu pas encore enceinte) pour cette grossesse (si la dame a répondu oui je suis déjà enceinte)";
 
 			$rootScope.QPreEclamp = "Avez-vous eu une pré-éclampsie ? ";
 
 			$rootScope.QPregnantDiabete = "Avez-vous un diabète de grossesse (diabète gestationnel) ?";
 
 			$rootScope.QNbCesa = "Combien de césarienne avez-vous eu ?";
+			$rootScope.NbCesaAnswer = "Le mode d'accouchement le plus probable pour cette grossesse sera donc la césarienne.";
 
 			$rootScope.QMiscarriage = "Avez-vous fais des fausse couche ?";
 
 			$rootScope.QNbMiscarriage = "Combien de fausse couche avez-vous fait ?";
+			$rootScope.NbMiacarriageAnswer = "Vous devez effectuer un bilan de fausse couche à répétition et bénéficier d'une prise en charge adaptée en fonction des résultats de ce bilan.";
 
 			$rootScope.QIMG = "Avez-vous fait une ou des IMG ?";
+			$rootScope.IMGYesAnswer = "Nous vous conseillons une consultation spécialisée afin d'évaluer le risque de récidive de malformation foetale.";
 
 			$rootScope.QAlcool = "Combien de verres d'alcool buvez-vous par semaine ?";
+			$rootScope.AlcoolAnswerHighoZero = "Pendant la grossesse la seule façon de protéger votre foetus est de stopper toute consommation d'alcool.";
+;
+			$rootScope.AlcoolAnswerHighoTen = "Vous avez peut être un problème de dépendance avec l'alcool, nous vous conseillons une consultation spécialisée afin de faire le point.";
 
 			$rootScope.QEpilepsy = "Avez-vous une épilepsie ? ";
+			$rootScope.EpilepsyAnswer = "A cause de votre épilepsie, vous présentez une grossesse à risque. Vous devez être prise en charge par une équipe spécialisée pour le choix des antiépileptiques et leur dosage ainsi que pour la mise en place d'une surveillance foetale adaptée.";
 
 			$rootScope.QPhlebitis = "Avez-vous déjà eu une phlébite ?";
+			$rootScope.PhlebitisAnswer = "Votre condition de femme enceinte augmente votre risque de récidive de phlébite et ce jusqu'à 6 semaines après l'accouchement. Vous devez porter des bas de contention durant toute la grossesse et les 6 semaines après l'accouchement. Il peut être nécessaire de vous prescrire de l'héparine durant la grossesse et ou après l'accouchement. Vous devrez en discuter avec votre gynécologue.";
 
 			$rootScope.QHighBloodPresure = "Avez-vous de l'hypertension artérielle ?";
+			$rootScope.HighBloodPresureAnswer = "A cause de votre hypertension, vous présentez une grossesse à risque. Vous devez être prise en charge par une équipe spécialisée pour le choix des antihypertenseurs et leur dosage ainsi que pour la mise en place d'une surveillance foetale adaptée.";
 
 			$rootScope.QdiabetesH = "Avez-vous du diabète ?";
+			$rootScope.diabetesHAnswer = "A cause de votre diabète, vous présentez une grossesse à risque. Vous devez être prise en charge par une équipe spécialisée pour le choix des antidiabetiques et leur dosage ainsi que pour la mise en place d'une surveillance foetale adaptée.";
 
+			$rootScope.QMedicament = "Prennez-vous de médicament ?";
 
+			$rootScope.QTypeMedicament = "Selectionnez les médicaments que vous prennez ";
+			$rootScope.EpileptiqueMed = "Anti-Epileptique";
+			$rootScope.AntiCoagulentMed = "Anticoagulent";
+			$rootScope.AntiHighBloodMed = "Antihypertenseur";
+			$rootScope.InsulineMed = "Insuline";
+			$rootScope.AntiDepressantMed = "Antidepresseur";
 
+			$rootScope.QSize = "Quelle est votre taille ?";
 
+			$rootScope.QWeight = "Quel est votre poids ?";
 
+			$rootScope.IMCLessAnswer =  "Votre maigreur vous expose à un risque de menace d'accouchement prématuré et de bébé avec un retard de croissance intra-utérin.";
+			$rootScope.IMCHighAnswer =  "Votre surpoids vous expose à un risque de diabète pendant la grossesse et donc de gros bébé à terme.";
+			$rootScope.IMCMoreHighAnswer = "Votre importante obésité vous expose à un très haut risque de diabète, de malformation foetale, de phlébite voire d'embolie pulmonaire, ainsi que de difficulté à accoucher y compris par césarienne.";
 
+			$rootScope.QWork = "Travaillez-vous ?";
+			$rootScope.WorkNoAnswer = "Profitez-en pour prendre le temps de prendre soin de vous, de préparer vous même vos repas, organiser votre préparation à l'accouchement et la venue de votre bébé.";
 
+			$rootScope.QNbWork = "Combien d'heures de travail effectuez-vous par jour ?";
+			$rootScope.NbWorkTenAnswer = "Vos heures de présence au travail sont élevées.";
+			$rootScope.NbWorkTwelveAnswer = "Vos heures de présence au travail sont très élevées, nous vous proposons d'aménager vos heures de présence au travail, ce qui sera de toute façon indispensable lorsque votre bébé sera né :-).";
 
+			$rootScope.QTimeTravel = "Quel est votre temps de trajet par jour (en minute) ?";
+			$rootScope.TimeTravelAnswer =  "Votre temps de transport est très élevé, nous vous proposons d'aménager vos heures de présence au travail, ce qui sera de toute façon indispensable lorsque votre bébé sera né :-)." ;
+
+			$rootScope.QStandingWork = "Travaillez-vous debout plus de 6 heures par jour ? ";
+			$rootScope.StandingWorkAnswer = "Vous risquez d'être en difficulé pour mener votre grossesse à terme sans menace d'accouchement prématuré. Nous vous conseillons de discuter dès à présent avec votre employeur afin d'aménager vos conditions de travail.";
 
 			//Calendar Medical
 			$rootScope.NumberCalendar = "Félicitation vous en êtes à votre ";
@@ -1626,7 +1799,8 @@ else
 			$rootScope.ToxoIDontKnow = "Je ne sais pas";
 			$rootScope.CreateAccount = "Créer un compte";	
 			$rootScope.OK = "OK";
-
+			$rootScope.Yes = "Oui";
+			$rootScope.No = "Non";
 
 
 

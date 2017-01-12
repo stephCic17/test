@@ -92,10 +92,21 @@ templateUrl: 'templates/step5.html',
 controller: 'Step5Ctrl'
 })
 
+.state('step6', {
+url:'/step6',
+templateUrl: 'templates/step6.html',
+controller: 'Step6Ctrl'
+})
+
 .state('step7', {
 url:'/step7',
 templateUrl: 'templates/step7.html',
 controller: 'Step7Ctrl'
+})
+.state('step8', {
+url:'/step8',
+templateUrl: 'templates/step8.html',
+controller: 'Step8Ctrl'
 })
 
 .state('step9', {
@@ -157,6 +168,61 @@ url:'/step18',
 templateUrl: 'templates/step18.html',
 controller: 'Step18Ctrl'
 })
+
+.state('step19', {
+url:'/step19',
+templateUrl: 'templates/step19.html',
+controller: 'Step19Ctrl'
+})
+
+.state('step20', {
+url:'/step20',
+templateUrl: 'templates/step20.html',
+controller: 'Step20Ctrl'
+})
+
+.state('step21', {
+url:'/step21',
+templateUrl: 'templates/step21.html',
+controller: 'Step21Ctrl'
+})
+
+.state('step22', {
+url:'/step22',
+templateUrl: 'templates/step22.html',
+controller: 'Step22Ctrl'
+})
+.state('step23', {
+url:'/step23',
+templateUrl: 'templates/step23.html',
+controller: 'Step23Ctrl'
+})
+.state('step24', {
+url:'/step24',
+templateUrl: 'templates/step24.html',
+controller: 'Step24Ctrl'
+})
+.state('step25', {
+url:'/step25',
+templateUrl: 'templates/step25.html',
+controller: 'Step25Ctrl'
+})
+.state('step26', {
+url:'/step26',
+templateUrl: 'templates/step26.html',
+controller: 'Step26Ctrl'
+})
+.state('step27', {
+url:'/step27',
+templateUrl: 'templates/step27.html',
+controller: 'Step27Ctrl'
+})
+.state('step28', {
+url:'/step28',
+templateUrl: 'templates/step28.html',
+controller: 'Step28Ctrl'
+})
+
 
 .state('step0', {
       url: '/step0',
