@@ -1,4 +1,5 @@
 /* Empty. Add your own CSS if you like */
+
 .derniereRegle {
 	text-align: center;
 }
@@ -13,7 +14,8 @@
 }
 .derniereRegle input{
 text-align: center;
-width: 100%;
+background-color: #E2E2E2;
+min-width: 100%;
 }
 
 .questionaire{

@@ -356,7 +356,8 @@ template: 'Please check your credentials!'
 	$scope.url = ""
 	$scope.nb = function(Weight){
 		$rootScope.Weight = Weight;
-		$rootScope.IMC = $rootScope.Weight / Math.pow($rootScope.Size);
+		$rootScope.IMC = $rootScope.Weight / Math.pow($rootScope.Size/100, 2);
+		console.log($rootScope.IMC);
 		$state.go('step25');
 	}
 })
@@ -765,6 +766,7 @@ template: 'Please check your credentials!'
 			$scope.profil += $rootScope.IMCLessAnswer;
 		}
 		else if ($rootScope.IMC > 22 && $rootScope.IMC <= 28){
+			console.log("Toto");
 			$scope.profil += $rootScope.IMCHighAnswer;
 		}
 		else if ($rootScope.IMC > 28){
@@ -786,13 +788,19 @@ template: 'Please check your credentials!'
 			}
 		}
 		else{
-			$scope.profil = $rootScope.WorkNoAnswer;
+			$scope.profil += $rootScope.WorkNoAnswer;
 		}
 
 		
 		$scope.continue = function() {
 				$state.go('app.launch');
 			}
+})
+.controller('ModifDateOfPregnantCtrl', function($scope, $state, $http, $rootScope, $ionicSideMenuDelegate, $cordovaLocalNotification){
+	$scope.data = {};
+	$scope.test = 
+		url = ""
+		
 })
 
 .controller('LaunchCtrl', function($scope, $state, $http, $rootScope, $ionicSideMenuDelegate, $cordovaLocalNotification){
@@ -801,19 +809,25 @@ template: 'Please check your credentials!'
 		url = ""
 		$scope.submit = function(gros) {
 	
-
-
-			//////////////////    Calendrier Medical ////////////////////
-	
 			// Date des dernieres regles //
 			$rootScope.LastMenstruation = new Date(gros);
 			$rootScope.LastMenstruationTimestamp = $rootScope.LastMenstruation.getTime();
 			$rootScope.LastMenstruationDate = $rootScope.LastMenstruation.toLocaleDateString();
-			
 			// Date de début de grossesse theorique //
 			$rootScope.BeginOfPregnancy = new Date($rootScope.LastMenstruation.getTime() + 1209600000);
 			$rootScope.BeginOfPregnancyTimestamp = $rootScope.BeginOfPregnancy.getTime();
 			$rootScope.BeginOfPregnancyDate = $rootScope.BeginOfPregnancy.toLocaleDateString();
+
+			$scope.calcul();
+			}
+		$scope.ModifDate = function(grosMod) {
+			$rootScope.BeginOfPregnancy = new Date(grosMod);
+			$rootScope.BeginOfPregnancyTimestamp = $rootScope.BeginOfPregnancy.getTime();
+			$rootScope.BeginOfPregnancyDate = $rootScope.BeginOfPregnancy.toLocaleDateString();
+			$scope.calcul();
+		}
+		$scope.calcul = function(){
+			//////////////////    Calendrier Medical ////////////////////
 		
 			// Date de fiabilite Test de grossesse //
 			$rootScope.ReliabilityTest = new Date($rootScope.BeginOfPregnancy.getTime() + 2246400000);
@@ -996,6 +1010,7 @@ template: 'Please check your credentials!'
 
 			$state.go('app.toxoAsk');
 		}
+
 
 })
 
@@ -1540,6 +1555,38 @@ else
    $scope.EhideP = false;
 }
 })
+
+.controller('DeliveryPregnantCtrl', function($scope, $state, $http, $rootScope){
+	$scope.data = {};
+	$scope.test = 
+	$scope.url = ""
+	$scope.AddDateOfDelivery = function(deliveryAdd){
+
+		$rootScope.DeliveryPregnant = new Date(deliveryAdd);
+		$rootScope.DeliveryPregnantDate = $rootScope.DeliveryPregnant.toLocaleDateString();
+		$rootScope.DeliveryPregnantTimestamp  = $rootScope.DeliveryPregnant.getTime();
+
+		$state.go('app.Congrats');
+	}
+})
+.controller('CongratsCtrl', function($scope, $state, $http, $rootScope){
+	$scope.data = {};
+	$scope.test = 
+	$scope.url = ""
+	$scope.submit = function(){
+
+	}
+})
+.controller('ChildCalendarCtrl', function($scope, $state, $http, $rootScope){
+	$scope.data = {};
+	$scope.test = 
+	$scope.url = ""
+
+	$scope.view = function(){
+		
+	}
+
+})
 .controller('HomeCtrl', function($scope, $state, $http, $rootScope) {
 		$scope.data = {};
 	$scope.test = 
@@ -1801,7 +1848,8 @@ else
 			$rootScope.OK = "OK";
 			$rootScope.Yes = "Oui";
 			$rootScope.No = "Non";
-
+			$rootScope.ModifDatePregnant = "Bonjour, rentrer votre date de début de grossesse corrigé"
+			$rootScope.DeliveryDatePregnant = "Rentrez votre date d'accouchement";
 
 
 			$state.go('home');
@@ -1817,8 +1865,93 @@ else
 			$rootScope.numberOfWeek = "Th week of pregnancy"
 			$rootScope.helloFirst = "You have chosen to continue your adventure with us and we thank you for it. ";
 
+			//Bilan Gratuit
+			$rootScope.HelloFree = " Hello ";	
+			$rootScope.QAge = "How old are you?";
+			$rootScope.RAgeB = "You have a moderate risk of fetal chromosomal abnormality.";
+			$rootScope.RAgeC = "You have a high risk of fetal chromosomal abnormality.";
+			$rootScope.RAgeD = "You have a very high risk of fetal chromosomal abnormality.";
+
+			$rootScope.QPregnant = "Are you pregnant?";
+			$rootScope.Pregnant = "Congratulations !";
+
+			$rootScope.QSmoke = "Do you smoke?";
+			$rootScope.RSmokeA = "Smoking during pregnancy is likely to cause complications for the fetus";
+			$rootScope.RSmokeB = "Smoking increases the risk of infertility, miscarriage, ectopic pregnancy, preterm delivery, intrauterine growth retardation, and sudden infant death syndrome";
+
+			$rootScope.QChild = "Do you have children?";
+
+			$rootScope.QHChild = "How many?";
+
+			$rootScope.QBigChild = "Did you give birth to a child over 4 kilograms?";			$rootScope.BigChildAnswer = "Vous devrez effectuer un dépistage du diabète de grossesse dès le premier trimestre";
+
+			$rootScope.QLessChild = "Have you given birth to a child under 2kg200?";
+
+			$rootScope.QPrema = "Was your child premature?";
+			$rootScope.PremaNo =  "This is a history of intrauterine growth retardation which exposes you to a risk of recurrence of about 10% for the next pregnancy (if the woman has not yet been pregnant) for this pregnancy (if Lady answered yes I am already pregnant) ";
+
+			$rootScope.QPreEclamp = "Have you had a preeclampsia?";
+
+			$rootScope.QPregnantDiabete = "Do you have pregnancy diabetes (gestational diabetes)?";
+
+			$rootScope.QNbCesa = "How many caesarean sections have you had?";
+			$rootScope.NbCesaAnswer = "The most likely mode of delivery for this pregnancy will be the caesarean section.";
+
+			$rootScope.QMiscarriage = "Did you miscarry?";
+
+			$rootScope.QNbMiscarriage = "How many miscarriages have you done?";
+			$rootScope.NbMiacarriageAnswer = "You must carry out a repeat miscarriage assessment and receive appropriate care according to the results of this assessment.";
+
+			$rootScope.QIMG ="Have you done one or more IMGs?";
+			$rootScope.IMGYesAnswer = "We recommend a specialized consultation to assess the risk of recurrence of fetal malformation.";
+
+			$rootScope.QAlcool ="How many glasses of alcohol do you drink per week?";
+			$rootScope.AlcoolAnswerHighoZero = "During pregnancy the only way to protect your fetus is to stop all alcohol consumption.";
+			$rootScope.AlcoolAnswerHighoTen = "You may have an addiction problem with alcohol, we advise you to have a specialized consultation in order to take stock.";
+
+			$rootScope.QEpilepsy = "Do you have epilepsy?";
+			$rootScope.EpilepsyAnswer = "Because of your epilepsy, you have a risky pregnancy. You have to be taken care of by a specialized team for the choice of anti-epileptics and their dosage and for the setting up of a suitable fetal monitoring.";
+			$rootScope.QPhlebitis = "Have you ever had a phlebitis?";
+			$rootScope.PhlebitisAnswer = "Your condition as a pregnant woman increases your risk of recurrence of phlebitis until 6 weeks after delivery, and you should wear compression stockings throughout pregnancy and 6 weeks after delivery. You should prescribe heparin during pregnancy and / or after delivery and discuss it with your gynecologist. ";
+
+			$rootScope.QHighBloodPresure = "Do you have high blood pressure?";
+			$rootScope.HighBloodPresureAnswer = "A cause de votre hypertension, vous présentez une grossesse à risque. Vous devez être prise en charge par une équipe spécialisée pour le choix des antihypertenseurs et leur dosage ainsi que pour la mise en place d'une surveillance foetale adaptée.";
+
+			$rootScope.QdiabetesH = "Avez-vous du diabète ?";
+			$rootScope.diabetesHAnswer = "Because of your diabetes, you have a risky pregnancy. You have to be taken care of by a specialized team for the choice of antidiabetics and their dosage as well as for the setting up of a suitable fetal monitoring.";
+
+			$rootScope.QMedicament = "Do you take medicine?";
+
+			$rootScope.QTypeMedicament = "Select medicines you take";
+			$rootScope.EpileptiqueMed = "Anti-Epileptic";
+			$rootScope.AntiCoagulentMed = "Anticoagulant";
+			$rootScope.AntiHighBloodMed = "Antihypertensive";
+			$rootScope.InsulineMed = "Insulin";
+			$rootScope.AntiDepressantMed = "Antidepressant";
+
+			$rootScope.QSize = "What is your size ?";
+
+			$rootScope.QWeight = "What is your weight ?";
+
+			$rootScope.IMCLessAnswer =  "Your leanness exposes you to a risk of threatening preterm delivery and baby with intrauterine growth retardation.";			
+			$rootScope.IMCHighAnswer =  "Your overweight exposes you to a risk of diabetes during pregnancy and therefore big baby in the long run.";
+			$rootScope.IMCMoreHighAnswer = "Your significant obesity exposes you to a very high risk of diabetes, fetal malformation, phlebitis or even pulmonary embolism, as well as difficulty giving birth including caesarean section.";
+
+			$rootScope.QWork = "Do you work?";
+			$rootScope.WorkNoAnswer = "Take advantage of it to take the time to take care of yourself, prepare yourself your meals, organize your preparation for the birth and the arrival of your baby.";
+
+			$rootScope.QNbWork = "How many hours do you work per day?";
+			$rootScope.NbWorkTenAnswer = "Your hours at work are high.";
+			$rootScope.NbWorkTwelveAnswer = "Your hours of presence at work are very high, we propose to arrange your hours of presence at work, which will in any case be essential when your baby will be born :-).";
+
+			$rootScope.QTimeTravel = "What is your journey time per day (in minutes)?";
+			$rootScope.TimeTravelAnswer =  "Your transport time is very high, we offer to arrange your hours of presence at work, which will in any case be essential when your baby will be born :-)." ;
+
+			$rootScope.QStandingWork = "Do you work more than 6 hours a day?";
+			$rootScope.StandingWorkAnswer = "You may be in trouble to get your pregnancy to an end without the threat of premature birth, so we advise you to discuss your working conditions now with your employer.";
+
 			
-			//Calendar
+			//Calendar Medical
 			$rootScope.NumberCalendar = "Congratulations to your";
 			$rootScope.Weeks = "th weeks of pregnancy today!";
 			$rootScope.delivery = "You should give birth to ";

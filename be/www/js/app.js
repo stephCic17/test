@@ -235,15 +235,54 @@ controller: 'Step28Ctrl'
           'menuContent':{
           templateUrl: 'templates/launch.html',
           controller: 'LaunchCtrl'
-}
-    } 
-    })
+          }
+        }
+})
+
+.state('app.ModifDateOfPregnant', {
+      url: '/ModifDateOfPregnant',
+      views: {
+          'menuContent':{
+          templateUrl: 'templates/ModifDateOfPregnant.html',
+          controller: 'LaunchCtrl'
+      }
+    }
+})
+
+.state('app.DeliveryPregnant', {
+      url: '/DeliveryPregnant',
+      views: {
+          'menuContent':{
+          templateUrl: 'templates/DeliveryPregnant.html',
+          controller: 'DeliveryPregnantCtrl'
+      }
+    }
+})
+
+.state('app.Congrats', {
+      url: '/congrats',
+      views: {
+          'menuContent':{
+          templateUrl: 'templates/Congrats.html',
+          controller: 'CongratsCtrl'
+      }
+    }
+})
 .state('app.Mcalendar', {
       url: '/Mcalendar',
       views: {
           'menuContent':{
           templateUrl: 'templates/Mcalendar.html',
           controller: 'MCalendarCtrl'
+}
+}
+})
+.state('app.ChildCalendar', {
+      url: '/ChildCalendar',
+      views: {
+          'menuContent':{
+          templateUrl: 'templates/ChildCalendar.html',
+          controller: 'ChildCalendarCtrl'
 }
 }
 })
