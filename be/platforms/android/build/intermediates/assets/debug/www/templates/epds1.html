@@ -1,0 +1,82 @@
+<ion-view view-title=Ciconia name=epsd1-view>
+  <ion-content class=padding> 
+<div class="list">
+<div class="questionaire">
+<form name="formS" ng-submit="submit(e1_a,e1_b,e1_c, e1_d,e1_e, e1_f, e1_g)" novalidate="">
+	<div class="question">
+		<label>  J’ai pu rire et prendre les choses du bon côté   </label>
+	    <select ng-model="e1_a">
+		    <option value="0">Aussi souvent que d’habitude</option>
+	    	<option value="1">Pas tout à fait autant</option>
+	    	<option value="2">Vraiment beaucoup moins souvent ces jours-ci</option>
+	    	<option value="3">Absolument pas</option>
+	    </select>
+	</div>
+	<div class="question">
+		<label> Je me suis sentie confiante et joyeuse en pensant à l’avenir </label>
+	    <select ng-model="e1_b">
+		    <option value="0">Autant que d’habitude</option>
+	    	<option value="1">Plutôt moins que d’habitude</option>
+	    	<option value="2">Vraiment moins que d’habitude</option>
+	    	<option value="3">Pratiquement pas</option>
+	    </select>
+	</div>
+		<div class="question">
+		<label> Je me suis reprochée, sans raisons, d’être responsable quand les choses allaient mal </label>
+	    <select ng-model="e1_c">
+		    <option value="3">Non, pas du tout</option>
+	    	<option value="2">Presque jamais</option>
+	    	<option value="1">Oui, parfois</option>
+	    	<option value="0">Oui, très souvent</option>
+	    </select>
+	</div>
+		<div class="question">
+		<label> Je me suis sentie inquiète ou soucieuse sans motifs </label>
+	    <select ng-model="e1_d">
+		    <option value="3">Non, pas du tout</option>
+	    	<option value="2">Presque jamais</option>
+	    	<option value="1">Oui, parfois</option>
+	    	<option value="0">Oui, très souvent</option>
+	    </select>
+	</div>
+		<div class="question">
+		<label> Je me suis sentie effrayée ou paniquée sans vraiment de raisons </label>
+	    <select ng-model="e1_e">
+		    <option value="3">Oui, vraiment souvent</option>
+	    	<option value="2">Oui, parfois</option>
+	    	<option value="1">Oui, parfois -Pas très souvent</option>
+	    	<option value="0">Non, pas du tout</option>
+	    </select>
+	</div>
+		<div class="question">
+		<label> Je me suis sentie triste ou peu heureuse </label>
+	    <select ng-model="e1_f">
+		    <option value="3">Oui, la plupart du temps</option>
+	    	<option value="2">Oui, très souvent</option>
+	    	<option value="1">Pas très souvent</option>
+	    	<option value="0">Non, pas du tout</option>
+	    </select>
+	</div>
+		<div class="question">
+		<label> Je me suis sentie si malheureuse que j’en ai pleuré </label>
+	    <select ng-model="e1_g">
+		    <option value="3">Oui, la plupart du temps</option>
+	    	<option value="2">Oui, très souvent</option>
+	    	<option value="1">Seulement de temps en temps</option>
+	    	<option value="0">Non, jamais</option>
+	    </select>
+	</div>
+		<div class="question">
+		<label> Il m’est arrivé de penser à me faire mal </label>
+	    <select ng-model="e1_h">
+		    <option value="3">Oui, très souvent</option>
+	    	<option value="2">Parfois</option>
+	    	<option value="1">Presque jamais</option>
+	    	<option value="0">Jamais</option>
+	    </select>
+  </div>
+    <button type="submit">Enregistrer</button>
+</form>
+</div>
+</div>
+</ion-content>

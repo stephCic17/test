@@ -1,6 +1,6 @@
 angular.module('starter.controllers', [])
 
-.controller('AppCtrl', function($scope, $ionicModal, $timeout) {
+.controller('AppCtrl', function($scope, $ionicModal, $timeout, $rootScope) {
 
 		})
 .controller('ToxoCtrl', function($scope, $state, $rootScope){
@@ -32,7 +32,7 @@ $scope.test = function(){
 		}
 })
 
-.controller('LoginCtrl', function($scope, LoginService, $ionicPopup, $state, $http) {
+.controller('LoginCtrl', function($scope, LoginService, $ionicPopup, $state, $http, $rootScope) {
 		$scope.login = function() {
 			LoginService.loginUser($scope.data.username, $scope.data.password).success(function(data) {
 				$state.go('current');

@@ -1,0 +1,137 @@
+<ion-view view-title=Ciconia name=BDI-view>
+  <ion-content class=padding> 
+<div class="list">
+<form name="formS" ng-submit="submit(b_a,b_b,b_c, b_d,b_e, b_f)" novalidate="">
+<div class="questionaire">
+<div class="question">
+<label> Question 1    </label> 
+<select ng-model="b_a">
+	    <option value="0">Je ne me sens pas triste.</option>
+      <option value="1">Je me sens cafardeux ou triste. </option>
+      <option value="2">Je me sens tout le temps cafardeux ou triste, et je n’arrive pas en sortir.</option>
+      <option value="3">Je suis si triste et si malheureux, que je ne peux pas le supporter.</option>
+    </select>
+</div>
+<div class="question">
+    <label>      Question 2    </label>
+    <select ng-model="b_b">
+	    <option value="0">Je ne suis pas particulièrement découragé, ni pessimiste au sujet de l’avenir.</option>
+      <option value="1"> J’ai un sentiment de découragement au sujet de l’avenir. </option>
+      <option value="2">Pour mon avenir, je n’ai aucun motif d’espérer.</option>
+      <option value="3">Je sens qu’il n’y a aucun espoir pour mon avenir, et que la situation ne peut s’améliorer. </option>
+    </select>
+    </div>
+    <div class="question">
+
+   <label>      Question 3    </label>
+    <select ng-model="b_c">
+	    <option value="0">Je n’ai aucun sentiment d’échec de ma vie.</option>
+      <option value="1"> J’ai l’impression que j’ai échoué dans ma vie plus que la plupart des gens. </option>
+      <option value="2">Quand je regarde ma vie passée, tout ce que j’y découvre n’est qu’échecs.</option>
+      <option value="3">J’ai un sentiment d’échec complet dans toute ma vie personnelle (dans mes relations avec mes parents, mon mari, ma femme mes enfants). </option>
+    </select>
+</div>
+<div class="question">
+
+       <label>      Question 4    </label>
+    <select ng-model="b_d">
+	    <option value="0">Je ne me sens pas particulièrement insatisfait.</option>
+      <option value="1">Je ne sais pas profiter agréablement des circonstances.  </option>
+      <option value="2">Je ne tire plus aucune satisfaction de quoi que ce soit.</option>
+      <option value="3">Je suis mécontent de tout.  </option>
+    </select>
+    </div>
+    <div class="question">
+
+       <label>      Question 5    </label>
+    <select ng-model="b_e">
+	    <option value="0">Je ne me sens pas coupable. </option>
+      <option value="1">Je me sens mauvais ou indigne une bonne partie du temps. </option>
+      <option value="2"> Je me sens coupable.</option>
+      <option value="3"> Je me juge très mauvais, et j’ai l’impression que je ne vaux rien.</option>
+    </select>
+    </div>
+    <div class="question">
+
+       <label>      Question 6    </label>
+    <select ng-model="b_f">
+	    <option value="0">Je ne suis pas déçue par moi-même. </option>
+      <option value="1">Je suis déçue par moi-même. </option>
+      <option value="2">Je me dégoûte moi-même.</option>
+      <option value="3"> Je me hais. </option>
+    </select>
+    </div><div class="question">
+
+       <label>      Question 7    </label>
+    <select ng-model="b_g">
+	    <option value="0">Je ne pense pas à me faire du mal.</option>
+      <option value="1">Je pense que la mort me libèrerait. </option>
+      <option value="2">J’ai des plans précis pour me suicider. </option>
+      <option value="3"> Si je le pouvais, je me tuerais.  </option>
+    </select>
+    </div><div class="question">
+
+       <label>      Question 8    </label>
+    <select ng-model="b_h">
+	    <option value="0">Je n’ai pas perdu l’intérêt pour les autres gens.</option>
+      <option value="1">Maintenant je m’intéresse moins aux autres gens qu’autrefois. </option>
+      <option value="2">J’ai perdu tout l’intérêt que je portais aux gens et j’ai peu de sentiments pour eux.</option>
+      <option value="3"> J’ai perdu tout l’intérêt pour les autres, et ils m’indiffèrent totalement. </option>
+    </select>
+    </div>
+    <div class="question">
+
+       <label>      Question 9    </label>
+    <select ng-model="b_i">
+	    <option value="0">Je suis capable de me décider aussi facilement que de coutume.</option>
+      <option value="1">J’essaie de ne pas avoir à prendre de décision. </option>
+      <option value="2">J’ai de grandes difficultés à prendre des décisions.</option>
+      <option value="3">Je ne suis plus capable de prendre la moindre décision. </option>
+    </select>
+    </div>
+    <div class="question">
+
+       <label>      Question 10    </label>
+    <select ng-model="b_j">
+	    <option value="0">Je n’ai pas le sentiment d’être plus laide qu’avant.</option>
+      <option value="1">J’ai peur de paraître vieille ou disgracieuse. </option>
+      <option value="2">J’ai l’impression qu’il y a un changement permanent dans mon apparence physique, qui me fait paraître disgracieux.</option>
+      <option value="3"> J’ai l’impression d’être laid et repoussant.</option>
+    </select>
+    </div>
+    <div class="question">
+
+       <label>      Question 11    </label>
+    <select ng-model="b_k">
+	    <option value="0">Je travaille aussi facilement qu’auparavant. </option>
+      <option value="1">Il me faut faire un effort supplémentaire pour commencer à faire quelque chose. </option>
+      <option value="2"> Il faut que je fasse un très grand effort pour faire quoi que ce soit.</option>
+      <option value="3">Je suis incapable de faire le moindre travail. </option>
+    </select>
+    </div>
+    <div class="question">
+
+       <label>      Question 12    </label>
+    <select ng-model="b_l">
+	    <option value="0"> Je ne suis pas plus fatigué que d’habitude.</option>
+      <option value="1"> Je suis fatigué plus facilement que d’habitude.</option>
+      <option value="2">Faire quoi que ce soit me fatigue.</option>
+      <option value="3"> Je suis incapable de faire le moindre travail.</option>
+    </select>
+    </div>
+    <div class="question">
+
+   <label>      Question 13    </label>
+    <select ng-model="b_m">
+	    <option value="0">Mon appétit est toujours aussi bon.</option>
+      <option value="1">Mon appétit n’est pas aussi bon que d’habitude. </option>
+      <option value="2">Mon appétit est beaucoup moins bon maintenant. </option>
+      <option value="3">Je n’ai plus du tout d’appétit. </option>
+    </select>
+    </div>
+<button type="submit">Enregistrer</button>
+</form>
+</div>
+</div>
+</ion-content>
+</ion-view>

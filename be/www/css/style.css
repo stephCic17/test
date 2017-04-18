@@ -44,11 +44,11 @@ div.panel {
     padding: 0 18px;
 }
 div.passe button{
-	background-color: rgba(0,0,0,0.1);
+	background-color: rgba(239,255,247,1);
 	color: black
 }
 div.avenir button{
-	background-color: rgba(0,100,0,0.2);
+	background-color: rgba(255,207,207,1);
 	color: black;
 }
 .questionaire select {

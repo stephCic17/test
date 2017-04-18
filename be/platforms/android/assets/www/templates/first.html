@@ -1,0 +1,16 @@
+
+<script src="lib/ngCordova/dist/ng-cordova.min.js"></script> 
+<ion-view view-title="first" name="first-view">
+  <ion-content class="padding">
+      <div class="list list-inset">
+        <progress max="140" value="0"></progress>
+        
+      </div>
+      <p>Prenom?</p>
+      <label class="item item-input">
+	      <input type="text" ng-model="data.name" placeholder="">
+      </label>
+      <button class="button button-block button-calm" ng-click="name()">OK</button>
+
+  </ion-content>
+</ion-view>

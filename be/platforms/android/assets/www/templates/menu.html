@@ -1,0 +1,52 @@
+
+<ion-side-menus enable-menu-with-back-views="true">
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-stable">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+
+      <ion-nav-buttons side="right">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="right">
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="right">
+    <ion-header-bar class="bar-stable">
+      <h1 class="title">{{Menu}}</h1>
+    </ion-header-bar>
+    <ion-content>
+      <ion-list>
+        <ion-item menu-close href="#/app/Mcalendar">
+          {{MCalendar}}
+        </ion-item>
+        <ion-item menu-close href="#/app/Ecalendar">
+          {{ECalendar}}
+        </ion-item>
+        <ion-item menu-close href="#/app/ACalendar">
+          {{ACalendar}}
+        </ion-item>
+        <ion-item menu-close href="#/app/psycho">
+          {{MPsycho}}
+        </ion-item>
+        <ion-item menu-close href="#/app/Today">
+          {{MToday}}
+        </ion-item>
+        <ion-item menu-close href="#/app/ModifDateOfPregnant">
+          Modifier date de grossesse
+        </ion-item>
+         <ion-item menu-close href="#/app/DeliveryPregnant">
+          Date Accouchement
+        </ion-item>
+        <ion-item ng-if="DeliveryPregnant" menu-close href="#/app/ChildCalendar">
+        Calendrier de l'enfant
+        </ion-item>
+        <ion-item ng-if="Toxo != 1" menu-close href="#/app/toxo">
+          {{MToxo}}
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>

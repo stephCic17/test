@@ -1,0 +1,45 @@
+<ion-view view-title=Ciconia name=psycho-view>
+
+
+  <ion-content class=padding> 
+<p><h3>GHQ</h3>
+  <span ng-bind="profilGhq"></span>
+  <button class="button button-block button-calm" ng-if="!profilGhq" ng-click="ghq()" >Faire le test</button>
+ </p> <p><h3>SCOFF</h3>
+  <span ng-bind="profilScoff"></span>
+  <button class="button button-block button-calm" ng-if="!profilScoff" ng-click="scoff()" >Faire le test</button></p>
+
+
+  <!-- Just When Login is ok!-->
+<h3>BDI</h3>
+<p>
+  <span ng-bind="profilBDI"></span>
+  <button class="button button-block button-calm" ng-if="!profilBDI" ng-click="bdi()" >Faire le test</button></p>
+<p><h3>STAI</h3>
+  <span ng-bind="profilSTAI"></span>
+  <button class="button button-block button-calm" ng-if="!profilSTAI" ng-click="stai()" >Faire le test</button></p>
+<p><h3>EAT-26</h3>
+  <span ng-bind="profilEAT"></span>
+  <button class="button button-block button-calm" ng-if="!profilEAT" ng-click="eat()" >Faire le test</button></p>
+
+<div ng-if="WeekGrossesse > 29">
+<p><h3>PAI</h3>
+  <span ng-bind="profilPAI"></span>
+  <button class="button button-block button-calm" ng-if="!profilPAI" ng-click="pai()" >Faire le test</button></p>
+<p><h3>EPDS 1</h3>
+  <span ng-bind="profilEpds1"></span>
+  <button class="button button-block button-calm" ng-if="!profilEpds1" ng-click="epds1()" >Faire le test</button></p>
+
+</div>
+<div ng-if="WeekGrossesse > 49">
+<p><h3>MIB</h3>
+  <span ng-bind="profilMIB"></span>
+  <button class="button button-block button-calm" ng-if="!profilMIB" ng-click="mib()" >Faire le test</button></p>
+<p><h3>EPDS 2</h3>
+  <span ng-bind="profilEpds2"></span>
+  <button class="button button-block button-calm" ng-if="!profilEpds2" ng-click="epds2()" >Faire le test</button></p>
+
+</div>
+<p> A voir avec Aurelie Phrase un Autoquestionnaire reste un autoquestionaire pris sur le moment</p>
+  </ion-content>
+</ion-view> 

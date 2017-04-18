@@ -1,0 +1,13 @@
+<ion-view view-title="Ciconia" name="home-view">
+
+  <ion-content class="padding">
+	<div ng-if="!langage">
+	    <button class="button button-block button-calm" ng-click="french()">French</button>
+	    <button class="button button-block button-calm" ng-click="english()">English</button>
+	</div>
+	<div ng-if="langage">
+	    <button class="button button-block button-calm" ng-click="login()">{{account}}</button>
+      <button class="button button-block button-calm" ng-click="create()">{{begin}}</button>
+    </div>
+  </ion-content>
+</ion-view>
